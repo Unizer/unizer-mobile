@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "426596960750",
+    "firebase_url": "https://unizer-f64b4.firebaseio.com",
+    "project_id": "unizer-f64b4",
+    "storage_bucket": "unizer-f64b4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:426596960750:android:2ac56bd22f39b274",
+        "android_client_info": {
+          "package_name": "com.unizer.unizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "426596960750-6mk20thrk55inm060h07ilp5b52i6d5d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_5tH0w9w66WvFaSR6yExqZ_YI1edKlFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "426596960750-6mk20thrk55inm060h07ilp5b52i6d5d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "426596960750-3s2kpt1ntds1gffen85vet22je3f3taj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.unizer.unizer"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

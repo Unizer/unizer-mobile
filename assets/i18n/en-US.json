@@ -1,0 +1,15 @@
+{
+  "lbl_apptitle": "Unizer",
+  "lbl_oneliner": "Unite. Connect. Enjoy.",
+  "lbl_forgot-password": "Forgot password?",
+  "lbl_login": "Login",
+  "lbl_insert-email": "Insert your email",
+  "lbl_insert-password": "Insert your password",
+  "lbl_register": "Register",
+  "lbl_language": "Language",
+  "lbl_confirm": "Confirm",
+  "lbl_close": "Close",
+  "lst_languages": { "nl": "Nederlands", "en": "English"},
+  "msg_no-user-account": "Have no Unizer account yet? Register here!",
+  "msg_register-info": "A Unizer account is for-ever free."
+}
