@@ -1,8 +1,8 @@
 import 'package:Unizer/packages.dart';
 
 /* -- Screens --*/
-import 'package:Unizer/ui/auth/login_scrn.dart';
-import 'package:Unizer/ui/auth/register_scrn.dart';
+import 'package:Unizer/ui/auth/scrn_login.dart';
+import 'package:Unizer/ui/auth/scrn_register.dart';
 
 Future main() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();

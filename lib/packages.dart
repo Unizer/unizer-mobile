@@ -5,13 +5,13 @@ export 'package:flutter/widgets.dart';
 /* -- Unizer defaults --*/
 export 'package:Unizer/ui/app/textstyles/text_styles.dart';
 export 'package:Unizer/constants.dart';
-export 'package:Unizer/ui/app/buttons/rounded_button.dart';
+export 'package:Unizer/ui/app/buttons/btn_rounded.dart';
 export 'package:Unizer/ui/app/colors/unizer_colors.dart';
 export 'package:Unizer/ui/app/elements/box_styles.dart';
 export 'package:Unizer/data/localprefs.dart';
 export 'package:Unizer/localization/localization.dart';
-export 'package:Unizer/ui/app/elements/screen_bg.dart';
-export 'package:Unizer/ui/app/elements/infobox.dart';
+export 'package:Unizer/ui/app/elements/box_screen_bg.dart';
+export 'package:Unizer/ui/app/elements/box_infobox.dart';
 
 /* -- Localization --*/
 export 'package:easy_localization/easy_localization.dart';

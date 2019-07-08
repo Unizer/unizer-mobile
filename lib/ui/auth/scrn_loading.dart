@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:Unizer/ui/auth/login_scrn.dart';
+import 'package:Unizer/ui/auth/scrn_login.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
