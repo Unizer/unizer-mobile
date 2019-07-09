@@ -198,6 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (userEmail.isNotEmpty) {
                                 LocalPrefs.writeUserEmail(email: userEmail);
                               }
+                              showDialog(context: context, builder: (ctx) => UniAlertDialog(),);
                             },
                           ),
                           SizedBox(
@@ -259,3 +260,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+

@@ -12,6 +12,8 @@ export 'package:Unizer/localization/localization.dart';
 export 'package:Unizer/ui/app/elements/box_screen_bg.dart';
 export 'package:Unizer/ui/app/elements/wdg_infobox.dart';
 export 'package:Unizer/ui/app/elements/wdg_card.dart';
+export 'package:Unizer/ui/app/dialogs/dlg_alert_dialog.dart';
+
 
 /* -- Localization --*/
 export 'package:easy_localization/easy_localization.dart';

@@ -38,9 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             UniCard(child:
               Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-
-                ],
+                children: <Widget>[              ],
               ),
             ),
           ],
