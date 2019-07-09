@@ -9,7 +9,12 @@
   "lbl_language": "Language",
   "lbl_confirm": "Confirm",
   "lbl_close": "Close",
+  "lbl_keep-connected": "Keep connected",
+  "lbl_first-name": "First name",
+  "lbl_last-name": "Last name",
+  "lbl_email": "Email",
+  "lbl_password": "Password",
   "lst_languages": { "nl": "Nederlands", "en": "English"},
   "msg_no-user-account": "Have no Unizer account yet? Register here!",
-  "msg_register-info": "A Unizer account is for-ever free."
+  "msg_register-info": "Enter your details to get access to your account."
 }

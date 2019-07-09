@@ -133,136 +133,121 @@ class _LoginScreenState extends State<LoginScreen> {
                     Image(
                       image: AssetImage('images/unizer-250x85.png'),
                     ),
-                    Center(
-                      child: Text(
-                        AppLocalizations.of(context).tr('lbl_oneliner'),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: kH2TextSize,
-                          color: UniColors.h2,
+                    Padding(
+                        padding: const EdgeInsets.only(bottom: kCardMargins,),
+                      child: Center(
+                        child: Text(
+                          AppLocalizations.of(context).tr('lbl_oneliner'),
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: kH2TextSize,
+                            color: UniColors.h2,
+                          ),
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: kCardMargins,
-                        left: kCardMargins,
-                        right: kCardMargins,
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.all(kCardMargins),
-                        decoration: kCardBox,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Text(
-                              AppLocalizations.of(context).tr('lbl_login'),
-                              textAlign: TextAlign.left,
-                              style: kH1,
+                    UniCard(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: <Widget>[
+                          Text(
+                            AppLocalizations.of(context).tr('lbl_login'),
+                            textAlign: TextAlign.left,
+                            style: kH1,
+                          ),
+                          SizedBox(
+                            height: kH1VerticalSpace,
+                          ),
+                          TextField(
+                            keyboardType: TextInputType.emailAddress,
+                            textAlign: TextAlign.left,
+                            style: kDefaultTextField,
+                            decoration: kTextFieldDecoration.copyWith(
+                              hintText: AppLocalizations.of(context)
+                                  .tr('lbl_insert-email'),
                             ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            TextField(
-                              keyboardType: TextInputType.emailAddress,
-                              textAlign: TextAlign.left,
-                              style: kDefaultTextField,
-                              decoration: kTextFieldDecoration.copyWith(
+                            controller: TextEditingController.fromValue(
+                                TextEditingValue(
+                                    text: userEmail,
+                                    selection: TextSelection.collapsed(
+                                        offset: userEmail.length))),
+                            onChanged: (value) => userEmail = value,
+                          ),
+                          SizedBox(
+                            height: kTextFieldVerticalSpace,
+                          ),
+                          TextField(
+                            obscureText: true,
+                            textAlign: TextAlign.left,
+                            style: kDefaultTextField,
+                            decoration: kTextFieldDecoration.copyWith(
                                 hintText: AppLocalizations.of(context)
-                                    .tr('lbl_insert-email'),
-                              ),
-                              controller: TextEditingController.fromValue(
-                                  TextEditingValue(
-                                      text: userEmail,
-                                      selection: TextSelection.collapsed(
-                                          offset: userEmail.length))),
-                              onChanged: (value) => userEmail = value,
-                            ),
-                            SizedBox(
-                              height: kTextFieldVerticalSpace,
-                            ),
-                            TextField(
-                              obscureText: true,
-                              textAlign: TextAlign.left,
-                              style: kDefaultTextField,
-                              decoration: kTextFieldDecoration.copyWith(
-                                  hintText: AppLocalizations.of(context)
-                                      .tr('lbl_insert-password')),
-                              onChanged: (String value) {
-                                userPassword = value;
-                              },
-                            ),
-                            SizedBox(
-                              height: 30.0,
-                            ),
-                            RoundedButton(
-                              color: UniColors.buttonGreen,
-                              label:
-                                  AppLocalizations.of(context).tr('lbl_login'),
-                              onPressed: () {
-                                if (userEmail.isNotEmpty) {
-                                  LocalPrefs.writeUserEmail(email: userEmail);
-                                }
-                              },
-                            ),
-                            SizedBox(
-                              height: kLinkTextVerticalSpace,
-                            ),
-                            Center(
-                              child: GestureDetector(
-                                onTap: () {},
-                                child: Text(
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_forgot-password'),
-                                  style: kLinkText,
-                                ),
+                                    .tr('lbl_insert-password')),
+                            onChanged: (String value) {
+                              userPassword = value;
+                            },
+                          ),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          RoundedButton(
+                            color: UniColors.buttonGreen,
+                            label:
+                            AppLocalizations.of(context).tr('lbl_login'),
+                            onPressed: () {
+                              if (userEmail.isNotEmpty) {
+                                LocalPrefs.writeUserEmail(email: userEmail);
+                              }
+                            },
+                          ),
+                          SizedBox(
+                            height: kLinkTextVerticalSpace,
+                          ),
+                          Center(
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: Text(
+                                AppLocalizations.of(context)
+                                    .tr('lbl_forgot-password'),
+                                style: kLinkText,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: kCardVerticalSpace,
-                        left: kCardMargins,
-                        right: kCardMargins,
-                      ),
-                      child: Container(
-                        padding: EdgeInsets.all(kCardMargins),
-                        decoration: kCardBox,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: <Widget>[
-                            Text(
-                              AppLocalizations.of(context).tr('lbl_register'),
-                              textAlign: TextAlign.left,
-                              style: kH1,
-                            ),
-                            SizedBox(
-                              height: 15.0,
-                            ),
-                            Text(
-                              AppLocalizations.of(context)
-                                  .tr('msg_no-user-account'),
-                              textAlign: TextAlign.left,
-                              style: kH2,
-                            ),
-                            SizedBox(
-                              height: 20.0,
-                            ),
-                            RoundedButton(
-                              color: UniColors.buttonWormGreen,
-                              label: AppLocalizations.of(context)
-                                  .tr('lbl_register'),
-                              onPressed: () {
-                                Navigator.pushNamed(
-                                    context, RegisterScreen.screenID);
-                              },
-                            ),
-                          ],
+                    UniCard(
+                      child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Text(
+                          AppLocalizations.of(context).tr('lbl_register'),
+                          textAlign: TextAlign.left,
+                          style: kH1,
                         ),
-                      ),
+                        SizedBox(
+                          height: 10.0,
+                        ),
+                        Text(
+                          AppLocalizations.of(context)
+                              .tr('msg_no-user-account'),
+                          textAlign: TextAlign.left,
+                          style: kH2,
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        RoundedButton(
+                          color: UniColors.buttonWormGreen,
+                          label: AppLocalizations.of(context)
+                              .tr('lbl_register'),
+                          onPressed: () {
+                            Navigator.pushNamed(
+                                context, RegisterScreen.screenID);
+                          },
+                        ),
+                      ],
+                    ),
                     ),
                   ],
                 ),

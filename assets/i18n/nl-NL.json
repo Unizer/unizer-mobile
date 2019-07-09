@@ -9,7 +9,12 @@
   "lbl_language": "Taal",
   "lbl_confirm": "Bevestigen",
   "lbl_close": "Sluiten",
+  "lbl_keep-connected": "Blijf verbonden",
+  "lbl_first-name": "Voornaam",
+  "lbl_last-name": "Achternaam",
+  "lbl_email": "Emailadres",
+  "lbl_password": "Wachtwoord",
   "lst_languages": { "nl": "Nederlands", "en": "Engels" },
   "msg_no-user-account": "Nog geen Unizer account? Registreer hier!",
-  "msg_register-info": "Een Unizer account is for-ever gratis en voor niks."
+  "msg_register-info": "Vul je gegevens in om toegang te krijgen tot je account."
 }
