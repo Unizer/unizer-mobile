@@ -1,6 +1,6 @@
 import 'package:Unizer/packages.dart';
 
-//Default sizes
+//Defaults
 //TODO: Determine card height based upon content
 const double kInfoCardMaxHeight = 110.0;
 const double kInfoCardMinHeight = 25.0;
@@ -8,6 +8,7 @@ const double kInfoCardMaxSpace = 10.0;
 const double kInfoCardMinSpace = 0.0;
 const double kInfoCardMaxMargins = 12.0;
 const double kInfoCardMinMargins = 2.0;
+const int kDurationMilliseconds = 400;
 
 class UniInfoBox extends StatefulWidget {
   UniInfoBox({@required this.label, @required this.screenID});
@@ -25,11 +26,13 @@ class _UniInfoBoxState extends State<UniInfoBox> {
   bool _visibleStatus = true;
   double _infoCardSpace = kInfoCardMaxSpace;
   double _infoCardMargins = kInfoCardMaxMargins;
+  int _durationMilliseconds = kDurationMilliseconds;
 
   Future getBoxExpandedStatus() async {
     final bool _expanded =
         await LocalPrefs.getInfoBoxSpecs(screenID: widget.screenID);
     _infoCardExpanded = _expanded;
+    _expanded ? _durationMilliseconds = kDurationMilliseconds : _durationMilliseconds = 0; //Don't animate when status is collapsed
     resizeCard();
   }
 
@@ -48,6 +51,7 @@ class _UniInfoBoxState extends State<UniInfoBox> {
 
   void toggleCard() {
     setState(() {
+      _durationMilliseconds = kDurationMilliseconds;
       _infoCardExpanded ? _infoCardExpanded = false : _infoCardExpanded = true;
       resizeCard();
       LocalPrefs.writeInfoBoxSpecs(
@@ -66,8 +70,25 @@ class _UniInfoBoxState extends State<UniInfoBox> {
     return GestureDetector(
       onTap: toggleCard,
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 400),
-        decoration: kInfoBox,
+        duration: Duration(milliseconds: _durationMilliseconds),
+        decoration: BoxDecoration(
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Color.fromRGBO(51, 51, 51, 0.2),
+              blurRadius: 2.0, // has the effect of softening the shadow
+              spreadRadius: 0.0, // has the effect of extending the shadow
+              offset: Offset(
+                0.0, // horizontal, move right 10
+                2.0, // vertical, move down 10
+              ),
+            ),
+          ],
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(kDefaultBorderRadius),
+            bottomLeft: Radius.circular(kDefaultBorderRadius),
+          ),
+        ),
         curve: Curves.decelerate,
         constraints: BoxConstraints.expand(height: _infoCardHeight),
         //height: _infoCardHeight,
