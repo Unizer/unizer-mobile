@@ -198,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               if (userEmail.isNotEmpty) {
                                 LocalPrefs.writeUserEmail(email: userEmail);
                               }
-                              showDialog(context: context, builder: (ctx) => UniAlertDialog(),);
+                              UniToast.showToast(message: 'Dit is een hele lange melding met best veel tekst daardoor de Toast wellicht best groot zal zijn');
                             },
                           ),
                           SizedBox(
