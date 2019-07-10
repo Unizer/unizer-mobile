@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:Unizer/constants.dart';
-import 'package:Unizer/ui/app/textstyles/text_styles.dart';
+import 'package:Unizer/ui/app/textstyles/style_text-styles.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton(

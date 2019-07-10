@@ -35,7 +35,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
             ),
-            UniCard(),
+            UniCard(child:
+            Form(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                Text(AppLocalizations.of(context)
+                    .tr('lbl_keep-connected'),
+                  style: kH1,
+                  textAlign: TextAlign.left,
+                ),
+                TextFormField(),
+              ],
+              ),
+            ),
+            ),
           ],
         ),
       ),

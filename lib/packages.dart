@@ -3,7 +3,7 @@ export 'package:flutter/material.dart';
 export 'package:flutter/widgets.dart';
 
 /* -- Unizer defaults --*/
-export 'package:Unizer/ui/app/textstyles/text_styles.dart';
+export 'package:Unizer/ui/app/textstyles/style_text-styles.dart';
 export 'package:Unizer/constants.dart';
 export 'package:Unizer/ui/app/buttons/btn_rounded.dart';
 export 'package:Unizer/ui/app/colors/unizer_colors.dart';
