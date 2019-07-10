@@ -14,6 +14,7 @@
   "lbl_last-name": "Achternaam",
   "lbl_email": "Emailadres",
   "lbl_password": "Wachtwoord",
+  "lbl_cancel": "Annuleer",
   "lst_languages": { "nl": "Nederlands", "en": "Engels" },
   "msg_no-user-account": "Nog geen Unizer account? Registreer hier!",
   "msg_register-info": "Vul je gegevens in om toegang te krijgen tot je account."
