@@ -160,6 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           TextField(
                             keyboardType: TextInputType.emailAddress,
+                            textInputAction: TextInputAction.next,
                             textAlign: TextAlign.left,
                             style: kDefaultTextField,
                             decoration: kTextFieldDecoration.copyWith(
@@ -186,9 +187,6 @@ class _LoginScreenState extends State<LoginScreen> {
                             onChanged: (String value) {
                               userPassword = value;
                             },
-                          ),
-                          SizedBox(
-                            height: 30.0,
                           ),
                           RoundedButton(
                             color: UniColors.buttonGreen,
@@ -235,11 +233,10 @@ class _LoginScreenState extends State<LoginScreen> {
                           textAlign: TextAlign.left,
                           style: kH2,
                         ),
-                        SizedBox(
-                          height: 15.0,
-                        ),
+
                         RoundedButton(
                           color: UniColors.buttonWormGreen,
+                          topMargin: 15.0,
                           label: AppLocalizations.of(context)
                               .tr('lbl_register'),
                           onPressed: () {

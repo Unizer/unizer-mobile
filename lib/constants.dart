@@ -22,6 +22,7 @@ const double kDefaultBorderSize = 1.0;
 /*-- Buttons --*/
 const double kButtonBorderRadius = 15.0;
 const double kButtonTextSize = 20.0;
+const double kButtonTopMargin = 25.0;
 
 /*-- Spaces --*/
 const double kTextFieldVerticalSpace = 10.0;
