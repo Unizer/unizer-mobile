@@ -68,49 +68,53 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Flexible(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Text(
-                        AppLocalizations.of(context).tr('lbl_language') + ':',
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      AppLocalizations.of(context).tr('lbl_language') + ':',
+                      textAlign: TextAlign.center,
+                      style: kLinkText.copyWith(color: UniColors.hintText),
+                    ),
+                    SizedBox(
+                      width: 6.0,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          final String currentLanguage =
+                              Localizer.changeLanguage(context);
+                          data.changeLocale(Locale(currentLanguage));
+                          languageLabel = kLanguageLabels[currentLanguage];
+                        });
+                      },
+                      child: Text(
+                        '$languageLabel ',
                         textAlign: TextAlign.center,
-                        style: kLinkText.copyWith(color: UniColors.hintText),
+                        style: kLinkText,
                       ),
-                      SizedBox(
-                        width: 6.0,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            final String currentLanguage =
-                                Localizer.changeLanguage(context);
-                            data.changeLocale(Locale(currentLanguage));
-                            languageLabel = kLanguageLabels[currentLanguage];
-                          });
-                        },
-                        child: Text(
-                          '$languageLabel ',
-                          textAlign: TextAlign.center,
-                          style: kLinkText,
-                        ),
-                      ),
-                      Icon(
-                        Boxicons.bxChevronDown,
-                        color: UniColors.linkText,
-                      ),
-                    ],
-                  ),
+                    ),
+                    Icon(
+                      Boxicons.bxChevronDown,
+                      color: UniColors.linkText,
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 4.0,
                 ),
-                Flexible(
-                  child: Text(
-                    '© $kAppName $kCurrentYear',
-                    textAlign: TextAlign.center,
-                    style: kFooterText,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Text(
+                      '© $kAppName $kCurrentYear',
+                      textAlign: TextAlign.center,
+                      style: kFooterText,
+                    ),
+                    Text(' | ', style: kFooterText,),
+                    Text(AppLocalizations.of(context).tr('lbl_appversion', args: ['$kAppVersion']),style: kFooterText,)
+                  ],
                 )
               ],
             ),
