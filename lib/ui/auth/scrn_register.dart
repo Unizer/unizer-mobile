@@ -41,7 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if(!_isValid){
       return;
     }
-    print(_formFields.firstName);
+    //print(_formFields.firstName);
   }
 
   @override
@@ -86,6 +86,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       SizedBox(height: kH1VerticalSpace,),
                       //Firstname
                       TextFormField(
+                        style: kDefaultTextField,
                         decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_first-name'), errorStyle: kErrorValidationText),
                         textInputAction: TextInputAction.next,
                         focusNode: _firstNameFocus,
@@ -109,6 +110,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       //Lastname
                       TextFormField(
+                        style: kDefaultTextField,
                         decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_last-name'),errorStyle: kErrorValidationText),
                         textInputAction: TextInputAction.next,
                         focusNode: _lastNameFocus,
@@ -131,6 +133,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       //Email
                       TextFormField(
+                        style: kDefaultTextField,
                         decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_email'),errorStyle: kErrorValidationText),
                         textInputAction: TextInputAction.next,
                         keyboardType: TextInputType.emailAddress,
@@ -153,6 +156,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         height: kTextFieldVerticalSpace,
                       ),
                       TextFormField(
+                        style: kDefaultTextField,
                         decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_password'),errorStyle: kErrorValidationText),
                         textInputAction: TextInputAction.next,
                         focusNode: _passwordFocus,

@@ -9,9 +9,20 @@ class LoginScreen extends StatefulWidget {
   _LoginScreenState createState() => _LoginScreenState();
 }
 
+class FormFields {
+  FormFields({this.email, this.password });
+  String email;
+  String password;
+}
+
 class _LoginScreenState extends State<LoginScreen> {
-  String userEmail = '';
-  String userPassword;
+
+  final _emailFocus = FocusNode();
+  final _passwordFocus = FocusNode();
+  final _formKey = GlobalKey<FormState>();
+  var _formFields = FormFields();
+
+  String _emailadres;
   String languageCode;
   String languageLabel = kLanguageLabels['en'];
 
@@ -20,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (savedEmail != null && savedEmail != 'null') {
       print('Email found in preferences: $savedEmail');
       setState(() {
-        userEmail = savedEmail;
+        _emailadres = savedEmail;
       });
     }
   }
@@ -34,17 +45,35 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  void _actionLogin() {
+    _formKey.currentState.save(); //Saves all textfield content
+    final _isValid = _formKey.currentState.validate(); //Check if any field has no validation
+    if(!_isValid){
+      return;
+    }
+    LocalPrefs.writeUserEmail(email: _formFields.email);
+    UniToast.showToast(message: 'Je bent ingelogt!');
+  }
+
+  @override
+  void dispose() {
+    //Clear field focus
+    _emailFocus.dispose();
+    _passwordFocus.dispose();
+    super.dispose();
+  }
+
   @override
   void initState() {
-    super.initState();
     //Set username field
+    super.initState();
     getEmail();
   }
 
   @override
   Widget build(BuildContext context) {
     //Write device specs
-    LocalPrefs.writeDeviceSpecs(context);
+    //LocalPrefs.writeDeviceSpecs(context);
     setLocale();
 
     //Set Locale
@@ -151,72 +180,87 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     UniCard(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          Text(
-                            AppLocalizations.of(context).tr('lbl_login'),
-                            textAlign: TextAlign.left,
-                            style: kH1,
-                          ),
-                          SizedBox(
-                            height: kH1VerticalSpace,
-                          ),
-                          TextField(
-                            keyboardType: TextInputType.emailAddress,
-                            textInputAction: TextInputAction.next,
-                            textAlign: TextAlign.left,
-                            style: kDefaultTextField,
-                            decoration: kTextFieldDecoration.copyWith(
-                              hintText: AppLocalizations.of(context)
-                                  .tr('lbl_insert-email'),
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Text(
+                              AppLocalizations.of(context).tr('lbl_login'),
+                              textAlign: TextAlign.left,
+                              style: kH1,
                             ),
-                            controller: TextEditingController.fromValue(
-                                TextEditingValue(
-                                    text: userEmail,
-                                    selection: TextSelection.collapsed(
-                                        offset: userEmail.length))),
-                            onChanged: (value) => userEmail = value,
-                          ),
-                          SizedBox(
-                            height: kTextFieldVerticalSpace,
-                          ),
-                          TextField(
-                            obscureText: true,
-                            textAlign: TextAlign.left,
-                            style: kDefaultTextField,
-                            decoration: kTextFieldDecoration.copyWith(
+                            SizedBox(
+                              height: kH1VerticalSpace,
+                            ),
+                            TextFormField(
+                              keyboardType: TextInputType.emailAddress,
+                              textInputAction: TextInputAction.next,
+                              focusNode: _emailFocus,
+                              style: kDefaultTextField,
+                              //autofocus: _formFields.email ? false : true,
+                              //TODO: Fix initial value
+                              initialValue: _emailadres,
+                              decoration: kTextFieldDecoration.copyWith(
                                 hintText: AppLocalizations.of(context)
-                                    .tr('lbl_insert-password')),
-                            onChanged: (String value) {
-                              userPassword = value;
-                            },
-                          ),
-                          RoundedButton(
-                            color: UniColors.buttonGreen,
-                            label:
-                            AppLocalizations.of(context).tr('lbl_login'),
-                            onPressed: () {
-                              if (userEmail.isNotEmpty) {
-                                LocalPrefs.writeUserEmail(email: userEmail);
-                              }
-                              UniToast.showToast(message: 'Dit is een hele lange melding met best veel tekst daardoor de Toast wellicht best groot zal zijn');
-                            },
-                          ),
-                          SizedBox(
-                            height: kLinkTextVerticalSpace,
-                          ),
-                          Center(
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Text(
-                                AppLocalizations.of(context)
-                                    .tr('lbl_forgot-password'),
-                                style: kLinkText,
+                                    .tr('lbl_insert-email'),
+                              ),
+                              autovalidate: false,
+                              validator: (value){
+                                if(value.isEmpty){
+                                  return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_email').toLowerCase()]);
+                                }
+                                return null;
+                              },
+                              onFieldSubmitted: (_) {
+                                FocusScope.of(context).requestFocus(_passwordFocus);
+                              },
+                              onSaved: (value){
+                                _formFields.email = value;
+                              },
+                            ),
+                            SizedBox(
+                              height: kTextFieldVerticalSpace,
+                            ),
+                            TextFormField(
+                              obscureText: true,
+                              focusNode: _passwordFocus,
+                              //autofocus: _formFields.email ? true : false,
+                              style: kDefaultTextField,
+                              decoration: kTextFieldDecoration.copyWith(
+                                  hintText: AppLocalizations.of(context)
+                                      .tr('lbl_insert-password')),
+                              autovalidate: false,
+                              validator: (value){
+                                if(value.isEmpty){
+                                  return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_password').toLowerCase()]);
+                                }
+                                return null;
+                              },
+                              onSaved: (value){
+                                _formFields.password = value;
+                              },
+                            ),
+                            RoundedButton(
+                              color: UniColors.buttonGreen,
+                              label: AppLocalizations.of(context).tr('lbl_login'),
+                              onPressed: _actionLogin,
+                            ),
+                            SizedBox(
+                              height: kLinkTextVerticalSpace,
+                            ),
+                            Center(
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: Text(
+                                  AppLocalizations.of(context)
+                                      .tr('lbl_forgot-password'),
+                                  style: kLinkText,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                     UniCard(
