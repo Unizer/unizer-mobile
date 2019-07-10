@@ -26,7 +26,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void dispose() {
-
     //Clear field focus
     _firstNameFocus.dispose();
     _lastNameFocus.dispose();
