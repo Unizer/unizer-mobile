@@ -17,5 +17,7 @@
   "lbl_cancel": "Annuleer",
   "lst_languages": { "nl": "Nederlands", "en": "Engels" },
   "msg_no-user-account": "Nog geen Unizer account? Registreer hier!",
-  "msg_register-info": "Vul je gegevens in om toegang te krijgen tot je account."
+  "msg_register-info": "Vul je gegevens in om toegang te krijgen tot je account.",
+  "msg_insert-all-required-fields": "Er mist nog iets. Graag alle velden invullen!",
+  "msg_required-field": "Vul hier je {} in."
 }

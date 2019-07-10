@@ -65,6 +65,13 @@ const TextStyle kLinkText = TextStyle(
   color: UniColors.linkText,
 );
 
+const TextStyle kErrorValidationText = TextStyle(
+  fontSize: kFooterTextSize,
+  fontFamily: 'Roboto',
+  fontWeight: FontWeight.w400,
+  color: UniColors.error,
+);
+
 const TextStyle kTopMenubarTitle = TextStyle(
   fontSize: kH1TextSize,
   fontFamily: 'Roboto',

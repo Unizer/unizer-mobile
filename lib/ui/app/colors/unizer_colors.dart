@@ -1,5 +1,6 @@
 import 'dart:ui' show Color;
 import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 
 class UniColors {
   UniColors._();
@@ -16,6 +17,7 @@ class UniColors {
   static const Color subheader = Color(0XFF807A7A);
   static const Color h2 = Color(0XFF807A7A);
   static const Color footer = Color(0XFF737373);
+  static const Color error = Colors.red;
 
   /*-- Buttons --*/
   static const Color buttonGreen = Color(0xFF56C4B7);
