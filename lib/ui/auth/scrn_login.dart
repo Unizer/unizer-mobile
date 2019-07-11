@@ -10,13 +10,12 @@ class LoginScreen extends StatefulWidget {
 }
 
 class FormFields {
-  FormFields({this.email, this.password });
+  FormFields({this.email, this.password});
   String email;
   String password;
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
@@ -47,24 +46,31 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<bool> _actionLogin() async {
-
     _formKey.currentState.save(); //Saves all textfield content
-    final _isValid = _formKey.currentState.validate(); //Check if any field has no validation
-    if(!_isValid){
+    final _isValid =
+        _formKey.currentState.validate(); //Check if any field has no validation
+    if (!_isValid) {
       return false;
     }
-    final _auth = FirebaseAuth.instance; //intialise Firebase authentication object
+    final _auth =
+        FirebaseAuth.instance; //intialise Firebase authentication object
     try {
       final _currentUser = await _auth.signInWithEmailAndPassword(
           email: _formFields.email, password: _formFields.password);
-      if(_currentUser != null){
+      if (_currentUser != null) {
         LocalPrefs.writeUserEmail(email: _formFields.email);
-        UniToast.showToast(message: AppLocalizations.of(context).tr('msg_user-login-succes-as', args: [_formFields.email]),);
+        UniToast.showToast(
+          message: AppLocalizations.of(context)
+              .tr('msg_user-login-succes-as', args: [_formFields.email]),
+        );
       }
-    } on PlatformException catch(e) {
-     String _errorCode = e.code;
-      if(_errorCode.isNotEmpty){
-        UniToast.showToast(message: Localizer.getFirebaseErrorMessage(error: _errorCode, context: context),);
+    } on PlatformException catch (e) {
+      String _errorCode = e.code;
+      if (_errorCode.isNotEmpty) {
+        UniToast.showToast(
+          message: Localizer.getFirebaseErrorMessage(
+              error: _errorCode, context: context),
+        );
       }
       return false;
     }
@@ -157,8 +163,15 @@ class _LoginScreenState extends State<LoginScreen> {
                       textAlign: TextAlign.center,
                       style: kFooterText,
                     ),
-                    Text(' | ', style: kFooterText,),
-                    Text(AppLocalizations.of(context).tr('lbl_appversion', args: ['$kAppVersion']),style: kFooterText,)
+                    Text(
+                      ' | ',
+                      style: kFooterText,
+                    ),
+                    Text(
+                      AppLocalizations.of(context)
+                          .tr('lbl_appversion', args: ['$kAppVersion']),
+                      style: kFooterText,
+                    )
                   ],
                 )
               ],
@@ -174,7 +187,7 @@ class _LoginScreenState extends State<LoginScreen> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(
-                    top: 50.0,
+                    top: 30.0,
                   ),
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.center,
@@ -182,10 +195,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     runSpacing: kCardVerticalSpace,
                     children: <Widget>[
                       Image(
-                        image: AssetImage('images/unizer-250x85.png'),
+                        image: AssetImage(
+                          'images/unizer-250x85.png',
+                        ),
+                        width: 200,
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(bottom: kCardMargins,),
+                        padding: const EdgeInsets.only(
+                          bottom: kCardMargins,
+                        ),
                         child: Center(
                           child: Text(
                             AppLocalizations.of(context).tr('lbl_oneliner'),
@@ -223,16 +241,22 @@ class _LoginScreenState extends State<LoginScreen> {
                                       .tr('lbl_insert-email'),
                                 ),
                                 autovalidate: false,
-                                validator: (value){
-                                  if(value.isEmpty){
-                                    return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_email').toLowerCase()]);
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return AppLocalizations.of(context)
+                                        .tr('msg_required-field', args: [
+                                      AppLocalizations.of(context)
+                                          .tr('lbl_email')
+                                          .toLowerCase()
+                                    ]);
                                   }
                                   return null;
                                 },
                                 onFieldSubmitted: (_) {
-                                  FocusScope.of(context).requestFocus(_passwordFocus);
+                                  FocusScope.of(context)
+                                      .requestFocus(_passwordFocus);
                                 },
-                                onSaved: (value){
+                                onSaved: (value) {
                                   _formFields.email = value;
                                 },
                               ),
@@ -248,20 +272,26 @@ class _LoginScreenState extends State<LoginScreen> {
                                     hintText: AppLocalizations.of(context)
                                         .tr('lbl_insert-password')),
                                 autovalidate: false,
-                                validator: (value){
-                                  if(value.isEmpty){
-                                    return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_password').toLowerCase()]);
+                                validator: (value) {
+                                  if (value.isEmpty) {
+                                    return AppLocalizations.of(context)
+                                        .tr('msg_required-field', args: [
+                                      AppLocalizations.of(context)
+                                          .tr('lbl_password')
+                                          .toLowerCase()
+                                    ]);
                                   }
                                   return null;
                                 },
-                                onSaved: (value){
+                                onSaved: (value) {
                                   _formFields.password = value;
                                 },
                               ),
                               RoundedButton(
                                 color: UniColors.buttonGreen,
-                                label: AppLocalizations.of(context).tr('lbl_login'),
-                                onPressed: (){
+                                label: AppLocalizations.of(context)
+                                    .tr('lbl_login'),
+                                onPressed: () {
                                   setState(() {
                                     _showSpinner = true;
                                   });
@@ -290,35 +320,34 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       UniCard(
                         child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: <Widget>[
-                          Text(
-                            AppLocalizations.of(context).tr('lbl_register'),
-                            textAlign: TextAlign.left,
-                            style: kH1,
-                          ),
-                          SizedBox(
-                            height: 10.0,
-                          ),
-                          Text(
-                            AppLocalizations.of(context)
-                                .tr('msg_no-user-account'),
-                            textAlign: TextAlign.left,
-                            style: kH2,
-                          ),
-
-                          RoundedButton(
-                            color: UniColors.buttonWormGreen,
-                            topMargin: 15.0,
-                            label: AppLocalizations.of(context)
-                                .tr('lbl_register'),
-                            onPressed: () {
-                              Navigator.pushNamed(
-                                  context, RegisterScreen.screenID);
-                            },
-                          ),
-                        ],
-                      ),
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Text(
+                              AppLocalizations.of(context).tr('lbl_register'),
+                              textAlign: TextAlign.left,
+                              style: kH1,
+                            ),
+                            SizedBox(
+                              height: 10.0,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)
+                                  .tr('msg_no-user-account'),
+                              textAlign: TextAlign.left,
+                              style: kH2,
+                            ),
+                            RoundedButton(
+                              color: UniColors.buttonWormGreen,
+                              topMargin: 15.0,
+                              label: AppLocalizations.of(context)
+                                  .tr('lbl_register'),
+                              onPressed: () {
+                                Navigator.pushNamed(
+                                    context, RegisterScreen.screenID);
+                              },
+                            ),
+                          ],
+                        ),
                       ),
                     ],
                   ),
@@ -331,4 +360,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
