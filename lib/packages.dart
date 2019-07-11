@@ -1,6 +1,7 @@
 /* --Flutter defaults --*/
 export 'package:flutter/material.dart';
 export 'package:flutter/widgets.dart';
+export 'package:flutter/services.dart';
 
 /* -- Unizer defaults --*/
 export 'package:Unizer/ui/app/textstyles/style_text-styles.dart';

@@ -23,6 +23,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
   var _formFields = FormFields();
+  bool _showSpinner = false;
+  String _errorCode = '';
+  String _errorMessage = 'An error occured';
+  String _i18nKey;
 
   @override
   void dispose() {
@@ -34,15 +38,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  void _submitRegistration() async {
+  Future<bool> _submitRegistration() async {
     var _auth = FirebaseAuth.instance; //intialise Firebase authentication object
+
     final _firestore =
         Firestore.instance; //intialise Firestore Cloud authentication object
     _formKey.currentState.save(); //Saves all textfield content
 
     final _isValid = _formKey.currentState.validate(); //Check if any field has no validation
     if(!_isValid){
-      return;
+      return false;
     }
     //print(_formFields.firstName);
     try {
@@ -64,15 +69,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
           'lastname': _formFields.lastName,
           'user_uid': _uid,
         });
-
-        UniToast.showToast(message: AppLocalizations.of(context).tr('msg_user-created-succes', args: [_formFields.email]));
         //TODO: Login and go to homepage?
       }
-
-    } catch(e){
-      print(e.toString());
-      UniToast.showToast(message: e.toString());
+    } on PlatformException catch(e){
+      _errorCode = e.code;
+      if(_errorCode.isNotEmpty){
+        _i18nKey = 'fireb_err_' + _errorCode.toLowerCase().replaceAll('_', '-');
+        _errorMessage = AppLocalizations.of(context).tr(_i18nKey);
+      }
+      UniToast.showToast(message: _errorMessage);
+      return false;
     }
+    return true;
   }
 
   @override
@@ -85,151 +93,162 @@ class _RegisterScreenState extends State<RegisterScreen> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        children: <Widget>[
-          Container(
-            decoration: kBoxScreenDecoration,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: kCardMargins,
-                    right: kCardMargins,
+      body: ModalProgressHUD(
+        inAsyncCall: _showSpinner,
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
+            Container(
+              decoration: kBoxScreenDecoration,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: kCardMargins,
+                      right: kCardMargins,
+                    ),
+                    child: UniInfoBox(
+                      label: AppLocalizations.of(context).tr('msg_register-info'),
+                      screenID: RegisterScreen.screenID,
+                    ),
                   ),
-                  child: UniInfoBox(
-                    label: AppLocalizations.of(context).tr('msg_register-info'),
-                    screenID: RegisterScreen.screenID,
-                  ),
-                ),
-                UniCard(child:
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Text(AppLocalizations.of(context)
-                          .tr('lbl_keep-connected'),
-                        style: kH1,
-                        textAlign: TextAlign.left,
-                      ),
-                      SizedBox(height: kH1VerticalSpace,),
-                      //Firstname
-                      TextFormField(
-                        style: kDefaultTextField,
-                        decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_first-name'), errorStyle: kErrorValidationText),
-                        textInputAction: TextInputAction.next,
-                        focusNode: _firstNameFocus,
-                        autofocus: true,
-                        autovalidate: false,
-                        validator: (value){
-                          if(value.isEmpty){
-                              return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_first-name').toLowerCase()]);
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (_) {
-                          FocusScope.of(context).requestFocus(_lastNameFocus);
-                        },
-                        onSaved: (value){
-                          _formFields.firstName = value;
-                        },
-                      ),
-                      SizedBox(
-                        height: kTextFieldVerticalSpace,
-                      ),
-                      //Lastname
-                      TextFormField(
-                        style: kDefaultTextField,
-                        decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_last-name'),errorStyle: kErrorValidationText),
-                        textInputAction: TextInputAction.next,
-                        focusNode: _lastNameFocus,
-                        autovalidate: false,
-                        validator: (value){
-                          if(value.isEmpty){
-                            return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_last-name').toLowerCase()]);
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (_) {
-                          FocusScope.of(context).requestFocus(_emailFocus);
-                        },
-                        onSaved: (value){
-                          _formFields.lastName = value;
-                        },
-                      ),
-                      SizedBox(
-                        height: kTextFieldVerticalSpace,
-                      ),
-                      //Email
-                      TextFormField(
-                        style: kDefaultTextField,
-                        decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_email'),errorStyle: kErrorValidationText),
-                        textInputAction: TextInputAction.next,
-                        keyboardType: TextInputType.emailAddress,
-                        focusNode: _emailFocus,
-                        autovalidate: false,
-                        validator: (value){
-                          if(value.isEmpty){
-                            return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_email').toLowerCase()]);
-                          }
-                          return null;
-                        },
-                        onFieldSubmitted: (_) {
-                          FocusScope.of(context).requestFocus(_passwordFocus);
-                        },
-                        onSaved: (value){
-                          _formFields.email = value;
-                        },
-                      ),
-                      SizedBox(
-                        height: kTextFieldVerticalSpace,
-                      ),
-                      TextFormField(
-                        style: kDefaultTextField,
-                        decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_password'),errorStyle: kErrorValidationText),
-                        textInputAction: TextInputAction.next,
-                        focusNode: _passwordFocus,
-                        obscureText: true,
-                        autovalidate: false,
-                        validator: (value){
-                          if(value.isEmpty){
-                            return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_password').toLowerCase()]);
-                          }
-                          return null;
-                        },
-                        onSaved: (value){
-                          _formFields.password = value;
-                        },
-                      ),
-                      RoundedButton(color: UniColors.buttonGreen,
-                        label: AppLocalizations.of(context).tr('lbl_confirm'),
-                      onPressed: _submitRegistration,
-                      ),
-                      SizedBox(
-                        height: kLinkTextVerticalSpace,
-                      ),
-                      Center(
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.pop(context);
+                  UniCard(child:
+                  Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Text(AppLocalizations.of(context)
+                            .tr('lbl_keep-connected'),
+                          style: kH1,
+                          textAlign: TextAlign.left,
+                        ),
+                        SizedBox(height: kH1VerticalSpace,),
+                        //Firstname
+                        TextFormField(
+                          style: kDefaultTextField,
+                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_first-name'), errorStyle: kErrorValidationText),
+                          textInputAction: TextInputAction.next,
+                          focusNode: _firstNameFocus,
+                          autofocus: true,
+                          autovalidate: false,
+                          validator: (value){
+                            if(value.isEmpty){
+                                return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_first-name').toLowerCase()]);
+                            }
+                            return null;
                           },
-                          child: Text(
-                            AppLocalizations.of(context)
-                                .tr('lbl_cancel'),
-                            style: kLinkText,
+                          onFieldSubmitted: (_) {
+                            FocusScope.of(context).requestFocus(_lastNameFocus);
+                          },
+                          onSaved: (value){
+                            _formFields.firstName = value;
+                          },
+                        ),
+                        SizedBox(
+                          height: kTextFieldVerticalSpace,
+                        ),
+                        //Lastname
+                        TextFormField(
+                          style: kDefaultTextField,
+                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_last-name'),errorStyle: kErrorValidationText),
+                          textInputAction: TextInputAction.next,
+                          focusNode: _lastNameFocus,
+                          autovalidate: false,
+                          validator: (value){
+                            if(value.isEmpty){
+                              return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_last-name').toLowerCase()]);
+                            }
+                            return null;
+                          },
+                          onFieldSubmitted: (_) {
+                            FocusScope.of(context).requestFocus(_emailFocus);
+                          },
+                          onSaved: (value){
+                            _formFields.lastName = value;
+                          },
+                        ),
+                        SizedBox(
+                          height: kTextFieldVerticalSpace,
+                        ),
+                        //Email
+                        TextFormField(
+                          style: kDefaultTextField,
+                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_email'),errorStyle: kErrorValidationText),
+                          textInputAction: TextInputAction.next,
+                          keyboardType: TextInputType.emailAddress,
+                          focusNode: _emailFocus,
+                          autovalidate: false,
+                          validator: (value){
+                            if(value.isEmpty){
+                              return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_email').toLowerCase()]);
+                            }
+                            return null;
+                          },
+                          onFieldSubmitted: (_) {
+                            FocusScope.of(context).requestFocus(_passwordFocus);
+                          },
+                          onSaved: (value){
+                            _formFields.email = value;
+                          },
+                        ),
+                        SizedBox(
+                          height: kTextFieldVerticalSpace,
+                        ),
+                        TextFormField(
+                          style: kDefaultTextField,
+                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_password'),errorStyle: kErrorValidationText),
+                          textInputAction: TextInputAction.next,
+                          focusNode: _passwordFocus,
+                          obscureText: true,
+                          autovalidate: false,
+                          validator: (value){
+                            if(value.isEmpty){
+                              return AppLocalizations.of(context).tr('msg_required-field', args: [AppLocalizations.of(context).tr('lbl_password').toLowerCase()]);
+                            }
+                            return null;
+                          },
+                          onSaved: (value){
+                            _formFields.password = value;
+                          },
+                        ),
+                        RoundedButton(color: UniColors.buttonGreen,
+                          label: AppLocalizations.of(context).tr('lbl_confirm'),
+                          onPressed: () async {
+                              setState(() {
+                                _showSpinner = true;
+                              });
+                              bool _registrationResult = await _submitRegistration();
+                              setState(() {
+                                _showSpinner = false;
+                              });
+                            },
+                        ),
+                        SizedBox(
+                          height: kLinkTextVerticalSpace,
+                        ),
+                        Center(
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              AppLocalizations.of(context)
+                                  .tr('lbl_cancel'),
+                              style: kLinkText,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                ),
-              ],
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
