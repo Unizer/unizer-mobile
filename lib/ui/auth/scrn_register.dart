@@ -74,7 +74,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     } on PlatformException catch(e){
       _errorCode = e.code;
       if(_errorCode.isNotEmpty){
-        _i18nKey = 'fireb_err_' + _errorCode.toLowerCase().replaceAll('_', '-');
+        _i18nKey = 'fireb_err_' + _errorCode.toLowerCase().replaceAll('_', '-'); //Parse i18n key
         _errorMessage = AppLocalizations.of(context).tr(_i18nKey);
       }
       UniToast.showToast(message: _errorMessage);
@@ -128,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         //Firstname
                         TextFormField(
                           style: kDefaultTextField,
-                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_first-name'), errorStyle: kErrorValidationText),
+                          decoration: kTextFieldDecoration.copyWith(hintText: AppLocalizations.of(context).tr('lbl_first-name'), errorStyle: kErrorValidationText),
                           textInputAction: TextInputAction.next,
                           focusNode: _firstNameFocus,
                           autofocus: true,
@@ -152,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         //Lastname
                         TextFormField(
                           style: kDefaultTextField,
-                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_last-name'),errorStyle: kErrorValidationText),
+                          decoration: kTextFieldDecoration.copyWith(hintText: AppLocalizations.of(context).tr('lbl_last-name'),errorStyle: kErrorValidationText),
                           textInputAction: TextInputAction.next,
                           focusNode: _lastNameFocus,
                           autovalidate: false,
@@ -175,7 +175,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         //Email
                         TextFormField(
                           style: kDefaultTextField,
-                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_email'),errorStyle: kErrorValidationText),
+                          decoration: kTextFieldDecoration.copyWith(hintText: AppLocalizations.of(context).tr('lbl_email'),errorStyle: kErrorValidationText),
                           textInputAction: TextInputAction.next,
                           keyboardType: TextInputType.emailAddress,
                           focusNode: _emailFocus,
@@ -198,7 +198,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                         TextFormField(
                           style: kDefaultTextField,
-                          decoration: kTextFieldDecoration.copyWith(labelText: AppLocalizations.of(context).tr('lbl_password'),errorStyle: kErrorValidationText),
+                          decoration: kTextFieldDecoration.copyWith(hintText: AppLocalizations.of(context).tr('lbl_password'),errorStyle: kErrorValidationText),
                           textInputAction: TextInputAction.next,
                           focusNode: _passwordFocus,
                           obscureText: true,

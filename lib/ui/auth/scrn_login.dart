@@ -22,7 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   var _formFields = FormFields();
 
-  String _emailadres;
+  String emailAddress;
   String languageCode;
   String languageLabel = kLanguageLabels['en'];
 
@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (savedEmail != null && savedEmail != 'null') {
       print('Email found in preferences: $savedEmail');
       setState(() {
-        _emailadres = savedEmail;
+        emailAddress = savedEmail;
       });
     }
   }
@@ -198,9 +198,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               textInputAction: TextInputAction.next,
                               focusNode: _emailFocus,
                               style: kDefaultTextField,
-                              //autofocus: _formFields.email ? false : true,
                               //TODO: Fix initial value
-                              initialValue: _emailadres,
+                              initialValue: _formFields.email,
                               decoration: kTextFieldDecoration.copyWith(
                                 hintText: AppLocalizations.of(context)
                                     .tr('lbl_insert-email'),
