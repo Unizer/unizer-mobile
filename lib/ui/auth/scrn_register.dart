@@ -25,8 +25,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var _formFields = FormFields();
   bool _showSpinner = false;
   String _errorCode = '';
-  String _errorMessage = 'An error occured';
-  String _i18nKey;
 
   @override
   void dispose() {
@@ -49,7 +47,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if(!_isValid){
       return false;
     }
-    //print(_formFields.firstName);
     try {
       final _newUser = await _auth.createUserWithEmailAndPassword(
           email: _formFields.email, password: _formFields.password);
@@ -70,14 +67,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
           'user_uid': _uid,
         });
         //TODO: Login and go to homepage?
+        UniToast.showToast(message: AppLocalizations.of(context).tr('msg_user-created-succes', args: [_formFields.email]),);
+        Navigator.pop(context);
       }
     } on PlatformException catch(e){
       _errorCode = e.code;
       if(_errorCode.isNotEmpty){
-        _i18nKey = 'fireb_err_' + _errorCode.toLowerCase().replaceAll('_', '-'); //Parse i18n key
-        _errorMessage = AppLocalizations.of(context).tr(_i18nKey);
+        UniToast.showToast(message: Localizer.getFirebaseErrorMessage(error: _errorCode, context: context),);
       }
-      UniToast.showToast(message: _errorMessage);
       return false;
     }
     return true;
@@ -219,7 +216,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               setState(() {
                                 _showSpinner = true;
                               });
-                              bool _registrationResult = await _submitRegistration();
+                              _submitRegistration();
                               setState(() {
                                 _showSpinner = false;
                               });
