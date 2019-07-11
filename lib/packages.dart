@@ -39,3 +39,8 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 /* -- Toast NotificationDialog --*/
 //dependencies: fluttertoast: ^3.1.0
 export 'package:fluttertoast/fluttertoast.dart';
+
+/* -- Firebase and Firestore --*/
+//dependencies: firebase_auth: ^0.11.1+7, cloud_firestore: ^0.12.5+2
+export 'package:firebase_auth/firebase_auth.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';

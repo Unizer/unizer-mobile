@@ -34,7 +34,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  void _submitRegistration(){
+  void _submitRegistration() async {
+    var _auth = FirebaseAuth.instance; //intialise Firebase authentication object
+    final _firestore =
+        Firestore.instance; //intialise Firestore Cloud authentication object
     _formKey.currentState.save(); //Saves all textfield content
 
     final _isValid = _formKey.currentState.validate(); //Check if any field has no validation
@@ -42,6 +45,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
       return;
     }
     //print(_formFields.firstName);
+    try {
+      final _newUser = await _auth.createUserWithEmailAndPassword(
+          email: _formFields.email, password: _formFields.password);
+      if(_newUser != null){
+        String _uid = _newUser.uid; //get user uid
+        print('New user created with uid: $_uid');
+
+        //Set displayname
+        UserUpdateInfo _info = UserUpdateInfo();
+        _info.displayName = _formFields.firstName + ' ' + _formFields.lastName;
+        _newUser.updateProfile(_info);
+
+        //Create Unizer record
+        _firestore.collection('unizers').add({
+          'email': _formFields.email,
+          'firstname': _formFields.firstName,
+          'lastname': _formFields.lastName,
+          'user_uid': _uid,
+        });
+
+        UniToast.showToast(message: AppLocalizations.of(context).tr('msg_user-created-succes', args: [_formFields.email]));
+        //TODO: Login and go to homepage?
+      }
+
+    } catch(e){
+      print(e.toString());
+      UniToast.showToast(message: e.toString());
+    }
   }
 
   @override
