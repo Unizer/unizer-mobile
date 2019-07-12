@@ -14,6 +14,7 @@ class UniCard extends StatelessWidget {
       ),
       child: Container(
         padding: EdgeInsets.all(kCardMargins),
+        constraints: BoxConstraints(maxWidth: kCardMaxWidth),
         decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
             BoxShadow(

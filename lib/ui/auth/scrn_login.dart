@@ -22,16 +22,18 @@ class _LoginScreenState extends State<LoginScreen> {
   var _formFields = FormFields();
   bool _showSpinner = false;
 
-  String emailAddress;
+  String emailAddress = '';
   String languageCode;
   String languageLabel = kLanguageLabels['en'];
+
+  final _textEditingController = TextEditingController();
 
   Future getEmail() async {
     final String savedEmail = await LocalPrefs().getUserEmail();
     if (savedEmail != null && savedEmail != 'null') {
       print('Email found in preferences: $savedEmail');
       setState(() {
-        emailAddress = savedEmail;
+        _textEditingController.text = savedEmail;
       });
     }
   }
@@ -82,14 +84,15 @@ class _LoginScreenState extends State<LoginScreen> {
     //Clear field focus
     _emailFocus.dispose();
     _passwordFocus.dispose();
+    _textEditingController.dispose();
     super.dispose();
   }
 
   @override
   void initState() {
     //Set username field
-    super.initState();
     getEmail();
+    super.initState();
   }
 
   @override
@@ -230,12 +233,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                 height: kH1VerticalSpace,
                               ),
                               TextFormField(
+                                controller: _textEditingController,
+                                //initialValue: emailAddress,
                                 keyboardType: TextInputType.emailAddress,
                                 textInputAction: TextInputAction.next,
                                 focusNode: _emailFocus,
                                 style: kDefaultTextField,
-                                //TODO: Fix initial value
-                                initialValue: _formFields.email,
                                 decoration: kTextFieldDecoration.copyWith(
                                   hintText: AppLocalizations.of(context)
                                       .tr('lbl_insert-email'),

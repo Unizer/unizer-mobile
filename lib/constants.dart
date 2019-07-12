@@ -27,10 +27,13 @@ const double kButtonTopMargin = 25.0;
 /*-- Spaces --*/
 const double kTextFieldVerticalSpace = 10.0;
 const double kLinkTextVerticalSpace = 12.0;
+const double kH1VerticalSpace = 12.0;
+
+/*-- Cards --*/
 const double kCardVerticalSpace = 4.0;
 const double kCardMargins = 17.0;
 const double kCardMarginsTop = 8.0;
-const double kH1VerticalSpace = 12.0;
+const double kCardMaxWidth = 350.0;
 
 /*-- Bars --*/
 const double kBottomBarHeight = 70.0;

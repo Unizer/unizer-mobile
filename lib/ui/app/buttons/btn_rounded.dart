@@ -4,7 +4,10 @@ import 'package:Unizer/ui/app/textstyles/style_text-styles.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton(
-      {@required this.color, @required this.label, this.onPressed, this.topMargin});
+      {@required this.color,
+      @required this.label,
+      this.onPressed,
+      this.topMargin});
   final Color color;
   final String label;
   final Function onPressed;

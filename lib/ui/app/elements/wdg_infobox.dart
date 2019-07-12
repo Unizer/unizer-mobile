@@ -32,7 +32,9 @@ class _UniInfoBoxState extends State<UniInfoBox> {
     final bool _expanded =
         await LocalPrefs.getInfoBoxSpecs(screenID: widget.screenID);
     _infoCardExpanded = _expanded;
-    _expanded ? _durationMilliseconds = kDurationMilliseconds : _durationMilliseconds = 0; //Don't animate when status is collapsed
+    _expanded
+        ? _durationMilliseconds = kDurationMilliseconds
+        : _durationMilliseconds = 0; //Don't animate when status is collapsed
     resizeCard();
   }
 
@@ -90,7 +92,9 @@ class _UniInfoBoxState extends State<UniInfoBox> {
           ),
         ),
         curve: Curves.decelerate,
-        constraints: BoxConstraints.expand(height: _infoCardHeight),
+        constraints: BoxConstraints.expand(
+          height: _infoCardHeight,
+        ),
         //height: _infoCardHeight,
         padding: EdgeInsets.all(_infoCardMargins),
         child: Flex(

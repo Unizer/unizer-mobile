@@ -25,12 +25,14 @@ class Localizer {
     return currentLanguage;
   }
 
-  static String getFirebaseErrorMessage ({BuildContext context, String error}){
+  static String getFirebaseErrorMessage({BuildContext context, String error}) {
     String _errorCode = error;
-    String _message = AppLocalizations.of(context).tr('fireb_err_error-unknown');
-    if(_errorCode.isNotEmpty){
-      String _i18nKey = 'fireb_err_' + _errorCode.toLowerCase().replaceAll('_', '-'); //Parse i18n key
-       _message = AppLocalizations.of(context).tr(_i18nKey);
+    String _message =
+        AppLocalizations.of(context).tr('fireb_err_error-unknown');
+    if (_errorCode.isNotEmpty) {
+      String _i18nKey = 'fireb_err_' +
+          _errorCode.toLowerCase().replaceAll('_', '-'); //Parse i18n key
+      _message = AppLocalizations.of(context).tr(_i18nKey);
     }
     return _message;
   }
