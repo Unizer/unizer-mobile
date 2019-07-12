@@ -12,7 +12,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void initState() {
     super.initState();
 
-    //TODO(jkarel): Load initial data
     Navigator.push<dynamic>(context,
         MaterialPageRoute<dynamic>(builder: (BuildContext context) {
       return LoginScreen();

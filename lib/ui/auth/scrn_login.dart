@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   var _formFields = FormFields();
   bool _showSpinner = false;
+  bool _hidePassword = true;
 
   String emailAddress = '';
   String languageCode;
@@ -234,13 +235,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               TextFormField(
                                 controller: _textEditingController,
-                                //initialValue: emailAddress,
                                 keyboardType: TextInputType.emailAddress,
                                 textInputAction: TextInputAction.next,
                                 focusNode: _emailFocus,
                                 style: kDefaultTextField,
                                 decoration: kTextFieldDecoration.copyWith(
-                                  hintText: AppLocalizations.of(context)
+                                  labelText: AppLocalizations.of(context)
                                       .tr('lbl_insert-email'),
                                 ),
                                 autovalidate: false,
@@ -267,13 +267,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                 height: kTextFieldVerticalSpace,
                               ),
                               TextFormField(
-                                obscureText: true,
+                                obscureText: _hidePassword,
                                 focusNode: _passwordFocus,
                                 //autofocus: _formFields.email ? true : false,
                                 style: kDefaultTextField,
                                 decoration: kTextFieldDecoration.copyWith(
-                                    hintText: AppLocalizations.of(context)
-                                        .tr('lbl_insert-password')),
+                                    labelText: AppLocalizations.of(context)
+                                        .tr('lbl_insert-password'),
+                                    suffixIcon: IconButton(
+                                        icon: Icon(_hidePassword
+                                            ? Icons.visibility_off
+                                            : Icons.visibility),
+                                        color: UniColors.hintText,
+                                        iconSize: kBodyTextSize,
+                                        onPressed: () {
+                                          setState(() {
+                                            _hidePassword = !_hidePassword;
+                                          });
+                                        })),
                                 autovalidate: false,
                                 validator: (value) {
                                   if (value.isEmpty) {

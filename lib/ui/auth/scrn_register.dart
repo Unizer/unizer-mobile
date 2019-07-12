@@ -137,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             style: kDefaultTextField,
                             decoration: kTextFieldDecoration.copyWith(
-                                hintText: AppLocalizations.of(context)
+                                labelText: AppLocalizations.of(context)
                                     .tr('lbl_first-name'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.next,
@@ -170,7 +170,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             style: kDefaultTextField,
                             decoration: kTextFieldDecoration.copyWith(
-                                hintText: AppLocalizations.of(context)
+                                labelText: AppLocalizations.of(context)
                                     .tr('lbl_last-name'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.next,
@@ -201,7 +201,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             style: kDefaultTextField,
                             decoration: kTextFieldDecoration.copyWith(
-                                hintText: AppLocalizations.of(context)
+                                labelText: AppLocalizations.of(context)
                                     .tr('lbl_email'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.next,
@@ -233,7 +233,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           TextFormField(
                             style: kDefaultTextField,
                             decoration: kTextFieldDecoration.copyWith(
-                                hintText: AppLocalizations.of(context)
+                                labelText: AppLocalizations.of(context)
                                     .tr('lbl_password'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.next,
