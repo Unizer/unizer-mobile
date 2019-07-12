@@ -24,6 +24,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var _formFields = FormFields();
   bool _showSpinner = false;
   String _errorCode = '';
+  bool _hidePassword = true;
 
   @override
   void dispose() {
@@ -235,10 +236,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             decoration: kTextFieldDecoration.copyWith(
                                 labelText: AppLocalizations.of(context)
                                     .tr('lbl_password'),
+                                suffixIcon: IconButton(
+                                    icon: Icon(_hidePassword
+                                        ? Icons.visibility_off
+                                        : Icons.visibility),
+                                    color: UniColors.hintText,
+                                    iconSize: kTextFormFieldIconSize,
+                                    onPressed: () {
+                                      setState(() {
+                                        _hidePassword = !_hidePassword;
+                                      });
+                                    }),
                                 errorStyle: kErrorValidationText),
-                            textInputAction: TextInputAction.next,
+                            textInputAction: TextInputAction.done,
                             focusNode: _passwordFocus,
-                            obscureText: true,
+                            obscureText: _hidePassword,
                             autovalidate: false,
                             validator: (value) {
                               if (value.isEmpty) {

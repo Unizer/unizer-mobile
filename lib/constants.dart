@@ -14,6 +14,7 @@ const double kH1TextSize = 22.0;
 const double kH2TextSize = 17.0;
 const double kLinkTextSize = 14.0;
 const double kFooterTextSize = 10.0;
+const double kTextFormFieldIconSize = 20.0;
 
 /*-- Borders --*/
 const double kDefaultBorderRadius = 12.0;
@@ -25,7 +26,7 @@ const double kButtonTextSize = 20.0;
 const double kButtonTopMargin = 25.0;
 
 /*-- Spaces --*/
-const double kTextFieldVerticalSpace = 10.0;
+const double kTextFieldVerticalSpace = 5.0;
 const double kLinkTextVerticalSpace = 12.0;
 const double kH1VerticalSpace = 12.0;
 

@@ -269,22 +269,23 @@ class _LoginScreenState extends State<LoginScreen> {
                               TextFormField(
                                 obscureText: _hidePassword,
                                 focusNode: _passwordFocus,
-                                //autofocus: _formFields.email ? true : false,
+                                textInputAction: TextInputAction.done,
                                 style: kDefaultTextField,
                                 decoration: kTextFieldDecoration.copyWith(
-                                    labelText: AppLocalizations.of(context)
-                                        .tr('lbl_insert-password'),
-                                    suffixIcon: IconButton(
-                                        icon: Icon(_hidePassword
-                                            ? Icons.visibility_off
-                                            : Icons.visibility),
-                                        color: UniColors.hintText,
-                                        iconSize: kBodyTextSize,
-                                        onPressed: () {
-                                          setState(() {
-                                            _hidePassword = !_hidePassword;
-                                          });
-                                        })),
+                                  labelText: AppLocalizations.of(context)
+                                      .tr('lbl_insert-password'),
+                                  suffixIcon: IconButton(
+                                      icon: Icon(_hidePassword
+                                          ? Icons.visibility_off
+                                          : Icons.visibility),
+                                      color: UniColors.hintText,
+                                      iconSize: kTextFormFieldIconSize,
+                                      onPressed: () {
+                                        setState(() {
+                                          _hidePassword = !_hidePassword;
+                                        });
+                                      }),
+                                ),
                                 autovalidate: false,
                                 validator: (value) {
                                   if (value.isEmpty) {
