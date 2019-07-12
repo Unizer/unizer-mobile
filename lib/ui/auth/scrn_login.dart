@@ -1,6 +1,7 @@
 import 'package:Unizer/packages.dart';
 
 import 'package:Unizer/ui/auth/scrn_register.dart';
+import 'package:Unizer/ui/home/scrn_home.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String screenID = 'login';
@@ -62,10 +63,10 @@ class _LoginScreenState extends State<LoginScreen> {
           email: _formFields.email, password: _formFields.password);
       if (_currentUser != null) {
         LocalPrefs.writeUserEmail(email: _formFields.email);
-        UniToast.showToast(
-          message: AppLocalizations.of(context)
-              .tr('msg_user-login-succes-as', args: [_formFields.email]),
-        );
+//        UniToast.showToast(
+//          message: AppLocalizations.of(context)
+//              .tr('msg_user-login-succes-as', args: [_formFields.email]),
+//        );
       }
     } on PlatformException catch (e) {
       String _errorCode = e.code;
@@ -306,11 +307,15 @@ class _LoginScreenState extends State<LoginScreen> {
                                 color: UniColors.buttonGreen,
                                 label: AppLocalizations.of(context)
                                     .tr('lbl_login'),
-                                onPressed: () {
+                                onPressed: () async {
                                   setState(() {
                                     _showSpinner = true;
                                   });
-                                  _actionLogin();
+                                  var _loginSucces = await _actionLogin();
+                                  if (_loginSucces == true) {
+                                    Navigator.pushNamed(
+                                        context, HomeScreen.screenID);
+                                  }
                                   setState(() {
                                     _showSpinner = false;
                                   });

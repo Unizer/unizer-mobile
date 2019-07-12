@@ -3,6 +3,7 @@ import 'package:Unizer/packages.dart';
 /* -- Screens --*/
 import 'package:Unizer/ui/auth/scrn_login.dart';
 import 'package:Unizer/ui/auth/scrn_register.dart';
+import 'package:Unizer/ui/home/scrn_home.dart';
 
 Future main() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -39,6 +40,7 @@ class Unizer extends StatelessWidget {
         routes: <String, WidgetBuilder>{
           LoginScreen.screenID: (BuildContext context) => LoginScreen(),
           RegisterScreen.screenID: (BuildContext context) => RegisterScreen(),
+          HomeScreen.screenID: (BuildContext context) => HomeScreen(),
         },
       ),
     );

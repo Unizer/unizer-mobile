@@ -11,7 +11,7 @@ const double kInfoCardMinMargins = 2.0;
 const int kDurationMilliseconds = 400;
 
 class UniInfoBox extends StatefulWidget {
-  UniInfoBox({@required this.label, @required this.screenID});
+  UniInfoBox({this.label, @required this.screenID});
 
   final String label;
   final String screenID;
@@ -36,6 +36,17 @@ class _UniInfoBoxState extends State<UniInfoBox> {
         ? _durationMilliseconds = kDurationMilliseconds
         : _durationMilliseconds = 0; //Don't animate when status is collapsed
     resizeCard();
+  }
+
+  Widget setContentWidget() {
+    Widget contentWidget;
+    String label = widget.label ?? '';
+    contentWidget = Text(
+      label,
+      style: kH2,
+      textAlign: TextAlign.center,
+    );
+    return contentWidget;
   }
 
   void resizeCard() {
@@ -75,15 +86,7 @@ class _UniInfoBoxState extends State<UniInfoBox> {
         duration: Duration(milliseconds: _durationMilliseconds),
         decoration: BoxDecoration(
           boxShadow: <BoxShadow>[
-            BoxShadow(
-              color: Color.fromRGBO(51, 51, 51, 0.2),
-              blurRadius: 2.0, // has the effect of softening the shadow
-              spreadRadius: 0.0, // has the effect of extending the shadow
-              offset: Offset(
-                0.0, // horizontal, move right 10
-                2.0, // vertical, move down 10
-              ),
-            ),
+            kBoxScreenShadow,
           ],
           color: Colors.white,
           borderRadius: BorderRadius.only(
@@ -105,11 +108,7 @@ class _UniInfoBoxState extends State<UniInfoBox> {
               child: Visibility(
                 maintainState: true,
                 visible: _visibleStatus,
-                child: Text(
-                  widget.label,
-                  style: kH2,
-                  textAlign: TextAlign.center,
-                ),
+                child: setContentWidget(),
               ),
             ),
             Visibility(
