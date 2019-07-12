@@ -39,10 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(),
       appBar: AppBar(
         automaticallyImplyLeading: false, //remove back button arrow
         actions: <Widget>[
           IconButton(
+              alignment: Alignment.center,
               icon: Icon(Icons.close),
               onPressed: () {
                 _auth.signOut();
@@ -69,9 +71,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
-//                    label: AppLocalizations.of(context).tr(
-//                        'msg_welcome-username',
-//                        args: [_loggedInUser.displayName]),
+                    label: AppLocalizations.of(context).tr(
+                        'msg_welcome-username',
+                        args: [_loggedInUser.displayName]),
                     screenID: HomeScreen.screenID,
                   ),
                 ),

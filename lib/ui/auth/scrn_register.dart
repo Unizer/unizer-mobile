@@ -68,7 +68,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           'lastname': _formFields.lastName,
           'user_uid': _uid,
         });
-        //TODO: Login and go to homepage?
+        //TODO: Next step after registration?
         UniToast.showToast(
           message: AppLocalizations.of(context)
               .tr('msg_user-created-succes', args: [_formFields.email]),

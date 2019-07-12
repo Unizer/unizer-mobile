@@ -362,6 +362,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               label: AppLocalizations.of(context)
                                   .tr('lbl_register'),
                               onPressed: () {
+                                //TODO: Don't want the user to go back - EVER - emptying completely the navigator stack with: Navigator.pushNamedAndRemoveUntil(context, ## your routename here ##, (_) => false);
                                 Navigator.pushNamed(
                                     context, RegisterScreen.screenID);
                               },
