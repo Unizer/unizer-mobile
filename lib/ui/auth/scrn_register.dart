@@ -114,8 +114,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       right: kCardMargins,
                     ),
                     child: UniInfoBox(
-                      label:
-                          AppLocalizations.of(context).tr('msg_register-info'),
+                      widgetContent: Text(
+                        AppLocalizations.of(context).tr('msg_register-info'),
+                        style: kH2,
+                        textAlign: TextAlign.center,
+                      ),
                       screenID: RegisterScreen.screenID,
                     ),
                   ),

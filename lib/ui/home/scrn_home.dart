@@ -71,9 +71,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
-                    label: AppLocalizations.of(context).tr(
-                        'msg_welcome-username',
-                        args: [_loggedInUser.displayName]),
+                    widgetContent: Text(
+                      AppLocalizations.of(context).tr('msg_welcome-username',
+                          args: [_loggedInUser.displayName]),
+                      style: kH2,
+                      textAlign: TextAlign.center,
+                    ),
                     screenID: HomeScreen.screenID,
                   ),
                 ),
