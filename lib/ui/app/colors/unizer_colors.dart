@@ -1,13 +1,26 @@
 import 'dart:ui' show Color;
-import 'package:flutter/painting.dart';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 class UniColors {
   UniColors._();
 
+  static bool darkMode = false;
+
+  /*-- General --*/
+  static const Color white = Colors.white;
+  static const Color black = Colors.black87;
+  static const Color shadow = Color.fromRGBO(51, 51, 51, 0.2);
+  static const Color screenBackground = Color(0XFFE5E1EE);
+
+  /*-- Menubars --*/
+  static Color appBarBackground = darkMode ? Colors.black : Colors.white;
+  static const Color menuBackground = Color(0XFFEAE7F2);
+
   /*-- Borders --*/
   static const Color underlineBorder = Color(0XFFA4B6DF);
-  static const Color dividerLine = Color(0XFFE5E1EE);
+  static Color dividerLine = Color(0XFFE5E1EE);
 
   /*-- Text --*/
   static const Color hintText = Color.fromRGBO(158, 163, 168, 0.8);
@@ -22,4 +35,5 @@ class UniColors {
   /*-- Buttons --*/
   static const Color buttonGreen = Color(0xFF56C4B7);
   static const Color buttonWormGreen = Color(0xFF9EEA64);
+  static const Color buttonClose = Color(0xFFCBC0C0);
 }

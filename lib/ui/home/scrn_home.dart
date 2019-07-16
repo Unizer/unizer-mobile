@@ -1,4 +1,5 @@
 import 'package:Unizer/packages.dart';
+import 'package:Unizer/ui/app/elements/menu_left.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
@@ -55,9 +56,9 @@ class _HomeScreenState extends State<HomeScreen> {
           AppLocalizations.of(context).tr('lbl_home'),
           style: kTopMenubarTitle,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: UniColors.appBarBackground,
       ),
-      drawer: Drawer(),
+      drawer: LeftMenu(userDisplayName: _userDisplayName),
       body: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[

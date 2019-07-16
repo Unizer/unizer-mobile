@@ -31,50 +31,50 @@ const TextStyle kDefaultTextField = TextStyle(
 
 const TextStyle kH1 = TextStyle(
   fontSize: kH1TextSize,
-  fontFamily: 'Roboto',
+  fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w600,
   color: UniColors.h1,
 );
 
 const TextStyle kH2 = TextStyle(
   fontSize: kH2TextSize,
-  fontFamily: 'Roboto',
+  fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w400,
   color: UniColors.h2,
 );
 
 const TextStyle kFooterText = TextStyle(
   fontSize: kFooterTextSize,
-  fontFamily: 'Roboto',
+  fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w100,
   color: UniColors.footer,
 );
 
 const TextStyle kButtonText = TextStyle(
   fontSize: kButtonTextSize,
-  fontFamily: 'Roboto',
+  fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w500,
-  color: Colors.white,
+  color: UniColors.white,
   letterSpacing: 0.5,
 );
 
 const TextStyle kLinkText = TextStyle(
   fontSize: kLinkTextSize,
-  fontFamily: 'Roboto',
+  fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w400,
   color: UniColors.linkText,
 );
 
 const TextStyle kErrorValidationText = TextStyle(
   fontSize: kFooterTextSize,
-  fontFamily: 'Roboto',
+  fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w400,
   color: UniColors.error,
 );
 
 const TextStyle kTopMenubarTitle = TextStyle(
   fontSize: kH1TextSize,
-  fontFamily: 'Roboto',
+  fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w600,
   color: UniColors.h2,
 );

@@ -4,7 +4,7 @@ const String kAppName = 'Unizer';
 const String kCurrentYear = '2019';
 
 // This version must be updated in tandem with the pubspec version.
-const String kAppVersion = '4.0.a1';
+const String kAppVersion = '4.0.0a2';
 
 /*-- Text --*/
 const String kGlobalFontFamily = 'Roboto';
@@ -24,6 +24,7 @@ const double kDefaultBorderSize = 1.0;
 const double kButtonBorderRadius = 15.0;
 const double kButtonTextSize = 20.0;
 const double kButtonTopMargin = 25.0;
+const double kMenuIconSize = 40.0;
 
 /*-- Spaces --*/
 const double kTextFieldVerticalSpace = 5.0;

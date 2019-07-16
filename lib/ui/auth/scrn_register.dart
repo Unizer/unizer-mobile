@@ -92,11 +92,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: UniColors.black,
+        ),
         title: Text(
           AppLocalizations.of(context).tr('lbl_register'),
           style: kTopMenubarTitle,
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: UniColors.appBarBackground,
       ),
       body: ModalProgressHUD(
         inAsyncCall: _showSpinner,
