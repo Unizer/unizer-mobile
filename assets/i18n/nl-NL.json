@@ -34,6 +34,7 @@
   "msg_password-invalid": "Je wachtwoord is niet geldig: gebruik minimaal 6 tekens.",
   "msg_user-login-succes-as": "Je bent ingelogt als {}.",
   "msg_welcome-username": "Welkom {}!",
+  "msg_up-to-date": "Je bent helemaal bij.",
   "c09": "",
   "c10": "Firebase error codes",
   "c11": "-------------------------",

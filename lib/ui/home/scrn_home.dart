@@ -41,9 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
       appBar: AppBar(
-        automaticallyImplyLeading: false, //remove back button arrow
         actions: <Widget>[
           IconButton(
               alignment: Alignment.center,
@@ -59,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: Colors.white,
       ),
+      drawer: Drawer(),
       body: ListView(
         scrollDirection: Axis.vertical,
         children: <Widget>[
@@ -73,11 +72,24 @@ class _HomeScreenState extends State<HomeScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
-                    widgetContent: Text(
-                      AppLocalizations.of(context)
-                          .tr('msg_welcome-username', args: [_userDisplayName]),
-                      style: kH2,
-                      textAlign: TextAlign.center,
+                    widgetContent: ListView(
+                      children: <Widget>[
+                        Text(
+                          AppLocalizations.of(context).tr(
+                              'msg_welcome-username',
+                              args: [_userDisplayName]),
+                          style: kH1,
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(
+                          height: kCardVerticalSpace,
+                        ),
+                        Text(
+                          AppLocalizations.of(context).tr('msg_up-to-date'),
+                          style: kH2,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
                     screenID: HomeScreen.screenID,
                   ),

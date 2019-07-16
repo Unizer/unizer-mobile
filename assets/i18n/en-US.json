@@ -34,6 +34,7 @@
   "msg_password-invalid": "Your password is invalid: it should at least contain 6 characters.",
   "msg_user-login-succes-as": "You're succesfully logged in as {}.",
   "msg_welcome-username": "Welcome {}!",
+  "msg_up-to-date": "You're completely up-to-date.",
   "c09": "",
   "c10": "Firebase error codes",
   "c11": "-------------------------",

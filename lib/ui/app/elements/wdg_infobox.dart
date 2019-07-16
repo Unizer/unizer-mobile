@@ -87,7 +87,6 @@ class _UniInfoBoxState extends State<UniInfoBox> {
         constraints: BoxConstraints.expand(
           height: _infoCardHeight,
         ),
-        //height: _infoCardHeight,
         padding: EdgeInsets.all(_infoCardMargins),
         child: Flex(
           direction: Axis.vertical,
