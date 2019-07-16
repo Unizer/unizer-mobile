@@ -1,5 +1,4 @@
 import 'package:Unizer/packages.dart';
-
 import 'package:Unizer/ui/auth/scrn_register.dart';
 import 'package:Unizer/ui/home/scrn_home.dart';
 
@@ -62,7 +61,8 @@ class _LoginScreenState extends State<LoginScreen> {
       final _currentUser = await _auth.signInWithEmailAndPassword(
           email: _formFields.email, password: _formFields.password);
       if (_currentUser != null) {
-        LocalPrefs.writeUserEmail(email: _formFields.email);
+        LocalPrefs.writeUserAccount(
+            email: _formFields.email, displayName: _currentUser.displayName);
 //        UniToast.showToast(
 //          message: AppLocalizations.of(context)
 //              .tr('msg_user-login-succes-as', args: [_formFields.email]),

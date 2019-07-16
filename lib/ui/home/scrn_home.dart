@@ -1,10 +1,5 @@
 import 'package:Unizer/packages.dart';
 
-final _auth = FirebaseAuth.instance; //intialise Firebase authentication object
-final _firestore =
-    Firestore.instance; //intialise Firestore Cloud authentication object
-FirebaseUser _loggedInUser;
-
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
 
@@ -13,10 +8,16 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final _auth =
+      FirebaseAuth.instance; //intialise Firebase authentication object
+
+  FirebaseUser _loggedInUser;
+  String _userDisplayName;
+
   @override
   void initState() {
-    super.initState();
     getCurrentUser();
+    super.initState();
   }
 
   @override
@@ -26,10 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   void getCurrentUser() async {
     try {
-      final _currentUser = await _auth.currentUser();
-      if (_currentUser != null) {
-        _loggedInUser = _currentUser;
-        print(_loggedInUser.displayName);
+      _loggedInUser = await _auth.currentUser();
+      if (_loggedInUser != null) {
+        _userDisplayName = _loggedInUser.displayName;
+        print('User displayname = ${_loggedInUser.displayName}');
+        print('User uid = ${_loggedInUser.uid}');
       }
     } catch (e) {
       print(e);
@@ -72,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: UniInfoBox(
                     widgetContent: Text(
-                      AppLocalizations.of(context).tr('msg_welcome-username',
-                          args: [_loggedInUser.displayName]),
+                      AppLocalizations.of(context)
+                          .tr('msg_welcome-username', args: [_userDisplayName]),
                       style: kH2,
                       textAlign: TextAlign.center,
                     ),

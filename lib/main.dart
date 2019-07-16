@@ -1,6 +1,4 @@
 import 'package:Unizer/packages.dart';
-
-/* -- Screens --*/
 import 'package:Unizer/ui/auth/scrn_login.dart';
 import 'package:Unizer/ui/auth/scrn_register.dart';
 import 'package:Unizer/ui/home/scrn_home.dart';

@@ -1,17 +1,9 @@
 /* --Flutter defaults --*/
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalPrefs {
-  static Future writeUserEmail({@required String email}) async {
-    // obtain shared preferences
-    final SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    // set value
-    prefs.setString('userEmail', email);
-  }
-
   Future<String> getUserEmail() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.get('userEmail').toString() ?? '';
@@ -40,5 +32,25 @@ class LocalPrefs {
   static Future<bool> getInfoBoxSpecs({String screenID}) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.get('infobox_$screenID+_expanded') ?? true;
+  }
+
+  static Future writeUserAccount(
+      {String firstName,
+      String lastName,
+      String email,
+      String displayName}) async {
+    // obtain shared preferences
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    // set value
+    firstName ?? prefs.setString('userFirstname', firstName);
+    lastName ?? prefs.setString('userLastname', lastName);
+    email ?? prefs.setString('userEmail', email);
+    displayName ?? prefs.setString('userDisplayname', displayName);
+  }
+
+  static Future<String> getUserAccountPrefs({Future<String> tag}) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.get('$tag') ?? '';
   }
 }
