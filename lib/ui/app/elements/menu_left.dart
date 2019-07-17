@@ -66,8 +66,20 @@ class LeftMenu extends StatelessWidget {
                   )
                 ],
               ),
-              ListTile(
-                title: Text('Unizers'),
+              SizedBox(
+                height: 20.0,
+              ),
+              MenuListItem(
+                label: AppLocalizations.of(context).tr('lbl_unizers'),
+                icon: Boxicons.bxUser,
+              ),
+              MenuListItem(
+                label: AppLocalizations.of(context).tr('lbl_teams'),
+                icon: Boxicons.bxGroup,
+              ),
+              MenuListItem(
+                label: AppLocalizations.of(context).tr('lbl_organisations'),
+                icon: Boxicons.bxBuilding,
               ),
             ],
           ),

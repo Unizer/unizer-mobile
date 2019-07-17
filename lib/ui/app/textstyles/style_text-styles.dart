@@ -58,6 +58,14 @@ const TextStyle kButtonText = TextStyle(
   letterSpacing: 0.5,
 );
 
+const TextStyle kMenuText = TextStyle(
+  fontSize: kH1TextSize,
+  fontFamily: kGlobalFontFamily,
+  fontWeight: FontWeight.w300,
+  color: UniColors.h2,
+  letterSpacing: 0.5,
+);
+
 const TextStyle kLinkText = TextStyle(
   fontSize: kLinkTextSize,
   fontFamily: kGlobalFontFamily,
