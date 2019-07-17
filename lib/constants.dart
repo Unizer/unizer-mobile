@@ -12,6 +12,7 @@ const double kBodyTextSize = 16.0;
 const double kHintTextSize = 14.0;
 const double kH1TextSize = 22.0;
 const double kH2TextSize = 17.0;
+const double kMenuItemTextSize = 20.0;
 const double kLinkTextSize = 14.0;
 const double kFooterTextSize = 10.0;
 const double kTextFormFieldIconSize = 20.0;

@@ -16,6 +16,8 @@ class LeftMenu extends StatelessWidget {
       elevation: 8.0,
       child: Container(
         decoration: kMenuScreenDecoration,
+        width: double.infinity,
+        height: double.infinity,
         child: Padding(
           padding: EdgeInsets.only(
             left: 20,

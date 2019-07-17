@@ -59,7 +59,7 @@ const TextStyle kButtonText = TextStyle(
 );
 
 const TextStyle kMenuText = TextStyle(
-  fontSize: kH1TextSize,
+  fontSize: kMenuItemTextSize,
   fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w300,
   color: UniColors.h2,
