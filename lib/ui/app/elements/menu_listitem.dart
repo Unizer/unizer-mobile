@@ -15,34 +15,37 @@ class MenuListItem extends StatelessWidget {
         top: 10.0,
         right: 20.0,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                label,
-                style: kMenuText,
-              ),
-              Icon(
-                icon,
-                size: kH1TextSize,
-                color: UniColors.h2,
-              ),
-            ],
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: 10.0,
+      child: GestureDetector(
+        onTap: onPress,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  label,
+                  style: kMenuText,
+                ),
+                Icon(
+                  icon,
+                  size: kH1TextSize,
+                  color: UniColors.h2,
+                ),
+              ],
             ),
-            child: Container(
-              height: 2.0,
-              color: UniColors.dividerLine,
-              width: double.infinity,
+            Padding(
+              padding: EdgeInsets.only(
+                top: 10.0,
+              ),
+              child: Container(
+                height: 2.0,
+                color: UniColors.dividerLine,
+                width: double.infinity,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

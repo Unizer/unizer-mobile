@@ -1,4 +1,5 @@
 import 'package:Unizer/packages.dart';
+import 'package:Unizer/ui/auth/scrn_login.dart';
 
 class LeftMenu extends StatelessWidget {
   const LeftMenu({
@@ -19,67 +20,89 @@ class LeftMenu extends StatelessWidget {
           padding: EdgeInsets.only(
             left: 20,
             right: 5,
+            bottom: 40.0,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              IconButton(
-                  alignment: Alignment.topRight,
-                  icon: Icon(Boxicons.bxX),
-                  color: UniColors.buttonClose,
-                  iconSize: kMenuIconSize,
-                  onPressed: () {
-                    Navigator.pop(context);
-                  }),
-              Row(
+              //Top part
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Image.asset(
-                    'images/avatar-placeholder.png',
-                    alignment: Alignment.topLeft,
-                    width: 80.0,
-                    height: 80.0,
+                  IconButton(
+                      alignment: Alignment.topRight,
+                      icon: Icon(Boxicons.bxX),
+                      color: UniColors.buttonClose,
+                      iconSize: kMenuIconSize,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      }),
+                  Row(
+                    children: <Widget>[
+                      Image.asset(
+                        'images/avatar-placeholder.png',
+                        alignment: Alignment.topLeft,
+                        width: 80.0,
+                        height: 80.0,
+                      ),
+                      SizedBox(
+                        width: 15.0,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: <Widget>[
+                            Text(
+                              _userDisplayName,
+                              softWrap: true,
+                              style: kH1,
+                            ),
+                            SizedBox(
+                              height: kLinkTextVerticalSpace,
+                            ),
+                            Text(
+                              AppLocalizations.of(context)
+                                  .tr('lbl_visit-edit-profile'),
+                              softWrap: true,
+                              style: kLinkText,
+                              textAlign: TextAlign.left,
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
                   SizedBox(
-                    width: 15.0,
+                    height: 20.0,
                   ),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: <Widget>[
-                        Text(
-                          _userDisplayName,
-                          softWrap: true,
-                          style: kH1,
-                        ),
-                        SizedBox(
-                          height: kLinkTextVerticalSpace,
-                        ),
-                        Text(
-                          AppLocalizations.of(context)
-                              .tr('lbl_visit-edit-profile'),
-                          softWrap: true,
-                          style: kLinkText,
-                          textAlign: TextAlign.left,
-                        ),
-                      ],
-                    ),
-                  )
+                  MenuListItem(
+                    label: AppLocalizations.of(context).tr('lbl_unizers'),
+                    icon: Boxicons.bxUser,
+                  ),
+                  MenuListItem(
+                    label: AppLocalizations.of(context).tr('lbl_teams'),
+                    icon: Boxicons.bxGroup,
+                  ),
+                  MenuListItem(
+                    label: AppLocalizations.of(context).tr('lbl_organisations'),
+                    icon: Boxicons.bxBuilding,
+                  ),
                 ],
               ),
-              SizedBox(
-                height: 20.0,
-              ),
-              MenuListItem(
-                label: AppLocalizations.of(context).tr('lbl_unizers'),
-                icon: Boxicons.bxUser,
-              ),
-              MenuListItem(
-                label: AppLocalizations.of(context).tr('lbl_teams'),
-                icon: Boxicons.bxGroup,
-              ),
-              MenuListItem(
-                label: AppLocalizations.of(context).tr('lbl_organisations'),
-                icon: Boxicons.bxBuilding,
+              Column(
+                children: <Widget>[
+                  MenuListItem(
+                    label: AppLocalizations.of(context).tr('lbl_logout'),
+                    icon: Boxicons.bxLogOut,
+                    onPress: () {
+                      Navigator.popAndPushNamed(context, LoginScreen.screenID);
+                    },
+                  ),
+                  MenuListItem(
+                    label: AppLocalizations.of(context).tr('lbl_about'),
+                    icon: Boxicons.bxInfoCircle,
+                  ),
+                ],
               ),
             ],
           ),
