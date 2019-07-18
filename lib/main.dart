@@ -25,6 +25,7 @@ class Unizer extends StatelessWidget {
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
           //app-specific localization
           EasylocaLizationDelegate(
               locale: Locale(languageCode) ?? Locale('nl', 'NL'),

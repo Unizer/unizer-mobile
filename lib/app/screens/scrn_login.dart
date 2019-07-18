@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  Future<bool> _actionLogin() async {
+  Future<bool> _authCheck() async {
     _formKey.currentState.save(); //Saves all textfield content
     final _isValid =
         _formKey.currentState.validate(); //Check if any field has no validation
@@ -77,6 +77,19 @@ class _LoginScreenState extends State<LoginScreen> {
       return false;
     }
     return true;
+  }
+
+  void _actionLogin() async {
+    setState(() {
+      _showSpinner = true;
+    });
+    var _loginSucces = await _authCheck();
+    if (_loginSucces == true) {
+      Navigator.pushNamed(context, HomeScreen.screenID);
+    }
+    setState(() {
+      _showSpinner = false;
+    });
   }
 
   @override
@@ -300,24 +313,13 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onSaved: (value) {
                                   _formFields.password = value;
                                 },
+                                onFieldSubmitted: (_) => _actionLogin(),
                               ),
                               RoundedButton(
                                 color: UniColors.buttonGreen,
                                 label: AppLocalizations.of(context)
                                     .tr('lbl_login'),
-                                onPressed: () async {
-                                  setState(() {
-                                    _showSpinner = true;
-                                  });
-                                  var _loginSucces = await _actionLogin();
-                                  if (_loginSucces == true) {
-                                    Navigator.pushNamed(
-                                        context, HomeScreen.screenID);
-                                  }
-                                  setState(() {
-                                    _showSpinner = false;
-                                  });
-                                },
+                                onPressed: _actionLogin,
                               ),
                               SizedBox(
                                 height: kLinkTextVerticalSpace,
