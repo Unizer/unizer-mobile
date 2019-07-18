@@ -43,10 +43,10 @@ class LocalPrefs {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
 
     // set value
-    firstName ?? prefs.setString('userFirstname', firstName);
-    lastName ?? prefs.setString('userLastname', lastName);
-    email ?? prefs.setString('userEmail', email);
-    displayName ?? prefs.setString('userDisplayname', displayName);
+    prefs.setString('userFirstname', firstName);
+    prefs.setString('userLastname', lastName);
+    prefs.setString('userEmail', email);
+    prefs.setString('userDisplayname', displayName);
   }
 
   static Future<String> getUserAccountPrefs({Future<String> tag}) async {

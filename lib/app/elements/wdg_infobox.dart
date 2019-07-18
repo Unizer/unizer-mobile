@@ -11,10 +11,11 @@ const double kInfoCardMinMargins = 2.0;
 const int kDurationMilliseconds = 400;
 
 class UniInfoBox extends StatefulWidget {
-  UniInfoBox({this.widgetContent, @required this.screenID});
+  UniInfoBox({this.widgetContent, @required this.screenID, this.cardHeight});
 
   final Widget widgetContent;
   final String screenID;
+  final double cardHeight;
 
   @override
   _UniInfoBoxState createState() => _UniInfoBoxState();
@@ -27,6 +28,7 @@ class _UniInfoBoxState extends State<UniInfoBox> {
   double _infoCardSpace = kInfoCardMaxSpace;
   double _infoCardMargins = kInfoCardMaxMargins;
   int _durationMilliseconds = kDurationMilliseconds;
+  double _defaultCardHeight = kInfoCardMaxHeight;
 
   Future getBoxExpandedStatus() async {
     final bool _expanded =
@@ -39,8 +41,10 @@ class _UniInfoBoxState extends State<UniInfoBox> {
   }
 
   void resizeCard() {
+    _defaultCardHeight = widget.cardHeight ?? kInfoCardMaxHeight;
+    print('Default card height: $_defaultCardHeight');
     _infoCardExpanded
-        ? _infoCardHeight = kInfoCardMaxHeight
+        ? _infoCardHeight = _defaultCardHeight
         : _infoCardHeight = kInfoCardMinHeight;
     _infoCardExpanded
         ? _infoCardSpace = kInfoCardMaxSpace
@@ -53,12 +57,12 @@ class _UniInfoBoxState extends State<UniInfoBox> {
 
   void toggleCard() {
     setState(() {
-      _durationMilliseconds = kDurationMilliseconds;
-      _infoCardExpanded ? _infoCardExpanded = false : _infoCardExpanded = true;
-      resizeCard();
-      LocalPrefs.writeInfoBoxSpecs(
-          screenID: widget.screenID, expanded: _infoCardExpanded);
+      _infoCardExpanded = !_infoCardExpanded;
     });
+    _durationMilliseconds = kDurationMilliseconds;
+    resizeCard();
+    LocalPrefs.writeInfoBoxSpecs(
+        screenID: widget.screenID, expanded: _infoCardExpanded);
   }
 
   @override

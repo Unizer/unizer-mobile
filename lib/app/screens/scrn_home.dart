@@ -12,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
       FirebaseAuth.instance; //intialise Firebase authentication object
 
   FirebaseUser _loggedInUser;
-  String _userDisplayName;
+  String _userDisplayName = '';
 
   @override
   void initState() {
@@ -73,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
+                    cardHeight: 170.0,
                     widgetContent: ListView(
                       children: <Widget>[
                         Text(
