@@ -1,5 +1,4 @@
 import 'package:Unizer/packages.dart';
-import 'package:Unizer/ui/auth/scrn_login.dart';
 
 class LeftMenu extends StatelessWidget {
   const LeftMenu({

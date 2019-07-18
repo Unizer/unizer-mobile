@@ -7,8 +7,9 @@ class RegisterScreen extends StatefulWidget {
   _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class FormFields {
-  FormFields({this.firstName, this.lastName, this.email, this.password});
+class RegisterFormFields {
+  RegisterFormFields(
+      {this.firstName, this.lastName, this.email, this.password});
   String firstName;
   String lastName;
   String email;
@@ -21,7 +22,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
-  var _formFields = FormFields();
+  var _formFields = RegisterFormFields();
   bool _showSpinner = false;
   String _errorCode = '';
   bool _hidePassword = true;

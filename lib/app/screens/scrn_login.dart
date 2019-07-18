@@ -1,6 +1,4 @@
 import 'package:Unizer/packages.dart';
-import 'package:Unizer/ui/auth/scrn_register.dart';
-import 'package:Unizer/ui/home/scrn_home.dart';
 
 class LoginScreen extends StatefulWidget {
   static const String screenID = 'login';

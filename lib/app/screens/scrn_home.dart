@@ -1,5 +1,4 @@
 import 'package:Unizer/packages.dart';
-import 'package:Unizer/ui/app/elements/menu_left.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
@@ -23,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   void dispose() {
+    _auth.signOut();
     super.dispose();
   }
 

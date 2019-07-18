@@ -1,13 +1,14 @@
 import 'package:Unizer/packages.dart';
-import 'package:Unizer/ui/auth/scrn_login.dart';
-import 'package:Unizer/ui/auth/scrn_register.dart';
-import 'package:Unizer/ui/home/scrn_home.dart';
 
 Future main() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final String languageCode = prefs.getString('appLanguage') ?? 'nl';
   print('Found language: $languageCode');
-  runApp(EasyLocalization(child: Unizer(languageCode: languageCode)));
+  runApp(
+    EasyLocalization(
+      child: Unizer(languageCode: languageCode),
+    ),
+  );
 }
 
 /// This Widget is the main application widget.

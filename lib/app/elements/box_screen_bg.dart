@@ -1,5 +1,4 @@
-import 'package:Unizer/ui/app/colors/unizer_colors.dart';
-import 'package:flutter/material.dart';
+import 'package:Unizer/packages.dart';
 
 const BoxDecoration kBoxScreenDecoration = BoxDecoration(
   // Box decoration takes a gradient
