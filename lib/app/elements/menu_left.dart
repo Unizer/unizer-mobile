@@ -77,6 +77,7 @@ class LeftMenu extends StatelessWidget {
                     height: 20.0,
                   ),
                   MenuListItem(
+                    key: UniqueKey(),
                     label: AppLocalizations.of(context).tr('lbl_unizers'),
                     icon: Boxicons.bxUser,
                   ),

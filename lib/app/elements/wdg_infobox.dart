@@ -11,7 +11,9 @@ const double kInfoCardMinMargins = 2.0;
 const int kDurationMilliseconds = 400;
 
 class UniInfoBox extends StatefulWidget {
-  UniInfoBox({this.widgetContent, @required this.screenID, this.cardHeight});
+  UniInfoBox(
+      {Key key, this.widgetContent, @required this.screenID, this.cardHeight})
+      : super(key: key);
 
   final Widget widgetContent;
   final String screenID;
