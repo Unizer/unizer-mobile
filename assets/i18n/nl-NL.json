@@ -43,6 +43,7 @@
   "msg_welcome-username": "Welkom {}!",
   "msg_up-to-date": "Je bent helemaal up-to-date.",
   "msg_reset-password": "Vul je emailadres in en klik op de Herstel wachtwoord button. Hierna ontvang je een email met link om een nieuw wachtwoord aan te maken.",
+  "msg_reset-password-email-upcoming" : "Je ontvangt spoedig een email met de link om je wachtwoord te resetten.",
   "c09": "",
   "c10": "Buttons",
   "c11": "-------------------------",

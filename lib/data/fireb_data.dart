@@ -1,8 +1,11 @@
 import 'package:Unizer/packages.dart';
 
 class UniData {
-  Widget build(BuildContext context, String collectionName, String uid,
-      String fieldName) {
+  Widget build(
+      {BuildContext context,
+      String collectionName,
+      String uid,
+      String fieldName}) {
     return StreamBuilder(
         stream: Firestore.instance
             .collection(collectionName)

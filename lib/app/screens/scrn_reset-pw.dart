@@ -48,9 +48,22 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
     if (!_isValid) {
       return false;
     }
-    print('Reset password initiated with ${_textEditingController.text}');
+
+    String _email = _textEditingController.text;
+
+    print('Reset password initiated with $_email');
+    //Todo: Check if email exists
+
+    //Send reset email
     var _auth = FirebaseAuth.instance;
-    await _auth.sendPasswordResetEmail(email: _textEditingController.text);
+    await _auth.sendPasswordResetEmail(email: _email);
+
+    //Show dialog and navigate back to loginscreen
+    UniToast.showToast(
+      message:
+          AppLocalizations.of(context).tr('msg_reset-password-email-upcoming'),
+    );
+    Navigator.pop(context);
   }
 
   @override
