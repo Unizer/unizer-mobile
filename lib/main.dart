@@ -33,8 +33,9 @@ class Unizer extends StatelessWidget {
         ],
         supportedLocales: kLocaleLanguages,
         locale: data.locale,
-        theme: ThemeData(fontFamily: kGlobalFontFamily),
-        //inputDecorationTheme: InputDecorationTheme()),
+        theme: ThemeData(
+            fontFamily: kGlobalFontFamily,
+            inputDecorationTheme: InputDecorationTheme()),
         initialRoute: LoginScreen.screenID,
         routes: <String, WidgetBuilder>{
           LoginScreen.screenID: (BuildContext context) => LoginScreen(),
