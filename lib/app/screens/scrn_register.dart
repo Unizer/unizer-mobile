@@ -104,12 +104,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
       body: ModalProgressHUD(
         inAsyncCall: _showSpinner,
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          children: <Widget>[
-            Container(
-              decoration: kBoxScreenDecoration,
-              child: Column(
+        child: Container(
+          decoration: kBoxScreenDecoration,
+          constraints: BoxConstraints.expand(),
+          child: ListView(
+            scrollDirection: Axis.vertical,
+            children: <Widget>[
+              Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   Padding(
@@ -308,8 +309,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -194,6 +194,7 @@ class _LoginScreenState extends State<LoginScreen> {
           inAsyncCall: _showSpinner,
           child: Container(
             decoration: kBoxScreenDecoration,
+            constraints: BoxConstraints.expand(),
             child: ListView(
               scrollDirection: Axis.vertical,
               children: <Widget>[
