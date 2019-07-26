@@ -100,10 +100,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     //Set username field
-
     super.initState();
     getEmail();
-    setLocale();
+    //setLocale();
   }
 
   @override

@@ -43,6 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 2.0,
+        iconTheme: IconThemeData(color: Colors.black),
         actions: <Widget>[
           IconButton(
               alignment: Alignment.center,
@@ -59,12 +61,13 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: UniColors.appBarBackground,
       ),
       drawer: LeftMenu(userDisplayName: _userDisplayName),
-      body: ListView(
-        scrollDirection: Axis.vertical,
-        children: <Widget>[
-          Container(
-            decoration: kBoxScreenDecoration,
-            child: Column(
+      body: Container(
+        decoration: kBoxScreenDecoration,
+        constraints: BoxConstraints.expand(),
+        child: ListView(
+          scrollDirection: Axis.vertical,
+          children: <Widget>[
+            Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 Padding(
@@ -98,8 +101,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
