@@ -1,5 +1,7 @@
 import 'package:Unizer/packages.dart';
 
+//TODO: Load selected language
+
 class LoginScreen extends StatefulWidget {
   static const String screenID = 'login';
 
@@ -31,19 +33,17 @@ class _LoginScreenState extends State<LoginScreen> {
     final String savedEmail = await LocalPrefs().getUserEmail();
     if (savedEmail != null && savedEmail != 'null') {
       print('Email found in preferences: $savedEmail');
-      setState(() {
-        _textEditingController.text = savedEmail;
-      });
+      //setState(() {
+      _textEditingController.text = savedEmail;
+      //});
     }
   }
 
   Future setLocale() async {
     final data = EasyLocalizationProvider.of(context).data;
     final String savedLanguage = await Localizer.getLanguageCode();
-    setState(() {
-      data.changeLocale(Locale(savedLanguage));
-      languageLabel = kLanguageLabels['$savedLanguage'];
-    });
+    data.changeLocale(Locale(savedLanguage));
+    languageLabel = kLanguageLabels['$savedLanguage'];
   }
 
   Future<bool> _authCheck() async {
@@ -100,15 +100,16 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     //Set username field
-    getEmail();
+
     super.initState();
+    getEmail();
+    setLocale();
   }
 
   @override
   Widget build(BuildContext context) {
     //Write device specs
     //LocalPrefs.writeDeviceSpecs(context);
-    setLocale();
 
     //Set Locale
     final data = EasyLocalizationProvider.of(context).data;

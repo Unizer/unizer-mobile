@@ -3,6 +3,7 @@ import 'package:Unizer/packages.dart';
 Future main() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   final String languageCode = prefs.getString('appLanguage') ?? 'nl';
+
   print('Found language: $languageCode');
   runApp(
     EasyLocalization(
@@ -34,8 +35,9 @@ class Unizer extends StatelessWidget {
         supportedLocales: kLocaleLanguages,
         locale: data.locale,
         theme: ThemeData(
-            fontFamily: kGlobalFontFamily,
-            inputDecorationTheme: InputDecorationTheme()),
+          fontFamily: kGlobalFontFamily,
+          inputDecorationTheme: InputDecorationTheme(),
+        ),
         initialRoute: LoginScreen.screenID,
         routes: <String, WidgetBuilder>{
           LoginScreen.screenID: (BuildContext context) => LoginScreen(),
