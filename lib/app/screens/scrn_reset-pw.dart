@@ -96,13 +96,18 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                       right: kCardMargins,
                     ),
                     child: UniInfoBox(
-                      widgetContent: Text(
-                        AppLocalizations.of(context).tr('msg_reset-password'),
-                        style: kH2,
-                        textAlign: TextAlign.center,
+                      widgetContent: ListView(
+                        scrollDirection: Axis.vertical,
+                        physics: const NeverScrollableScrollPhysics(),
+                        children: <Widget>[
+                          Html(
+                            data: AppLocalizations.of(context)
+                                .tr('msg_reset-password'),
+                            defaultTextStyle: kH2,
+                          ),
+                        ],
                       ),
                       screenID: ResetPWScreen.screenID,
-                      cardHeight: 150.0,
                     ),
                   ),
                   UniCard(
@@ -111,15 +116,6 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          Text(
-                            AppLocalizations.of(context)
-                                .tr('lbl_keep-connected'),
-                            style: kH1,
-                            textAlign: TextAlign.left,
-                          ),
-                          SizedBox(
-                            height: kH1VerticalSpace,
-                          ),
                           //Email
                           TextFormField(
                             style: kDefaultTextField,

@@ -29,6 +29,7 @@ export 'package:firebase_auth/firebase_auth.dart';
 export 'package:flutter/material.dart';
 export 'package:flutter/services.dart';
 export 'package:flutter/widgets.dart';
+export 'package:flutter_html/flutter_html.dart';
 export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:fluttertoast/fluttertoast.dart';
