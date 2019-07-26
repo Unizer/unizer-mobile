@@ -61,10 +61,6 @@ class _LoginScreenState extends State<LoginScreen> {
       if (_currentUser != null) {
         LocalPrefs.writeUserAccount(
             email: _formFields.email, displayName: _currentUser.displayName);
-//        UniToast.showToast(
-//          message: AppLocalizations.of(context)
-//              .tr('msg_user-login-succes-as', args: [_formFields.email]),
-//        );
       }
     } on PlatformException catch (e) {
       String _errorCode = e.code;
@@ -326,7 +322,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               Center(
                                 child: GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                        context, ResetPWScreen.screenID);
+                                  },
                                   child: Text(
                                     AppLocalizations.of(context)
                                         .tr('lbl_forgot-password'),

@@ -15,6 +15,7 @@ export 'package:Unizer/app/screens/scrn_home.dart';
 export 'package:Unizer/app/screens/scrn_loading.dart';
 export 'package:Unizer/app/screens/scrn_login.dart';
 export 'package:Unizer/app/screens/scrn_register.dart';
+export 'package:Unizer/app/screens/scrn_reset-pw.dart';
 export 'package:Unizer/app/textstyles/style_input-text-field.dart';
 export 'package:Unizer/app/textstyles/style_text-styles.dart';
 export 'package:Unizer/constants.dart';
