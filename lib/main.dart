@@ -1,21 +1,21 @@
 import 'package:Unizer/packages.dart';
 
 Future main() async {
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final String languageCode = prefs.getString('appLanguage') ?? 'nl';
+  //final SharedPreferences prefs = await SharedPreferences.getInstance();
+  //final String languageCode = prefs.getString('appLanguage') ?? 'nl';
 
-  print('Found language: $languageCode');
+  //print('Found language: $languageCode');
   runApp(
     EasyLocalization(
-      child: Unizer(languageCode: languageCode),
+      child: Unizer(),
     ),
   );
 }
 
 /// This Widget is the main application widget.
 class Unizer extends StatelessWidget {
-  Unizer({this.languageCode});
-  final String languageCode;
+  //Unizer({this.languageCode});
+  //final String languageCode;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,7 @@ class Unizer extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
           //app-specific localization
           EasylocaLizationDelegate(
-              locale: Locale(languageCode) ?? Locale('nl', 'NL'),
-              path: 'assets/i18n'),
+              locale: data.locale ?? Locale('nl', 'NL'), path: 'assets/i18n'),
         ],
         supportedLocales: kLocaleLanguages,
         locale: data.locale,
