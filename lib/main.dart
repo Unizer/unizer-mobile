@@ -1,10 +1,6 @@
 import 'package:Unizer/packages.dart';
 
 Future main() async {
-  //final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //final String languageCode = prefs.getString('appLanguage') ?? 'nl';
-
-  //print('Found language: $languageCode');
   runApp(
     EasyLocalization(
       child: Unizer(),
@@ -14,9 +10,6 @@ Future main() async {
 
 /// This Widget is the main application widget.
 class Unizer extends StatelessWidget {
-  //Unizer({this.languageCode});
-  //final String languageCode;
-
   @override
   Widget build(BuildContext context) {
     final data = EasyLocalizationProvider.of(context).data;
