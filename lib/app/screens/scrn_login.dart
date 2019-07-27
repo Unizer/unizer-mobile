@@ -151,8 +151,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       },
                       child: Text(
-                        languageLabel = kLanguageLabels[
-                            Localizations.localeOf(context).languageCode],
+                        AppLocalizations.of(context).tr('lst_languages.' +
+                            Localizations.localeOf(context).languageCode),
                         textAlign: TextAlign.center,
                         style: kLinkText,
                       ),
