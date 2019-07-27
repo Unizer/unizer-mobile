@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String emailAddress = '';
   String languageCode;
-  String languageLabel = kLanguageLabels['en'];
+  String languageLabel;
 
   final _textEditingController = TextEditingController();
 
@@ -102,7 +102,6 @@ class _LoginScreenState extends State<LoginScreen> {
     //Set username field
     super.initState();
     getEmail();
-    //setLocale();
   }
 
   @override
@@ -152,7 +151,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         });
                       },
                       child: Text(
-                        '$languageLabel ',
+                        languageLabel = kLanguageLabels[
+                            Localizations.localeOf(context).languageCode],
                         textAlign: TextAlign.center,
                         style: kLinkText,
                       ),

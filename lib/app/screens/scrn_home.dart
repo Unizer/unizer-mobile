@@ -76,7 +76,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
-                    cardHeight: 170.0,
                     widgetContent: ListView(
                       children: <Widget>[
                         Text(
