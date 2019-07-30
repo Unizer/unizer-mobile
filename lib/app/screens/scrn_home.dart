@@ -2,47 +2,17 @@ import 'package:Unizer/packages.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
+  final FirebaseUser currentUser;
+  HomeScreen({this.currentUser});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final _auth =
-      FirebaseAuth.instance; //intialise Firebase authentication object
-
-  FirebaseUser _loggedInUser;
-  String _userDisplayName = '';
-
-  @override
-  void initState() {
-    getCurrentUser();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _auth.signOut();
-    super.dispose();
-  }
-
-  void getCurrentUser() async {
-    try {
-      _loggedInUser = await _auth.currentUser();
-      if (_loggedInUser != null) {
-        setState(() {
-          _userDisplayName = _loggedInUser.displayName;
-        });
-        print('User displayname = ${_loggedInUser.displayName}');
-        print('User uid = ${_loggedInUser.uid}');
-      }
-    } catch (e) {
-      print(e);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
+    String _userDisplayName = widget.currentUser.displayName;
     return Scaffold(
       appBar: AppBar(
         elevation: 2.0,
@@ -52,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
               alignment: Alignment.center,
               icon: Icon(Icons.close),
               onPressed: () {
-                _auth.signOut();
                 Navigator.pop(context);
               }),
         ],

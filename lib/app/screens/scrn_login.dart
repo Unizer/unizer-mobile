@@ -15,11 +15,17 @@ class FormFields {
   String password;
 }
 
+class User {
+  User({this.fbUser});
+  FirebaseUser fbUser;
+}
+
 class _LoginScreenState extends State<LoginScreen> {
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
   var _formFields = FormFields();
+  var _currentUser = User();
   bool _showSpinner = false;
   bool _hidePassword = true;
 
@@ -33,9 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final String savedEmail = await LocalPrefs().getUserEmail();
     if (savedEmail != null && savedEmail != 'null') {
       print('Email found in preferences: $savedEmail');
-      //setState(() {
       _textEditingController.text = savedEmail;
-      //});
     }
   }
 
@@ -56,11 +60,12 @@ class _LoginScreenState extends State<LoginScreen> {
     final _auth =
         FirebaseAuth.instance; //intialise Firebase authentication object
     try {
-      final _currentUser = await _auth.signInWithEmailAndPassword(
+      final _authUser = await _auth.signInWithEmailAndPassword(
           email: _formFields.email, password: _formFields.password);
-      if (_currentUser != null) {
+      if (_authUser != null) {
+        _currentUser.fbUser = _authUser;
         LocalPrefs.writeUserAccount(
-            email: _formFields.email, displayName: _currentUser.displayName);
+            email: _formFields.email, displayName: _authUser.displayName);
       }
     } on PlatformException catch (e) {
       String _errorCode = e.code;
@@ -81,7 +86,14 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     var _loginSucces = await _authCheck();
     if (_loginSucces == true) {
-      Navigator.pushNamed(context, HomeScreen.screenID);
+      //Navigator.pushNamed(context, HomeScreen.screenID);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => HomeScreen(
+                  currentUser: _currentUser.fbUser,
+                )),
+      );
     }
     setState(() {
       _showSpinner = false;
@@ -316,7 +328,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 color: UniColors.buttonGreen,
                                 label: AppLocalizations.of(context)
                                     .tr('lbl_login'),
-                                onPressed: _actionLogin,
+                                onPressed: () {
+                                  _actionLogin();
+                                },
                               ),
                               SizedBox(
                                 height: kLinkTextVerticalSpace,
