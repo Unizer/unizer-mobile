@@ -30,7 +30,9 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       _loggedInUser = await _auth.currentUser();
       if (_loggedInUser != null) {
-        _userDisplayName = _loggedInUser.displayName;
+        setState(() {
+          _userDisplayName = _loggedInUser.displayName;
+        });
         print('User displayname = ${_loggedInUser.displayName}');
         print('User uid = ${_loggedInUser.uid}');
       }
