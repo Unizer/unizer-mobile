@@ -2,6 +2,8 @@ import 'package:Unizer/packages.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
+
+  //TODO: Use Provider instead of pushing user data
   final FirebaseUser currentUser;
   HomeScreen({this.currentUser});
 
@@ -17,7 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: MainTitleBar(
         title: AppLocalizations.of(context).tr('lbl_home'),
       ),
-      drawer: LeftMenu(userDisplayName: _userDisplayName),
+      drawer: LeftMenu(
+        currentUser: widget.currentUser,
+      ),
       body: Container(
         decoration: kBoxScreenDecoration,
         constraints: BoxConstraints.expand(),

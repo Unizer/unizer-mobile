@@ -1,13 +1,9 @@
 import 'package:Unizer/packages.dart';
 
 class LeftMenu extends StatelessWidget {
-  const LeftMenu({
-    Key key,
-    @required String userDisplayName,
-  })  : _userDisplayName = userDisplayName,
-        super(key: key);
+  LeftMenu({Key key, this.currentUser}) : super(key: key);
 
-  final String _userDisplayName;
+  final FirebaseUser currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +50,7 @@ class LeftMenu extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Text(
-                              _userDisplayName,
+                              currentUser.displayName,
                               softWrap: true,
                               style: kH1,
                             ),
@@ -80,6 +76,9 @@ class LeftMenu extends StatelessWidget {
                     key: UniqueKey(),
                     label: AppLocalizations.of(context).tr('lbl_unizers'),
                     icon: Boxicons.bxUser,
+                    onPress: () {
+                      Navigator.pushNamed(context, UnizerScreen.screenID);
+                    },
                   ),
                   MenuListItem(
                     label: AppLocalizations.of(context).tr('lbl_teams'),

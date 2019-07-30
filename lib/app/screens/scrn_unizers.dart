@@ -12,12 +12,11 @@ class UnizerScreen extends StatefulWidget {
 class _UnizerScreenState extends State<UnizerScreen> {
   @override
   Widget build(BuildContext context) {
-    String _userDisplayName = widget.currentUser.displayName;
     return Scaffold(
       appBar: MainTitleBar(
         title: AppLocalizations.of(context).tr('lbl_unizers'),
       ),
-      drawer: LeftMenu(userDisplayName: _userDisplayName),
+      drawer: LeftMenu(currentUser: widget.currentUser),
       body: Container(
         decoration: kBoxScreenDecoration,
         constraints: BoxConstraints.expand(),
@@ -33,26 +32,18 @@ class _UnizerScreenState extends State<UnizerScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
+                    cardHeight: 100.0,
                     widgetContent: ListView(
                       children: <Widget>[
                         Text(
-                          AppLocalizations.of(context).tr(
-                              'msg_welcome-username',
-                              args: [_userDisplayName]),
-                          style: kH1,
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: kCardVerticalSpace,
-                        ),
-                        Text(
-                          AppLocalizations.of(context).tr('msg_up-to-date'),
+                          AppLocalizations.of(context)
+                              .tr('msg_unizer-home-info'),
                           style: kH2,
                           textAlign: TextAlign.center,
                         ),
                       ],
                     ),
-                    screenID: HomeScreen.screenID,
+                    screenID: UnizerScreen.screenID,
                   ),
                 ),
               ],

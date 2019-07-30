@@ -86,11 +86,11 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     var _loginSucces = await _authCheck();
     if (_loginSucces == true) {
-      //Navigator.pushNamed(context, HomeScreen.screenID);
+      //TODO: Navigate to HomeScreen after login
       Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => HomeScreen(
+            builder: (context) => UnizerScreen(
                   currentUser: _currentUser.fbUser,
                 )),
       );

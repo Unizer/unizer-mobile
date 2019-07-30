@@ -44,7 +44,6 @@ class _UniInfoBoxState extends State<UniInfoBox> {
 
   void resizeCard() {
     _defaultCardHeight = widget.cardHeight ?? kInfoCardMaxHeight;
-    print('Default card height: $_defaultCardHeight');
     _infoCardExpanded
         ? _infoCardHeight = _defaultCardHeight
         : _infoCardHeight = kInfoCardMinHeight;
