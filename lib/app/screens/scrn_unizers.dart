@@ -1,21 +1,21 @@
 import 'package:Unizer/packages.dart';
 
-class HomeScreen extends StatefulWidget {
-  static const String screenID = 'home';
+class UnizerScreen extends StatefulWidget {
+  static const String screenID = 'unizers';
   final FirebaseUser currentUser;
-  HomeScreen({this.currentUser});
+  UnizerScreen({this.currentUser});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _UnizerScreenState createState() => _UnizerScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _UnizerScreenState extends State<UnizerScreen> {
   @override
   Widget build(BuildContext context) {
     String _userDisplayName = widget.currentUser.displayName;
     return Scaffold(
       appBar: MainTitleBar(
-        title: AppLocalizations.of(context).tr('lbl_home'),
+        title: AppLocalizations.of(context).tr('lbl_unizers'),
       ),
       drawer: LeftMenu(userDisplayName: _userDisplayName),
       body: Container(

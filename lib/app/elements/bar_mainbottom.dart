@@ -1,15 +1,15 @@
 import 'package:Unizer/packages.dart';
 
-class UniMainBottomBar extends StatefulWidget {
-  const UniMainBottomBar({
+class MainBottomBar extends StatefulWidget {
+  const MainBottomBar({
     Key key,
   }) : super(key: key);
 
   @override
-  _UniMainBottomBarState createState() => _UniMainBottomBarState();
+  _MainBottomBarState createState() => _MainBottomBarState();
 }
 
-class _UniMainBottomBarState extends State<UniMainBottomBar> {
+class _MainBottomBarState extends State<MainBottomBar> {
   int _selectedBottomBarIndex = 0;
   void _onBottomItemTapped(int index) {
     setState(() {
