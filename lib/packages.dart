@@ -18,6 +18,7 @@ export 'package:Unizer/app/screens/scrn_register.dart';
 export 'package:Unizer/app/screens/scrn_reset-pw.dart';
 export 'package:Unizer/app/textstyles/style_input-text-field.dart';
 export 'package:Unizer/app/textstyles/style_text-styles.dart';
+export 'package:Unizer/app/elements/bar_mainbottom.dart';
 export 'package:Unizer/constants.dart';
 export 'package:Unizer/data/fireb_data.dart';
 export 'package:Unizer/data/localprefs.dart';

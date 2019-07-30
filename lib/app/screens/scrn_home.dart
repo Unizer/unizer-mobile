@@ -74,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      bottomNavigationBar: UniMainBottomBar(),
     );
   }
 }
