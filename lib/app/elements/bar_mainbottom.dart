@@ -22,31 +22,42 @@ class _UniMainBottomBarState extends State<UniMainBottomBar> {
     return BottomNavigationBar(
       unselectedItemColor: UniColors.h2,
       selectedItemColor: UniColors.black,
-      selectedFontSize: 10.0,
+      selectedFontSize: 13.0,
       unselectedFontSize: 10.0,
+      selectedIconTheme: IconThemeData(
+        size: 26.0,
+      ),
+      unselectedIconTheme: IconThemeData(
+        size: 20.0,
+      ),
       type: BottomNavigationBarType.fixed,
       elevation: 8.0,
       backgroundColor: UniColors.white,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
+          activeIcon: Icon(Boxicons.bxsHome),
           icon: Icon(Boxicons.bxHome),
-          title: Text('Home'),
+          title: Text(AppLocalizations.of(context).tr('lbl_home')),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Boxicons.bxCalendar),
-          title: Text('Agenda'),
+          activeIcon: Icon(Boxicons.bxCalendar),
+          icon: Icon(Boxicons.bxCalendarAlt),
+          title: Text(AppLocalizations.of(context).tr('lbl_calendar')),
         ),
         BottomNavigationBarItem(
+          activeIcon: Icon(Boxicons.bxFlagAlt),
           icon: Icon(Boxicons.bxFlag),
-          title: Text('Events'),
+          title: Text(AppLocalizations.of(context).tr('lbl_events')),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Boxicons.bxExclamation),
-          title: Text('Shouts'),
+          activeIcon: Icon(Boxicons.bxsBox),
+          icon: Icon(Boxicons.bxBox),
+          title: Text(AppLocalizations.of(context).tr('lbl_shouts')),
         ),
         BottomNavigationBarItem(
+          activeIcon: Icon(Boxicons.bxMessageDetail),
           icon: Icon(Boxicons.bxMessage),
-          title: Text('Chat'),
+          title: Text(AppLocalizations.of(context).tr('lbl_chat')),
         ),
       ],
       currentIndex: _selectedBottomBarIndex,
