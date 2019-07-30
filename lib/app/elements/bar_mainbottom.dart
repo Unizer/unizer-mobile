@@ -15,9 +15,9 @@ class _MainBottomBarState extends State<MainBottomBar> {
     setState(() {
       _selectedBottomBarIndex = index;
     });
-    if (_selectedBottomBarIndex == 0) {
-      Navigator.pushNamed(context, HomeScreen.screenID);
-    }
+//    if (_selectedBottomBarIndex == 0) {
+//      Navigator.pushNamed(context, HomeScreen.screenID);
+//    }
   }
 
   @override

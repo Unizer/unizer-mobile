@@ -5,11 +5,13 @@ class RoundedButton extends StatelessWidget {
       {@required this.color,
       @required this.label,
       this.onPressed,
-      this.topMargin});
+      this.topMargin,
+      this.outline});
   final Color color;
   final String label;
   final Function onPressed;
   final double topMargin;
+  final bool outline;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class RoundedButton extends StatelessWidget {
           height: 42.0,
           child: Text(
             label,
-            style: kButtonText, //'Log In',
+            style: kButtonText,
           ),
         ),
       ),

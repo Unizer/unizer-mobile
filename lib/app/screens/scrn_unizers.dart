@@ -32,14 +32,41 @@ class _UnizerScreenState extends State<UnizerScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
-                    cardHeight: 100.0,
-                    widgetContent: ListView(
+                    cardHeight: 180.0,
+                    widgetContent: Stack(
+                      fit: StackFit.loose,
                       children: <Widget>[
-                        Text(
-                          AppLocalizations.of(context)
-                              .tr('msg_unizer-home-info'),
-                          style: kH2,
-                          textAlign: TextAlign.center,
+                        Align(
+                          child: Image(
+                            image: AssetImage(
+                              'images/Ula-w-Unizer-phone-70x150.png',
+                            ),
+                            height: 130.0,
+                          ),
+                          alignment: Alignment.topRight,
+                        ),
+                        ListView(
+                          scrollDirection: Axis.vertical,
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(left: 10.0),
+                              width: 300.0,
+                              child: Text(
+                                AppLocalizations.of(context)
+                                    .tr('msg_unizer-home-info'),
+                                style: kH2,
+                                textAlign: TextAlign.left,
+                                softWrap: true,
+                              ),
+                            ),
+                            //TODO: Show proper button
+                            RoundedButton(
+                              color: Colors.white12,
+                              label: AppLocalizations.of(context)
+                                  .tr('btn_invite-more-friends'),
+                              onPressed: () {},
+                            ),
+                          ],
                         ),
                       ],
                     ),

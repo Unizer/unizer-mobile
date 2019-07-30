@@ -1,5 +1,6 @@
 import 'package:Unizer/packages.dart';
 
+//TODO: Get darkmode from Provider
 const BoxDecoration kBoxScreenDecoration = BoxDecoration(
   // Box decoration takes a gradient
   gradient: LinearGradient(

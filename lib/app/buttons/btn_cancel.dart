@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:Unizer/packages.dart';
 
 class CancelButton extends StatelessWidget {
   @override
@@ -9,8 +9,8 @@ class CancelButton extends StatelessWidget {
         onTap: () {
           Navigator.pop(context);
         },
-        child: const Text(
-          'Cancel',
+        child: Text(
+          AppLocalizations.of(context).tr('btn_cancel'),
           textAlign: TextAlign.center,
         ),
       ),
