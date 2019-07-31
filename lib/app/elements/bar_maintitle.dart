@@ -7,15 +7,17 @@ class MainTitleBar extends StatelessWidget with PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 2.0,
+      elevation: 3.0,
       iconTheme: IconThemeData(color: Colors.black),
       actions: <Widget>[
         IconButton(
-            alignment: Alignment.center,
-            icon: Icon(Icons.close),
-            onPressed: () {
-              Navigator.pop(context);
-            }),
+          alignment: Alignment.center,
+          icon: Icon(Boxicons.bxSearch),
+        ),
+        IconButton(
+          alignment: Alignment.center,
+          icon: Icon(Boxicons.bxBell),
+        ),
       ],
       title: Text(
         title,
