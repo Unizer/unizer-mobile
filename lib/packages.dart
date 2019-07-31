@@ -38,3 +38,4 @@ export 'package:flutter_screenutil/flutter_screenutil.dart';
 export 'package:fluttertoast/fluttertoast.dart';
 export 'package:modal_progress_hud/modal_progress_hud.dart';
 export 'package:shared_preferences/shared_preferences.dart';
+export 'package:provider/provider.dart';

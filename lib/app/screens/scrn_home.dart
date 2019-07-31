@@ -3,8 +3,6 @@ import 'package:Unizer/packages.dart';
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
 
-  //TODO: Use Provider instead of pushing user data
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -12,7 +10,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    String _userDisplayName = 'Username';
+    var _user = Provider.of<FirebaseUser>(context);
+    String _userDisplayName = _user.displayName;
+
     return Scaffold(
       appBar: MainTitleBar(
         title: AppLocalizations.of(context).tr('lbl_home'),

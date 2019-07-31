@@ -16,6 +16,8 @@ class FormFields {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _auth = FirebaseAuth.instance;
+
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
@@ -51,8 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!_isValid) {
       return false;
     }
-    final _auth =
-        FirebaseAuth.instance; //intialise Firebase authentication object
+
     try {
       final _authUser = await _auth.signInWithEmailAndPassword(
           email: _formFields.email, password: _formFields.password);
