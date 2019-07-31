@@ -42,6 +42,7 @@
   "msg_insert-all-required-fields": "Er mist nog iets. Graag alle velden invullen!",
   "msg_required-field": "Vul hier je {} in.",
   "msg_user-created-succes": "Gebruiker {} is succesvol aangemaakt.",
+  "msg_user-registered-succes": "Dankjewel voor je Unizer aanmelding, {}. Je ontvangt spoedig een email om je account te bevestigen.",
   "msg_password-invalid": "Je wachtwoord is niet geldig: gebruik minimaal 6 tekens.",
   "msg_user-login-succes-as": "Je bent ingelogt als {}.",
   "msg_welcome-username": "Welkom {}!",

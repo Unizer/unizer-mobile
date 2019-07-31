@@ -42,6 +42,7 @@
   "msg_insert-all-required-fields": "Something is missing. Please fill all fields!",
   "msg_required-field": "Please enter your {}.",
   "msg_user-created-succes": "Created user {} succesfully.",
+  "msg_user-registered-succes": "Thanks for joining Unizer, {}! You will soon receive an email to confirm your account.",
   "msg_password-invalid": "Your password is invalid: it should at least contain 6 characters.",
   "msg_user-login-succes-as": "You're succesfully logged in as {}.",
   "msg_welcome-username": "Welcome {}!",
