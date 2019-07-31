@@ -53,11 +53,16 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!_isValid) {
       return false;
     }
-
+    final _authUser = await _auth.signInWithEmailAndPassword(
+        email: _formFields.email, password: _formFields.password);
     try {
-      final _authUser = await _auth.signInWithEmailAndPassword(
-          email: _formFields.email, password: _formFields.password);
       if (_authUser != null) {
+        if (!_authUser.isEmailVerified) {
+          UniToast.showToast(
+              message: AppLocalizations.of(context)
+                  .tr('msg_user-login-email-not-verified'));
+          return false;
+        }
         LocalPrefs.writeUserAccount(
             email: _formFields.email, displayName: _authUser.displayName);
       }

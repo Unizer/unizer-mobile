@@ -50,10 +50,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!_isValid) {
       return false;
     }
+    final _newUser = await _auth.createUserWithEmailAndPassword(
+        email: _formFields.email, password: _formFields.password);
     try {
-      final _newUser = await _auth.createUserWithEmailAndPassword(
-          email: _formFields.email, password: _formFields.password);
       if (_newUser != null) {
+        await _newUser.sendEmailVerification();
         String _uid = _newUser.uid; //get user uid
         print('New user created with uid: $_uid');
 
