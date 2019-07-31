@@ -17,7 +17,7 @@ class FormFields {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
-
+  final _textEditingController = TextEditingController();
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
@@ -25,25 +25,12 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _showSpinner = false;
   bool _hidePassword = true;
 
-  String emailAddress = '';
-  String languageCode;
-  String languageLabel;
-
-  final _textEditingController = TextEditingController();
-
   Future getEmail() async {
     final String savedEmail = await LocalPrefs().getUserEmail();
     if (savedEmail != null && savedEmail != 'null') {
       //print('Email found in preferences: $savedEmail');
       _textEditingController.text = savedEmail;
     }
-  }
-
-  Future setLocale() async {
-    final data = EasyLocalizationProvider.of(context).data;
-    final String savedLanguage = await Localizer.getLanguageCode();
-    data.changeLocale(Locale(savedLanguage));
-    languageLabel = kLanguageLabels['$savedLanguage'];
   }
 
   Future<bool> _authCheck() async {
@@ -110,11 +97,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //Write device specs
-    //LocalPrefs.writeDeviceSpecs(context);
-
     //Set Locale
     final data = EasyLocalizationProvider.of(context).data;
+    String languageCode = data.savedLocale.languageCode ?? 'en';
     return EasyLocalizationProvider(
       data: data,
       child: Scaffold(
@@ -151,12 +136,12 @@ class _LoginScreenState extends State<LoginScreen> {
                           final String currentLanguage =
                               Localizer.changeLanguage(context);
                           data.changeLocale(Locale(currentLanguage));
-                          languageLabel = kLanguageLabels[currentLanguage];
+                          //languageLabel = kLanguageLabels[currentLanguage];
                         });
                       },
                       child: Text(
-                        AppLocalizations.of(context).tr('lst_languages.' +
-                            Localizations.localeOf(context).languageCode),
+                        AppLocalizations.of(context)
+                            .tr('lst_languages.$languageCode'),
                         textAlign: TextAlign.center,
                         style: kLinkText,
                       ),
