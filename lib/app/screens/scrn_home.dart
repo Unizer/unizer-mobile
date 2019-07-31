@@ -4,8 +4,6 @@ class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
 
   //TODO: Use Provider instead of pushing user data
-  final FirebaseUser currentUser;
-  HomeScreen({this.currentUser});
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -14,14 +12,12 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    String _userDisplayName = widget.currentUser.displayName;
+    String _userDisplayName = 'Username';
     return Scaffold(
       appBar: MainTitleBar(
         title: AppLocalizations.of(context).tr('lbl_home'),
       ),
-      drawer: LeftMenu(
-        currentUser: widget.currentUser,
-      ),
+      drawer: LeftMenu(),
       body: Container(
         decoration: kBoxScreenDecoration,
         constraints: BoxConstraints.expand(),

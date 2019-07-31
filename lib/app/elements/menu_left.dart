@@ -1,10 +1,6 @@
 import 'package:Unizer/packages.dart';
 
 class LeftMenu extends StatelessWidget {
-  LeftMenu({Key key, this.currentUser}) : super(key: key);
-
-  final FirebaseUser currentUser;
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -50,7 +46,7 @@ class LeftMenu extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Text(
-                              currentUser.displayName,
+                              'Username',
                               softWrap: true,
                               style: kH1,
                             ),

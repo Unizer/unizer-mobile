@@ -15,17 +15,11 @@ class FormFields {
   String password;
 }
 
-class User {
-  User({this.fbUser});
-  FirebaseUser fbUser;
-}
-
 class _LoginScreenState extends State<LoginScreen> {
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
   var _formFields = FormFields();
-  var _currentUser = User();
   bool _showSpinner = false;
   bool _hidePassword = true;
 
@@ -38,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Future getEmail() async {
     final String savedEmail = await LocalPrefs().getUserEmail();
     if (savedEmail != null && savedEmail != 'null') {
-      print('Email found in preferences: $savedEmail');
+      //print('Email found in preferences: $savedEmail');
       _textEditingController.text = savedEmail;
     }
   }
@@ -63,7 +57,6 @@ class _LoginScreenState extends State<LoginScreen> {
       final _authUser = await _auth.signInWithEmailAndPassword(
           email: _formFields.email, password: _formFields.password);
       if (_authUser != null) {
-        _currentUser.fbUser = _authUser;
         LocalPrefs.writeUserAccount(
             email: _formFields.email, displayName: _authUser.displayName);
       }
@@ -86,14 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     var _loginSucces = await _authCheck();
     if (_loginSucces == true) {
-      //TODO: Navigate to HomeScreen after login
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => UnizerScreen(
-                  currentUser: _currentUser.fbUser,
-                )),
-      );
+      Navigator.pushNamed(context, UnizerScreen.screenID);
     }
     setState(() {
       _showSpinner = false;
