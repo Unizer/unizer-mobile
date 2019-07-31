@@ -146,7 +146,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           //Firstname
                           TextFormField(
-                            style: kDefaultTextField,
+                            style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
                                 labelText: AppLocalizations.of(context)
                                     .tr('lbl_first-name'),
@@ -179,7 +179,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           //Lastname
                           TextFormField(
-                            style: kDefaultTextField,
+                            style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
                                 labelText: AppLocalizations.of(context)
                                     .tr('lbl_last-name'),
@@ -210,7 +210,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           //Email
                           TextFormField(
-                            style: kDefaultTextField,
+                            style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
                                 labelText: AppLocalizations.of(context)
                                     .tr('lbl_email'),
@@ -242,7 +242,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             height: kTextFieldVerticalSpace,
                           ),
                           TextFormField(
-                            style: kDefaultTextField,
+                            style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
                                 labelText: AppLocalizations.of(context)
                                     .tr('lbl_password'),

@@ -104,6 +104,10 @@ class LeftMenu extends StatelessWidget {
                   MenuListItem(
                     label: AppLocalizations.of(context).tr('lbl_about'),
                     icon: Boxicons.bxInfoCircle,
+                    onPress: () {
+                      Navigator.pushNamed(context, AboutScreen.screenID);
+                      Scaffold.of(context).openEndDrawer(); //close Drawer
+                    },
                   ),
                 ],
               ),

@@ -2,7 +2,7 @@
   "c01": "Labels",
   "c02": "-------------------------",
   "lbl_apptitle": "Unizer",
-  "lbl_appversion": "version {}",
+  "lbl_appversion": "Version {}",
   "lbl_oneliner": "Unite. Connect. Enjoy.",
   "lbl_forgot-password": "Forgot password?",
   "lbl_reset-password": "Reset password",
@@ -30,6 +30,8 @@
   "lbl_events": "Events",
   "lbl_shouts": "Shouts",
   "lbl_chat": "Chat",
+  "lbl_history": "History",
+  "lbl_mission": "Mission",
   "c03": "",
   "c04": "Lists",
   "c05": "-------------------------",
@@ -120,5 +122,10 @@
   "fireb_err_error-null-user": "A null user object was provided as the argument for an operation which requires a non-null user object.",
   "fireb_err_error-keychain-error": "An error occurred when accessing the keychain.",
   "fireb_err_error-internal-error": "An internal error has occurred, print and inspect the error details for more information.",
-  "fireb_err_error-malformed-jwt": "Failed to parse JWT. Check the userInfo dictionary for the full token."
+  "fireb_err_error-malformed-jwt": "Failed to parse JWT. Check the userInfo dictionary for the full token.",
+  "c15": "",
+  "c16": "Plain text",
+  "c17": "-------------------------",
+  "txt_history": "Unizer is founded in 2014 by Jan Karel Broer. In 2019 he launched the first version of the mobile Unizer app.",
+  "txt_mission": "The purpose of Unizer is to unite people and enable them to enjoy working together."
 }

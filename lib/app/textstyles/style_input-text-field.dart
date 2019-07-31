@@ -21,7 +21,7 @@ class _InputTextFieldState extends State<InputTextField> {
       controller: userFieldController,
       keyboardType: TextInputType.emailAddress,
       textAlign: TextAlign.left,
-      style: kDefaultTextField,
+      style: kBodyText,
       decoration: kTextFieldDecoration.copyWith(hintText: hintText),
     );
   }

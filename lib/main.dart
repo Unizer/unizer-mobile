@@ -44,6 +44,7 @@ class Unizer extends StatelessWidget {
               HomeScreen.screenID: (BuildContext context) => HomeScreen(),
               ResetPWScreen.screenID: (BuildContext context) => ResetPWScreen(),
               UnizerScreen.screenID: (BuildContext context) => UnizerScreen(),
+              AboutScreen.screenID: (BuildContext context) => AboutScreen(),
             },
           ),
         ),

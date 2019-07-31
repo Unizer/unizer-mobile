@@ -65,7 +65,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: MainBottomBar(),
+      bottomNavigationBar: MainBottomBar(
+        screenId: HomeScreen.screenID,
+      ),
     );
   }
 }

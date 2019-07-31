@@ -1,9 +1,8 @@
 import 'package:Unizer/packages.dart';
 
 class MainBottomBar extends StatefulWidget {
-  const MainBottomBar({
-    Key key,
-  }) : super(key: key);
+  const MainBottomBar({Key key, this.screenId}) : super(key: key);
+  final String screenId;
 
   @override
   _MainBottomBarState createState() => _MainBottomBarState();

@@ -118,7 +118,7 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                         children: <Widget>[
                           //Email
                           TextFormField(
-                            style: kDefaultTextField,
+                            style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
                                 labelText: AppLocalizations.of(context)
                                     .tr('lbl_email'),

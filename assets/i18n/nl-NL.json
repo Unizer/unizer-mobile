@@ -2,7 +2,7 @@
   "c01": "Labels",
   "c02": "-------------------------",
   "lbl_apptitle": "Unizer",
-  "lbl_appversion": "versie {}",
+  "lbl_appversion": "Versie {}",
   "lbl_oneliner": "Verbinden. Samenwerken. Genieten.",
   "lbl_forgot-password": "Wachtwoord vergeten?",
   "lbl_reset-password": "Wachtwoord herstellen",
@@ -30,6 +30,8 @@
   "lbl_events": "Events",
   "lbl_shouts": "Shouts",
   "lbl_chat": "Chat",
+  "lbl_history": "Geschiedenis",
+  "lbl_mission": "Missie",
   "c03": "",
   "c04": "Lists",
   "c05": "-------------------------",
@@ -120,5 +122,10 @@
   "fireb_err_error-null-user": "Er is een nulgebruikersobject opgegeven als argument voor een bewerking waarvoor een niet-nulgebruikersobject is vereist.",
   "fireb_err_error-keychain-error": "Er is een fout opgetreden bij het openen van de sleutelhanger.",
   "fireb_err_error-internal-error": "Er is een interne fout opgetreden, print en inspecteer de foutgegevens voor meer informatie.",
-  "fireb_err_error-malformed-jwt": "Kan JWT niet analyseren. Controleer het woordenboek userInfo voor het volledige token."
+  "fireb_err_error-malformed-jwt": "Kan JWT niet analyseren. Controleer het woordenboek userInfo voor het volledige token.",
+  "c15": "",
+  "c16": "Plain text",
+  "c17": "-------------------------",
+  "txt_history": "Unizer is in 2014 opgericht door Jan Karel Broer. In 2019 werd de eerste mobile app versie gelanceerd.",
+  "txt_mission": "Het doel van Unizer is om mensen te verenigen en op een prettige manier samen te laten werken."
 }

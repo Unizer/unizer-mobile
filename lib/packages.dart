@@ -25,6 +25,7 @@ export 'package:Unizer/constants.dart';
 export 'package:Unizer/data/fireb_data.dart';
 export 'package:Unizer/data/localprefs.dart';
 export 'package:Unizer/services/localization.dart';
+export 'package:Unizer/app/screens/scrn_about.dart';
 export 'package:boxicons_flutter/boxicons_flutter.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:easy_localization/easy_localization.dart';

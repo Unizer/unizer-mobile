@@ -23,7 +23,7 @@ const InputDecoration kTextFieldDecoration = InputDecoration(
   ),
 );
 
-const TextStyle kDefaultTextField = TextStyle(
+const TextStyle kBodyText = TextStyle(
   fontSize: kBodyTextSize,
   color: UniColors.bodyText,
   fontWeight: FontWeight.w400,
@@ -42,6 +42,14 @@ const TextStyle kH2 = TextStyle(
   fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w400,
   color: UniColors.h2,
+  height: 1.1,
+);
+
+const TextStyle kH3 = TextStyle(
+  fontSize: kH3TextSize,
+  fontFamily: kGlobalFontFamily,
+  fontWeight: FontWeight.w800,
+  color: UniColors.black,
   height: 1.1,
 );
 

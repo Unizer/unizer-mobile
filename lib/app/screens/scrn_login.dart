@@ -251,7 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 keyboardType: TextInputType.emailAddress,
                                 textInputAction: TextInputAction.next,
                                 focusNode: _emailFocus,
-                                style: kDefaultTextField,
+                                style: kBodyText,
                                 decoration: kTextFieldDecoration.copyWith(
                                   labelText: AppLocalizations.of(context)
                                       .tr('lbl_insert-email'),
@@ -283,7 +283,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 obscureText: _hidePassword,
                                 focusNode: _passwordFocus,
                                 textInputAction: TextInputAction.done,
-                                style: kDefaultTextField,
+                                style: kBodyText,
                                 decoration: kTextFieldDecoration.copyWith(
                                   labelText: AppLocalizations.of(context)
                                       .tr('lbl_insert-password'),
