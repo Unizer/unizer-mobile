@@ -8,15 +8,17 @@ class MainTitleBar extends StatelessWidget with PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 3.0,
-      iconTheme: IconThemeData(color: Colors.black),
+      iconTheme: IconThemeData(color: UniColors.iconMain),
       actions: <Widget>[
         IconButton(
           alignment: Alignment.center,
           icon: Icon(Boxicons.bxSearch),
+          onPressed: () {},
         ),
         IconButton(
           alignment: Alignment.center,
           icon: Icon(Boxicons.bxBell),
+          onPressed: () {},
         ),
       ],
       title: Text(

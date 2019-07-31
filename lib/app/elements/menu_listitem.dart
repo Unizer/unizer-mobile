@@ -30,7 +30,7 @@ class MenuListItem extends StatelessWidget {
                 Icon(
                   icon,
                   size: kMenuIconSize,
-                  color: UniColors.h2,
+                  color: UniColors.iconMain,
                 ),
               ],
             ),

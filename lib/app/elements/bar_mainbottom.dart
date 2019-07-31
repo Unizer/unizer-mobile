@@ -22,7 +22,7 @@ class _MainBottomBarState extends State<MainBottomBar> {
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
-      unselectedItemColor: UniColors.h2,
+      unselectedItemColor: UniColors.iconMain,
       selectedItemColor: UniColors.black,
       selectedFontSize: 13.0,
       unselectedFontSize: 10.0,

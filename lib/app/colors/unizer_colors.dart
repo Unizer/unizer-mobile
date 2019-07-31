@@ -15,12 +15,12 @@ class UniColors {
   static const Color screenBackground = Color(0XFFE5E1EE);
 
   /*-- Menubars --*/
-  static Color appBarBackground = darkMode ? Colors.black : Colors.white;
+  static const Color appBarBackground = Colors.white;
   static const Color menuBackground = Color(0XFFEAE7F2);
 
   /*-- Borders --*/
   static const Color underlineBorder = Color(0XFFA4B6DF);
-  static Color dividerLine = Color(0XFFE5E1EE);
+  static const Color dividerLine = Color(0XFFE5E1EE);
 
   /*-- Text --*/
   static const Color hintText = Color.fromRGBO(158, 163, 168, 0.8);
@@ -36,4 +36,7 @@ class UniColors {
   static const Color buttonGreen = Color(0xFF56C4B7);
   static const Color buttonWormGreen = Color(0xFF9EEA64);
   static const Color buttonClose = Color(0xFFCBC0C0);
+
+  /*-- Icons --*/
+  static const Color iconMain = Color(0xFF898989);
 }
