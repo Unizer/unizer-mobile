@@ -50,9 +50,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
     if (!_isValid) {
       return false;
     }
-    final _newUser = await _auth.createUserWithEmailAndPassword(
-        email: _formFields.email, password: _formFields.password);
     try {
+      final _newUser = await _auth.createUserWithEmailAndPassword(
+          email: _formFields.email, password: _formFields.password);
       if (_newUser != null) {
         await _newUser.sendEmailVerification();
         String _uid = _newUser.uid; //get user uid
@@ -73,9 +73,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
         UniToast.showToast(
           message: AppLocalizations.of(context)
-              .tr('msg_user-registered-succes', args: [_formFields.email]),
+              .tr('msg_user-registered-succes', args: [_formFields.firstName]),
         );
-        Navigator.pop(context);
+        Navigator.popUntil(context, ModalRoute.withName(LoginScreen.screenID));
+        AppBuilder.of(context).rebuild();
       }
     } on PlatformException catch (e) {
       _errorCode = e.code;

@@ -53,9 +53,9 @@ class _LoginScreenState extends State<LoginScreen> {
     if (!_isValid) {
       return false;
     }
-    final _authUser = await _auth.signInWithEmailAndPassword(
-        email: _formFields.email, password: _formFields.password);
     try {
+      final _authUser = await _auth.signInWithEmailAndPassword(
+          email: _formFields.email, password: _formFields.password);
       if (_authUser != null) {
         if (!_authUser.isEmailVerified) {
           UniToast.showToast(
@@ -85,7 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
     });
     var _loginSucces = await _authCheck();
     if (_loginSucces == true) {
-      Navigator.pushNamed(context, UnizerScreen.screenID);
+      Navigator.pushNamed(context, HomeScreen.screenID);
     }
     setState(() {
       _showSpinner = false;
@@ -103,9 +103,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   void initState() {
-    //Set username field
-    super.initState();
+    _auth.signOut();
     getEmail();
+    super.initState();
   }
 
   @override

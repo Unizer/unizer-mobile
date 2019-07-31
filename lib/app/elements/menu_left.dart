@@ -4,7 +4,10 @@ class LeftMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var _user = Provider.of<FirebaseUser>(context);
-    String _userDisplayName = _user.displayName;
+    String _userDisplayName = '';
+    if (_user != null) {
+      _userDisplayName = _user.displayName;
+    }
 
     return Drawer(
       elevation: 8.0,
