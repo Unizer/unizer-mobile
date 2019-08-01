@@ -39,7 +39,7 @@ class LeftMenu extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       Image.asset(
-                        'images/avatar-placeholder.png',
+                        'images/Karel.png',
                         alignment: Alignment.topLeft,
                         width: 80.0,
                         height: 80.0,
