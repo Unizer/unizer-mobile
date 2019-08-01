@@ -10,6 +10,7 @@ export 'package:Unizer/app/elements/box_screen_bg.dart';
 export 'package:Unizer/app/elements/menu_left.dart';
 export 'package:Unizer/app/elements/menu_listitem.dart';
 export 'package:Unizer/app/elements/wdg_card.dart';
+export 'package:Unizer/app/elements/wdg_unizer-card.dart';
 export 'package:Unizer/app/elements/wdg_infobox.dart';
 export 'package:Unizer/app/screens/scrn_home.dart';
 export 'package:Unizer/app/screens/scrn_loading.dart';

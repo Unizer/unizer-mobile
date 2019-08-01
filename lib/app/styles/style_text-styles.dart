@@ -34,7 +34,7 @@ const TextStyle kH1 = TextStyle(
   fontFamily: kGlobalFontFamily,
   fontWeight: FontWeight.w600,
   color: UniColors.h1,
-  height: 1.1,
+  height: 1.0,
 );
 
 const TextStyle kH2 = TextStyle(
