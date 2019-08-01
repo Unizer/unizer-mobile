@@ -41,6 +41,7 @@ const double kCardMaxWidth = 350.0;
 
 /*-- Bars --*/
 const double kBottomBarHeight = 70.0;
+const double kSnackBarHeight = 50.0;
 
 /*-- Languages --*/
 const List<Locale> kLocaleLanguages = [

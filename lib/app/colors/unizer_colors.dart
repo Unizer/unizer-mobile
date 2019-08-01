@@ -11,6 +11,7 @@ class UniColors {
   /*-- General --*/
   static const Color white = Colors.white;
   static const Color black = Color(0xFF333333);
+  static const Color blue = Color(0xFF0060B6);
   static const Color shadow = Color.fromRGBO(51, 51, 51, 0.2);
   static const Color screenBackground = Color(0XFFE5E1EE);
 

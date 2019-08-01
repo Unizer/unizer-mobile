@@ -33,7 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  Future<bool> _authCheck() async {
+  Future<bool> _authCheck(BuildContext context) async {
     _formKey.currentState.save(); //Saves all textfield content
     final _isValid =
         _formKey.currentState.validate(); //Check if any field has no validation
@@ -56,7 +56,8 @@ class _LoginScreenState extends State<LoginScreen> {
     } on PlatformException catch (e) {
       String _errorCode = e.code;
       if (_errorCode.isNotEmpty) {
-        UniToast.showToast(
+        UniSnackBar.showSnackBar(
+          context: context,
           message: Localizer.getFirebaseErrorMessage(
               error: _errorCode, context: context),
         );
@@ -66,17 +67,32 @@ class _LoginScreenState extends State<LoginScreen> {
     return true;
   }
 
-  void _actionLogin() async {
+  void _actionLogin(BuildContext context) async {
     setState(() {
       _showSpinner = true;
     });
-    var _loginSucces = await _authCheck();
+    var _loginSucces = await _authCheck(context);
     if (_loginSucces == true) {
       Navigator.pushNamed(context, HomeScreen.screenID);
     }
     setState(() {
       _showSpinner = false;
     });
+  }
+
+  showSnackBar({BuildContext context, String errorCode}) {
+    var showSnackBar = Scaffold.of(context).showSnackBar(SnackBar(
+      backgroundColor: UniColors.blue,
+      content: Container(
+        height: kSnackBarHeight,
+        child: Text(
+          Localizer.getFirebaseErrorMessage(error: errorCode, context: context),
+          style: kSnackBarText,
+        ),
+      ),
+      duration: Duration(seconds: 3),
+    ));
+    return showSnackBar;
   }
 
   @override
@@ -302,15 +318,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onSaved: (value) {
                                   _formFields.password = value;
                                 },
-                                onFieldSubmitted: (_) => _actionLogin(),
+                                onFieldSubmitted: (_) => _actionLogin(context),
                               ),
-                              RoundedButton(
-                                color: UniColors.buttonGreen,
-                                label: AppLocalizations.of(context)
-                                    .tr('lbl_login'),
-                                onPressed: () {
-                                  _actionLogin();
-                                },
+                              Builder(
+                                builder: (context) => RoundedButton(
+                                  color: UniColors.buttonGreen,
+                                  label: AppLocalizations.of(context)
+                                      .tr('lbl_login'),
+                                  onPressed: () {
+                                    _actionLogin(context);
+                                  },
+                                ),
                               ),
                               SizedBox(
                                 height: kLinkTextVerticalSpace,
