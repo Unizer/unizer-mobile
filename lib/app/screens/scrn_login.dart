@@ -229,7 +229,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      UniCard(
+                      CardWidget(
                         child: Form(
                           key: _formKey,
                           child: Column(
@@ -343,7 +343,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      UniCard(
+                      CardWidget(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[

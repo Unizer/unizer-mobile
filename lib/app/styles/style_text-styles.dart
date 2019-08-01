@@ -53,6 +53,14 @@ const TextStyle kH3 = TextStyle(
   height: 1.1,
 );
 
+const TextStyle kH5 = TextStyle(
+  fontSize: kH5TextSize,
+  fontFamily: kGlobalFontFamily,
+  fontWeight: FontWeight.w300,
+  color: UniColors.subheader,
+  height: 1.1,
+);
+
 const TextStyle kSnackBarText = TextStyle(
   fontSize: kH2TextSize,
   fontFamily: kGlobalFontFamily,

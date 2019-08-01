@@ -1,7 +1,7 @@
 import 'package:Unizer/packages.dart';
 
-class UniCard extends StatelessWidget {
-  UniCard({this.child});
+class CardWidget extends StatelessWidget {
+  CardWidget({this.child});
   final Widget child;
 
   @override

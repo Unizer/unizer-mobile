@@ -42,7 +42,6 @@ class _UnizerScreenState extends State<UnizerScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        //TODO: Show proper button
                         UniOutlineButton(
                           color: UniColors.buttonGreen,
                           topMargin: 10.0,
@@ -53,6 +52,67 @@ class _UnizerScreenState extends State<UnizerScreen> {
                       ],
                     ),
                     screenID: UnizerScreen.screenID,
+                  ),
+                ),
+                CardWidget(
+                  child: Column(
+                    children: <Widget>[
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                          Image.asset(
+                            'images/avatar-placeholder.png',
+                            alignment: Alignment.topLeft,
+                            width: 70.0,
+                            height: 70.0,
+                          ),
+                          SizedBox(
+                            width: 20.0,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'Alex Jonathan',
+                                style: kH1.copyWith(color: UniColors.blue),
+                              ),
+                              Row(
+                                children: <Widget>[
+                                  Icon(
+                                    Boxicons.bxGroup,
+                                    color: UniColors.subheader,
+                                    size: kH5TextSize + 2,
+                                  ),
+                                  SizedBox(
+                                    width: kTextFieldVerticalSpace,
+                                  ),
+                                  Text(
+                                    'Unizer sinds',
+                                    style: kH5,
+                                  ),
+                                  SizedBox(
+                                    width: kTextFieldVerticalSpace,
+                                  ),
+                                  Text(
+                                    '1 aug 2019',
+                                    style: kH5,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Icon(
+                          Boxicons.bxMessage,
+                          color: UniColors.buttonGreen,
+                          size: kMenuIconSize,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],

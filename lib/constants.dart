@@ -13,6 +13,7 @@ const double kHintTextSize = 14.0;
 const double kH1TextSize = 22.0;
 const double kH2TextSize = 17.0;
 const double kH3TextSize = 14.0;
+const double kH5TextSize = 12.0;
 const double kMenuItemTextSize = 20.0;
 const double kLinkTextSize = 14.0;
 const double kFooterTextSize = 10.0;

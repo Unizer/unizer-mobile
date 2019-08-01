@@ -128,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       screenID: RegisterScreen.screenID,
                     ),
                   ),
-                  UniCard(
+                  CardWidget(
                     child: Form(
                       key: _formKey,
                       child: Column(

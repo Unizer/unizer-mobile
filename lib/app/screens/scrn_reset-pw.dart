@@ -111,7 +111,7 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                       screenID: ResetPWScreen.screenID,
                     ),
                   ),
-                  UniCard(
+                  CardWidget(
                     child: Form(
                       key: _formKey,
                       child: Column(

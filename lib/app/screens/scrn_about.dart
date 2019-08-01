@@ -15,7 +15,7 @@ class AboutScreen extends StatelessWidget {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            UniCard(
+            CardWidget(
               child: Column(
                 children: <Widget>[
                   Text(
