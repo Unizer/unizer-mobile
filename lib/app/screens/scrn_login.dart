@@ -99,7 +99,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     //Set Locale
     final data = EasyLocalizationProvider.of(context).data;
-    String languageCode = data.savedLocale.languageCode ?? 'en';
+    String languageCode = 'en';
+    if (data.savedLocale != null) {
+      languageCode = data.savedLocale.languageCode;
+    }
     return EasyLocalizationProvider(
       data: data,
       child: Scaffold(
