@@ -64,6 +64,16 @@ class _UnizerScreenState extends State<UnizerScreen> {
                   name: 'J Karel Broer',
                   date: '12 mrt 2010',
                 ),
+                UnizerCardWidget(
+                  image: 'images/Anthon.jpg',
+                  name: 'Anthon Geersing',
+                  date: '1 jan 2019',
+                ),
+                UnizerCardWidget(
+                  image: 'images/Kars.jpeg',
+                  name: 'Kars Zijlstra',
+                  date: '1 jan 2019',
+                ),
               ],
             ),
           ],
