@@ -43,6 +43,9 @@ const double kCardMaxWidth = 350.0;
 const double kBottomBarHeight = 70.0;
 const double kSnackBarHeight = 50.0;
 
+/*-- Time (seconds) --*/
+const int kDialogDuration = 4;
+
 /*-- Languages --*/
 const List<Locale> kLocaleLanguages = [
   Locale('en', 'US'), // English

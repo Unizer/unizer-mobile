@@ -28,7 +28,6 @@ class _LoginScreenState extends State<LoginScreen> {
   Future getEmail() async {
     final String savedEmail = await LocalPrefs().getUserEmail();
     if (savedEmail != null && savedEmail != 'null') {
-      //print('Email found in preferences: $savedEmail');
       _textEditingController.text = savedEmail;
     }
   }
@@ -45,9 +44,18 @@ class _LoginScreenState extends State<LoginScreen> {
           email: _formFields.email, password: _formFields.password);
       if (_authUser != null) {
         if (!_authUser.isEmailVerified) {
-          UniToast.showToast(
-              message: AppLocalizations.of(context)
-                  .tr('msg_user-login-email-not-verified'));
+          UniDialog.showSnackBar(
+            context: context,
+            message: AppLocalizations.of(context)
+                .tr('msg_user-login-email-not-verified'),
+            action: SnackBarAction(
+              label: AppLocalizations.of(context).tr('lbl_resend'),
+              onPressed: () {
+                _authUser.sendEmailVerification();
+              },
+              textColor: UniColors.white,
+            ),
+          );
           return false;
         }
         LocalPrefs.writeUserAccount(
@@ -56,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } on PlatformException catch (e) {
       String _errorCode = e.code;
       if (_errorCode.isNotEmpty) {
-        UniSnackBar.showSnackBar(
+        UniDialog.showSnackBar(
           context: context,
           message: Localizer.getFirebaseErrorMessage(
               error: _errorCode, context: context),
@@ -78,21 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       _showSpinner = false;
     });
-  }
-
-  showSnackBar({BuildContext context, String errorCode}) {
-    var showSnackBar = Scaffold.of(context).showSnackBar(SnackBar(
-      backgroundColor: UniColors.blue,
-      content: Container(
-        height: kSnackBarHeight,
-        child: Text(
-          Localizer.getFirebaseErrorMessage(error: errorCode, context: context),
-          style: kSnackBarText,
-        ),
-      ),
-      duration: Duration(seconds: 3),
-    ));
-    return showSnackBar;
   }
 
   @override

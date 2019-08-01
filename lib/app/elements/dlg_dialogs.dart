@@ -5,64 +5,35 @@ import 'package:Unizer/app/colors/unizer_colors.dart';
 import 'package:Unizer/app/styles/style_text-styles.dart';
 
 //TODO: Create a custom Toast conform proto
-class UniToast {
+class UniDialog {
   static Future<bool> showToast({String message}) {
     return Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_LONG,
-      timeInSecForIos: 3,
+      timeInSecForIos: kDialogDuration,
       gravity: ToastGravity.TOP,
       backgroundColor: Colors.black87,
       fontSize: 20.0,
     );
   }
-}
 
-class UniSnackBar {
-  static showSnackBar({BuildContext context, String message}) {
+  static showSnackBar(
+      {BuildContext context, String message, SnackBarAction action}) {
     var showSnackBar = Scaffold.of(context).showSnackBar(SnackBar(
+      action: action,
+      elevation: 8.0,
       backgroundColor: UniColors.blue,
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6.0)),
       content: Container(
-        height: kSnackBarHeight,
+        //height: kSnackBarHeight,
         child: Text(
           message,
           style: kSnackBarText,
         ),
       ),
-      duration: Duration(seconds: 3),
+      duration: Duration(seconds: kDialogDuration),
     ));
     return showSnackBar;
-  }
-}
-
-class UniAlertDialog extends StatelessWidget {
-  const UniAlertDialog({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      title: Text('Alert'),
-      content: Text('Weet je het zeker?'),
-      actions: <Widget>[
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop(true);
-          },
-          child: Text(
-            'Yes',
-          ),
-        ),
-        FlatButton(
-          onPressed: () {
-            Navigator.of(context).pop(false);
-          },
-          child: Text(
-            'No',
-          ),
-        ),
-      ],
-    );
   }
 }

@@ -70,8 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           'lastname': _formFields.lastName,
           'user_uid': _uid,
         });
-
-        UniToast.showToast(
+        UniDialog.showToast(
           message: AppLocalizations.of(context)
               .tr('msg_user-registered-succes', args: [_formFields.firstName]),
         );
@@ -81,7 +80,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     } on PlatformException catch (e) {
       _errorCode = e.code;
       if (_errorCode.isNotEmpty) {
-        UniToast.showToast(
+        UniDialog.showToast(
           message: Localizer.getFirebaseErrorMessage(
               error: _errorCode, context: context),
         );

@@ -59,10 +59,11 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
     await _auth.sendPasswordResetEmail(email: _email);
 
     //Show dialog and navigate back to loginscreen
-    UniToast.showToast(
+    UniDialog.showToast(
       message:
           AppLocalizations.of(context).tr('msg_reset-password-email-upcoming'),
     );
+
     Navigator.pop(context);
   }
 
