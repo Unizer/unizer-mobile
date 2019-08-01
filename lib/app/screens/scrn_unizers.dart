@@ -30,41 +30,25 @@ class _UnizerScreenState extends State<UnizerScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
-                    cardHeight: 180.0,
-                    widgetContent: Stack(
-                      fit: StackFit.loose,
+                    cardHeight: 140.0,
+                    widgetContent: ListView(
+                      scrollDirection: Axis.vertical,
                       children: <Widget>[
-                        Align(
-                          child: Image(
-                            image: AssetImage(
-                              'images/Ula-w-Unizer-phone-70x150.png',
-                            ),
-                            height: 130.0,
+                        Container(
+                          child: Text(
+                            AppLocalizations.of(context)
+                                .tr('msg_unizer-home-info'),
+                            style: kH2,
+                            textAlign: TextAlign.center,
                           ),
-                          alignment: Alignment.topRight,
                         ),
-                        ListView(
-                          scrollDirection: Axis.vertical,
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(left: 10.0),
-                              width: 300.0,
-                              child: Text(
-                                AppLocalizations.of(context)
-                                    .tr('msg_unizer-home-info'),
-                                style: kH2,
-                                textAlign: TextAlign.left,
-                                softWrap: true,
-                              ),
-                            ),
-                            //TODO: Show proper button
-                            RoundedButton(
-                              color: Colors.white12,
-                              label: AppLocalizations.of(context)
-                                  .tr('btn_invite-more-friends'),
-                              onPressed: () {},
-                            ),
-                          ],
+                        //TODO: Show proper button
+                        UniOutlineButton(
+                          color: UniColors.buttonGreen,
+                          topMargin: 10.0,
+                          label: AppLocalizations.of(context)
+                              .tr('btn_invite-more-friends'),
+                          onPressed: () {},
                         ),
                       ],
                     ),

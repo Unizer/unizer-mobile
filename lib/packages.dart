@@ -3,6 +3,7 @@ export 'dart:io' show Platform;
 
 export 'package:Unizer/app/buttons/btn_cancel.dart';
 export 'package:Unizer/app/buttons/btn_rounded.dart';
+export 'package:Unizer/app/buttons/btn_outline.dart';
 export 'package:Unizer/app/colors/unizer_colors.dart';
 export 'package:Unizer/app/elements/dlg_dialogs.dart';
 export 'package:Unizer/app/elements/box_screen_bg.dart';
