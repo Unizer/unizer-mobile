@@ -215,7 +215,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         width: 200,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(
+                        padding: EdgeInsets.only(
                           bottom: kCardMargins,
                         ),
                         child: Center(
@@ -230,91 +230,92 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       CardWidget(
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: <Widget>[
-                              Text(
-                                AppLocalizations.of(context).tr('lbl_login'),
-                                textAlign: TextAlign.left,
-                                style: kH1,
-                              ),
-                              SizedBox(
-                                height: kH1VerticalSpace,
-                              ),
-                              TextFormField(
-                                controller: _textEditingController,
-                                keyboardType: TextInputType.emailAddress,
-                                textInputAction: TextInputAction.next,
-                                focusNode: _emailFocus,
-                                style: kBodyText,
-                                decoration: kTextFieldDecoration.copyWith(
-                                  labelText: AppLocalizations.of(context)
-                                      .tr('lbl_insert-email'),
+                        child: Builder(
+                          builder: (context) => Form(
+                            key: _formKey,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                Text(
+                                  AppLocalizations.of(context).tr('lbl_login'),
+                                  textAlign: TextAlign.left,
+                                  style: kH1,
                                 ),
-                                autovalidate: false,
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return AppLocalizations.of(context)
-                                        .tr('msg_required-field', args: [
-                                      AppLocalizations.of(context)
-                                          .tr('lbl_email')
-                                          .toLowerCase()
-                                    ]);
-                                  }
-                                  return null;
-                                },
-                                onFieldSubmitted: (_) {
-                                  FocusScope.of(context)
-                                      .requestFocus(_passwordFocus);
-                                },
-                                onSaved: (value) {
-                                  _formFields.email = value;
-                                },
-                              ),
-                              SizedBox(
-                                height: kTextFieldVerticalSpace,
-                              ),
-                              TextFormField(
-                                obscureText: _hidePassword,
-                                focusNode: _passwordFocus,
-                                textInputAction: TextInputAction.done,
-                                style: kBodyText,
-                                decoration: kTextFieldDecoration.copyWith(
-                                  labelText: AppLocalizations.of(context)
-                                      .tr('lbl_insert-password'),
-                                  suffixIcon: IconButton(
-                                      icon: Icon(_hidePassword
-                                          ? Icons.visibility_off
-                                          : Icons.visibility),
-                                      color: UniColors.hintText,
-                                      iconSize: kTextFormFieldIconSize,
-                                      onPressed: () {
-                                        setState(() {
-                                          _hidePassword = !_hidePassword;
-                                        });
-                                      }),
+                                SizedBox(
+                                  height: kH1VerticalSpace,
                                 ),
-                                autovalidate: false,
-                                validator: (value) {
-                                  if (value.isEmpty) {
-                                    return AppLocalizations.of(context)
-                                        .tr('msg_required-field', args: [
-                                      AppLocalizations.of(context)
-                                          .tr('lbl_password')
-                                          .toLowerCase()
-                                    ]);
-                                  }
-                                  return null;
-                                },
-                                onSaved: (value) {
-                                  _formFields.password = value;
-                                },
-                                onFieldSubmitted: (_) => _actionLogin(context),
-                              ),
-                              Builder(
-                                builder: (context) => RoundedButton(
+                                TextFormField(
+                                  controller: _textEditingController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  textInputAction: TextInputAction.next,
+                                  focusNode: _emailFocus,
+                                  style: kBodyText,
+                                  decoration: kTextFieldDecoration.copyWith(
+                                    labelText: AppLocalizations.of(context)
+                                        .tr('lbl_insert-email'),
+                                  ),
+                                  autovalidate: false,
+                                  validator: (value) {
+                                    if (value.isEmpty) {
+                                      return AppLocalizations.of(context)
+                                          .tr('msg_required-field', args: [
+                                        AppLocalizations.of(context)
+                                            .tr('lbl_email')
+                                            .toLowerCase()
+                                      ]);
+                                    }
+                                    return null;
+                                  },
+                                  onFieldSubmitted: (_) {
+                                    FocusScope.of(context)
+                                        .requestFocus(_passwordFocus);
+                                  },
+                                  onSaved: (value) {
+                                    _formFields.email = value;
+                                  },
+                                ),
+                                SizedBox(
+                                  height: kTextFieldVerticalSpace,
+                                ),
+                                TextFormField(
+                                  obscureText: _hidePassword,
+                                  focusNode: _passwordFocus,
+                                  textInputAction: TextInputAction.done,
+                                  style: kBodyText,
+                                  decoration: kTextFieldDecoration.copyWith(
+                                    labelText: AppLocalizations.of(context)
+                                        .tr('lbl_insert-password'),
+                                    suffixIcon: IconButton(
+                                        icon: Icon(_hidePassword
+                                            ? Icons.visibility_off
+                                            : Icons.visibility),
+                                        color: UniColors.hintText,
+                                        iconSize: kTextFormFieldIconSize,
+                                        onPressed: () {
+                                          setState(() {
+                                            _hidePassword = !_hidePassword;
+                                          });
+                                        }),
+                                  ),
+                                  autovalidate: false,
+                                  validator: (value) {
+                                    if (value.isEmpty) {
+                                      return AppLocalizations.of(context)
+                                          .tr('msg_required-field', args: [
+                                        AppLocalizations.of(context)
+                                            .tr('lbl_password')
+                                            .toLowerCase()
+                                      ]);
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (value) {
+                                    _formFields.password = value;
+                                  },
+                                  onFieldSubmitted: (_) =>
+                                      _actionLogin(context),
+                                ),
+                                RoundedButton(
                                   color: UniColors.buttonGreen,
                                   label: AppLocalizations.of(context)
                                       .tr('lbl_login'),
@@ -322,24 +323,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                     _actionLogin(context);
                                   },
                                 ),
-                              ),
-                              SizedBox(
-                                height: kLinkTextVerticalSpace,
-                              ),
-                              Center(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Navigator.pushNamed(
-                                        context, ResetPWScreen.screenID);
-                                  },
-                                  child: Text(
-                                    AppLocalizations.of(context)
-                                        .tr('lbl_forgot-password'),
-                                    style: kLinkText,
+                                SizedBox(
+                                  height: kLinkTextVerticalSpace,
+                                ),
+                                Center(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.pushNamed(
+                                          context, ResetPWScreen.screenID);
+                                    },
+                                    child: Text(
+                                      AppLocalizations.of(context)
+                                          .tr('lbl_forgot-password'),
+                                      style: kLinkText,
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
