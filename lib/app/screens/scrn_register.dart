@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 
 class RegisterScreen extends StatefulWidget {
   static const String screenID = 'register';
@@ -74,8 +74,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
           message: AppLocalizations.of(context)
               .tr('msg_user-registered-succes', args: [_formFields.firstName]),
         );
-        Navigator.popUntil(context, ModalRoute.withName(LoginScreen.screenID));
-        AppBuilder.of(context).rebuild();
+        //Show loginscreen after 5 secs
+        Future.delayed(Duration(seconds: 5), () {
+          Navigator.popUntil(
+              context, ModalRoute.withName(LoginScreen.screenID));
+        });
       }
     } on PlatformException catch (e) {
       _errorCode = e.code;

@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 
 class MenuListItem extends StatelessWidget {
   MenuListItem({Key key, this.label, this.icon, this.onPress})

@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {

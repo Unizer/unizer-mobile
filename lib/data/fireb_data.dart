@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 
 class UniData {
   Widget build(

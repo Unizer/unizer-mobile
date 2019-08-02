@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 
 class AboutScreen extends StatelessWidget {
   static const String screenID = 'about';

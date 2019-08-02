@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 
 /*-- Application language property --*/
 const String _kLanguageCode = 'appLanguage';

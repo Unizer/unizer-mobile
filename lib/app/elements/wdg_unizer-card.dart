@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 
 class UnizerCardWidget extends StatelessWidget {
   const UnizerCardWidget({Key key, this.image, this.name, this.date})

@@ -1,4 +1,4 @@
-import 'package:Unizer/packages.dart';
+import 'package:Unizer/connector.dart';
 
 //TODO: Get darkmode from Provider
 const BoxDecoration kBoxScreenDecoration = BoxDecoration(
