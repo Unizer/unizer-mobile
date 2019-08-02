@@ -58,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
           );
           return false;
         }
+
         LocalPrefs.writeUserAccount(
             email: _formFields.email, displayName: _authUser.displayName);
       }

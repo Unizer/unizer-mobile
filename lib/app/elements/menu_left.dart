@@ -5,7 +5,7 @@ class LeftMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     var _user = Provider.of<FirebaseUser>(context);
     String _userDisplayName = '';
-    if (_user != null) {
+    if (_user != null && _user.displayName != null) {
       _userDisplayName = _user.displayName;
     }
 

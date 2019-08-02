@@ -9,13 +9,18 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final auth = FirebaseAuth.instance;
+  FirebaseUser user;
 
   @override
   Widget build(BuildContext context) {
-    FirebaseUser _user = Provider.of<FirebaseUser>(context);
+    user = Provider.of<FirebaseUser>(context);
     String _userDisplayName = '';
-    if (_user != null) {
-      _userDisplayName = _user.displayName;
+    if (user != null) {
+      if (user.displayName == null) {
+        _userDisplayName = '';
+      } else {
+        _userDisplayName = user.displayName;
+      }
     }
 
     return Scaffold(

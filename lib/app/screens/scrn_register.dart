@@ -65,10 +65,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
         //Create Unizer record
         _firestore.collection('unizers').add({
+          'user_uid': _uid,
+          'registration_date': DateTime.now(),
           'email': _formFields.email,
           'firstname': _formFields.firstName,
           'lastname': _formFields.lastName,
-          'user_uid': _uid,
+          'displayname': _formFields.firstName + ' ' + _formFields.lastName,
         });
         UniDialog.showToast(
           message: AppLocalizations.of(context)
