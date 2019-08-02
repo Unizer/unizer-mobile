@@ -38,11 +38,13 @@ class LeftMenu extends StatelessWidget {
                       }),
                   Row(
                     children: <Widget>[
-                      Image.asset(
-                        'images/Karel.png',
-                        alignment: Alignment.topLeft,
-                        width: 80.0,
-                        height: 80.0,
+                      ClipOval(
+                        child: Image.asset(
+                          'images/Karel.png',
+                          alignment: Alignment.topLeft,
+                          width: 80.0,
+                          height: 80.0,
+                        ),
                       ),
                       SizedBox(
                         width: 15.0,

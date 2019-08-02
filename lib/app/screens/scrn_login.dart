@@ -80,12 +80,12 @@ class _LoginScreenState extends State<LoginScreen> {
       _showSpinner = true;
     });
     var _loginSucces = await _authCheck(context);
-    if (_loginSucces == true) {
-      Navigator.pushNamed(context, HomeScreen.screenID);
-    }
     setState(() {
       _showSpinner = false;
     });
+    if (_loginSucces == true) {
+      Navigator.pushNamed(context, HomeScreen.screenID);
+    }
   }
 
   @override
