@@ -30,7 +30,7 @@ class LeftMenu extends StatelessWidget {
                 children: <Widget>[
                   IconButton(
                       alignment: Alignment.topRight,
-                      icon: Icon(Boxicons.bxX),
+                      icon: Icon(LineIcons.close),
                       color: UniColors.buttonClose,
                       iconSize: kMenuIconSize,
                       onPressed: () {
@@ -79,18 +79,18 @@ class LeftMenu extends StatelessWidget {
                   MenuListItem(
                     key: UniqueKey(),
                     label: AppLocalizations.of(context).tr('lbl_unizers'),
-                    icon: Boxicons.bxUser,
+                    icon: LineIcons.user,
                     onPress: () {
                       Navigator.pushNamed(context, UnizerScreen.screenID);
                     },
                   ),
                   MenuListItem(
                     label: AppLocalizations.of(context).tr('lbl_teams'),
-                    icon: Boxicons.bxGroup,
+                    icon: LineIcons.group,
                   ),
                   MenuListItem(
                     label: AppLocalizations.of(context).tr('lbl_organisations'),
-                    icon: Boxicons.bxBuilding,
+                    icon: LineIcons.building_o,
                   ),
                 ],
               ),
@@ -98,14 +98,14 @@ class LeftMenu extends StatelessWidget {
                 children: <Widget>[
                   MenuListItem(
                     label: AppLocalizations.of(context).tr('lbl_logout'),
-                    icon: Boxicons.bxLogOut,
+                    icon: LineIcons.sign_out,
                     onPress: () {
                       Navigator.popAndPushNamed(context, LoginScreen.screenID);
                     },
                   ),
                   MenuListItem(
                     label: AppLocalizations.of(context).tr('lbl_about'),
-                    icon: Boxicons.bxInfoCircle,
+                    icon: LineIcons.info_circle,
                     onPress: () {
                       Navigator.pushNamed(context, AboutScreen.screenID);
                       Scaffold.of(context).openEndDrawer(); //close Drawer

@@ -37,28 +37,28 @@ class _MainBottomBarState extends State<MainBottomBar> {
       backgroundColor: UniColors.white,
       items: <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          activeIcon: Icon(Boxicons.bxsHome),
-          icon: Icon(Boxicons.bxHome),
+          activeIcon: Icon(LineIcons.home),
+          icon: Icon(LineIcons.home),
           title: Text(AppLocalizations.of(context).tr('lbl_home')),
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(Boxicons.bxCalendar),
-          icon: Icon(Boxicons.bxCalendarAlt),
+          activeIcon: Icon(LineIcons.calendar),
+          icon: Icon(LineIcons.calendar_o),
           title: Text(AppLocalizations.of(context).tr('lbl_calendar')),
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(Boxicons.bxFlagAlt),
-          icon: Icon(Boxicons.bxFlag),
+          activeIcon: Icon(LineIcons.flag),
+          icon: Icon(LineIcons.flag_o),
           title: Text(AppLocalizations.of(context).tr('lbl_events')),
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(Boxicons.bxsBox),
-          icon: Icon(Boxicons.bxBox),
+          activeIcon: Icon(LineIcons.bullhorn),
+          icon: Icon(LineIcons.bullhorn),
           title: Text(AppLocalizations.of(context).tr('lbl_shouts')),
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(Boxicons.bxMessageDetail),
-          icon: Icon(Boxicons.bxMessage),
+          activeIcon: Icon(LineIcons.comments),
+          icon: Icon(LineIcons.comments),
           title: Text(AppLocalizations.of(context).tr('lbl_chat')),
         ),
       ],

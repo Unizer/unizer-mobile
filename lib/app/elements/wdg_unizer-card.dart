@@ -38,7 +38,7 @@ class UnizerCardWidget extends StatelessWidget {
                     Row(
                       children: <Widget>[
                         Icon(
-                          Boxicons.bxGroup,
+                          LineIcons.group,
                           color: UniColors.subheader,
                           size: kH5TextSize + 2,
                         ),
@@ -66,7 +66,7 @@ class UnizerCardWidget extends StatelessWidget {
           Align(
             alignment: Alignment.bottomRight,
             child: Icon(
-              Boxicons.bxMessage,
+              LineIcons.comment,
               color: UniColors.buttonGreen,
               size: kMenuIconSize,
             ),

@@ -12,12 +12,12 @@ class MainTitleBar extends StatelessWidget with PreferredSizeWidget {
       actions: <Widget>[
         IconButton(
           alignment: Alignment.center,
-          icon: Icon(Boxicons.bxSearch),
+          icon: Icon(LineIcons.search),
           onPressed: () {},
         ),
         IconButton(
           alignment: Alignment.center,
-          icon: Icon(Boxicons.bxBell),
+          icon: Icon(LineIcons.bell),
           onPressed: () {},
         ),
       ],
