@@ -52,7 +52,3 @@ flutter:
       fonts:
         - asset: fonts/Roboto-Medium.ttf
         - asset: fonts/Roboto-Regular.ttf
-
-    - family: Boxicons
-      fonts:
-        - asset: fonts/boxicons.ttf
