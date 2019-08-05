@@ -42,7 +42,7 @@ class _MainBottomBarState extends State<MainBottomBar> {
           title: Text(AppLocalizations.of(context).tr('lbl_home')),
         ),
         BottomNavigationBarItem(
-          activeIcon: Icon(BoxIcons.bxs_calendar_alt),
+          activeIcon: Icon(BoxIcons.bxs_calendar),
           icon: Icon(BoxIcons.bx_calendar),
           title: Text(AppLocalizations.of(context).tr('lbl_calendar')),
         ),

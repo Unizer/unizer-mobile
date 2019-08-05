@@ -68,8 +68,8 @@ class _UniInfoBoxState extends State<UniInfoBox> {
 
   @override
   void initState() {
-    super.initState();
     getBoxExpandedStatus();
+    super.initState();
   }
 
   @override

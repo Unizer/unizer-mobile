@@ -1,12 +1,10 @@
 import 'package:Unizer/connector.dart';
 
-main() {
-  runApp(
-    EasyLocalization(
-      child: Unizer(),
-    ),
-  );
-}
+main() => runApp(
+      EasyLocalization(
+        child: Unizer(),
+      ),
+    );
 
 /// This Widget is the main application widget.
 class Unizer extends StatelessWidget {
@@ -25,7 +23,6 @@ class Unizer extends StatelessWidget {
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
-            //app-specific localization
             EasylocaLizationDelegate(
                 locale: data.locale ?? Locale('nl', 'NL'), path: 'assets/i18n'),
           ],
