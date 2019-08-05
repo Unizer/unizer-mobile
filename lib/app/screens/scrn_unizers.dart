@@ -30,7 +30,7 @@ class _UnizerScreenState extends State<UnizerScreen> {
                     right: kCardMargins,
                   ),
                   child: UniInfoBox(
-                    cardHeight: 160.0,
+                    cardHeight: 170.0,
                     widgetContent: ListView(
                       scrollDirection: Axis.vertical,
                       children: <Widget>[

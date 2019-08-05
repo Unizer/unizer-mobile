@@ -45,9 +45,11 @@ class UniOutlineButton extends StatelessWidget {
                   width: 8.0,
                 ),
               ),
-              Text(
-                label,
-                style: kButtonText.copyWith(color: color),
+              Flexible(
+                child: Text(
+                  label,
+                  style: kButtonText.copyWith(color: color),
+                ),
               ),
             ],
           ),

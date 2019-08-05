@@ -1,7 +1,7 @@
 name: Unizer
 description: Unizer Mobile
 
-version: 4.0.0+8
+version: 4.0.0+9
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
