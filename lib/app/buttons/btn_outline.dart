@@ -5,14 +5,19 @@ class UniOutlineButton extends StatelessWidget {
       {@required this.color,
       @required this.label,
       this.onPressed,
-      this.topMargin});
+      this.topMargin,
+      this.icon});
   final Color color;
   final String label;
   final Function onPressed;
   final double topMargin;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
+    bool showIcon = false;
+    if (icon != null) showIcon = true;
+
     return Padding(
       padding: EdgeInsets.only(top: topMargin ?? kButtonTopMargin),
       child: Container(
@@ -23,9 +28,28 @@ class UniOutlineButton extends StatelessWidget {
         ),
         child: Padding(
           padding: EdgeInsets.all(10.0),
-          child: Text(
-            label,
-            style: kButtonText.copyWith(color: color),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Visibility(
+                visible: showIcon,
+                child: Icon(
+                  icon,
+                  size: kMenuIconSize,
+                  color: color,
+                ),
+              ),
+              Visibility(
+                visible: showIcon,
+                child: SizedBox(
+                  width: 8.0,
+                ),
+              ),
+              Text(
+                label,
+                style: kButtonText.copyWith(color: color),
+              ),
+            ],
           ),
         ),
       ),

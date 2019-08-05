@@ -85,12 +85,18 @@ class LeftMenu extends StatelessWidget {
                     },
                   ),
                   MenuListItem(
+                    key: UniqueKey(),
                     label: AppLocalizations.of(context).tr('lbl_teams'),
                     icon: BoxIcons.bx_group,
                   ),
                   MenuListItem(
+                    key: UniqueKey(),
                     label: AppLocalizations.of(context).tr('lbl_organisations'),
                     icon: BoxIcons.bx_building_house,
+                    onPress: () {
+                      Navigator.pushNamed(
+                          context, OrganisationListScreen.screenID);
+                    },
                   ),
                 ],
               ),

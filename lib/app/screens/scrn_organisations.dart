@@ -1,18 +1,18 @@
 import 'package:Unizer/connector.dart';
 
-class UnizerScreen extends StatefulWidget {
-  static const String screenID = 'unizers';
+class OrganisationListScreen extends StatefulWidget {
+  static const String screenID = 'organisations_list';
 
   @override
-  _UnizerScreenState createState() => _UnizerScreenState();
+  _OrganisationListScreenState createState() => _OrganisationListScreenState();
 }
 
-class _UnizerScreenState extends State<UnizerScreen> {
+class _OrganisationListScreenState extends State<OrganisationListScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainTitleBar(
-        title: AppLocalizations.of(context).tr('lbl_unizers'),
+        title: AppLocalizations.of(context).tr('lbl_organisations'),
       ),
       drawer: LeftMenu(),
       body: Container(
@@ -37,22 +37,22 @@ class _UnizerScreenState extends State<UnizerScreen> {
                         Container(
                           child: Text(
                             AppLocalizations.of(context)
-                                .tr('msg_unizer-home-info'),
+                                .tr('msg_organisations-list-info'),
                             style: kH2,
                             textAlign: TextAlign.center,
                           ),
                         ),
                         UniOutlineButton(
-                          icon: BoxIcons.bxs_smiley_happy,
+                          icon: BoxIcons.bx_building_house,
                           color: UniColors.buttonGreen,
                           topMargin: 10.0,
                           label: AppLocalizations.of(context)
-                              .tr('btn_invite-more-friends'),
+                              .tr('btn_register-organisation'),
                           onPressed: () {},
                         ),
                       ],
                     ),
-                    screenID: UnizerScreen.screenID,
+                    screenID: OrganisationListScreen.screenID,
                   ),
                 ),
                 UnizerCardWidget(
