@@ -22,6 +22,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _emailFocus = FocusNode();
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
+  var _auth = FirebaseAuth.instance;
+  final _firestore =
+      Firestore.instance; //intialise Firestore Cloud authentication object
   var _formFields = RegisterFormFields();
   bool _showSpinner = false;
   String _errorCode = '';
@@ -38,13 +41,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   Future<bool> _submitRegistration() async {
-    var _auth =
-        FirebaseAuth.instance; //intialise Firebase authentication object
-
-    final _firestore =
-        Firestore.instance; //intialise Firestore Cloud authentication object
     _formKey.currentState.save(); //Saves all textfield content
-
     final _isValid =
         _formKey.currentState.validate(); //Check if any field has no validation
     if (!_isValid) {
@@ -76,6 +73,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
           message: AppLocalizations.of(context)
               .tr('msg_user-registered-succes', args: [_formFields.firstName]),
         );
+
+        LocalPrefs.writeUserAccount(
+            email: _formFields.email, displayName: _newUser.displayName);
+
         //Show loginscreen after 5 secs
         Future.delayed(Duration(seconds: 5), () {
           Navigator.popUntil(
