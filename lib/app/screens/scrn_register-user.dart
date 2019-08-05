@@ -1,10 +1,10 @@
 import 'package:Unizer/connector.dart';
 
-class RegisterScreen extends StatefulWidget {
-  static const String screenID = 'register';
+class RegisterUserScreen extends StatefulWidget {
+  static const String screenID = 'register_user';
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _RegisterUserScreenState createState() => _RegisterUserScreenState();
 }
 
 class RegisterFormFields {
@@ -16,7 +16,7 @@ class RegisterFormFields {
   String password;
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _RegisterUserScreenState extends State<RegisterUserScreen> {
   final _firstNameFocus = FocusNode();
   final _lastNameFocus = FocusNode();
   final _emailFocus = FocusNode();
@@ -63,7 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         //Create Unizer record
         _firestore.collection('unizers').add({
           'user_uid': _uid,
-          'registration_date': DateTime.now(),
+          'created': DateTime.now(),
           'email': _formFields.email,
           'firstname': _formFields.firstName,
           'lastname': _formFields.lastName,
@@ -131,7 +131,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         style: kH2,
                         textAlign: TextAlign.center,
                       ),
-                      screenID: RegisterScreen.screenID,
+                      screenID: RegisterUserScreen.screenID,
                     ),
                   ),
                   CardWidget(

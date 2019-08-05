@@ -34,7 +34,8 @@ class Unizer extends StatelessWidget {
           initialRoute: LoginScreen.screenID,
           routes: <String, WidgetBuilder>{
             LoginScreen.screenID: (BuildContext context) => LoginScreen(),
-            RegisterScreen.screenID: (BuildContext context) => RegisterScreen(),
+            RegisterUserScreen.screenID: (BuildContext context) =>
+                RegisterUserScreen(),
             HomeScreen.screenID: (BuildContext context) => HomeScreen(),
             ResetPWScreen.screenID: (BuildContext context) => ResetPWScreen(),
             UnizerScreen.screenID: (BuildContext context) => UnizerScreen(),

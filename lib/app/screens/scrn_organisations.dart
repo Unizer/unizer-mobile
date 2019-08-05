@@ -55,26 +55,6 @@ class _OrganisationListScreenState extends State<OrganisationListScreen> {
                     screenID: OrganisationListScreen.screenID,
                   ),
                 ),
-                UnizerCardWidget(
-                  image: 'images/Annebeth.jpg',
-                  name: 'Annebeth Broer-van Gent',
-                  date: '25 aug 2018',
-                ),
-                UnizerCardWidget(
-                  image: 'images/Karel.png',
-                  name: 'J Karel Broer',
-                  date: '12 mrt 2010',
-                ),
-                UnizerCardWidget(
-                  image: 'images/Anthon.jpg',
-                  name: 'Anthon Geersing',
-                  date: '1 jan 2019',
-                ),
-                UnizerCardWidget(
-                  image: 'images/Kars.jpeg',
-                  name: 'Kars Zijlstra',
-                  date: '1 jan 2019',
-                ),
               ],
             ),
           ],

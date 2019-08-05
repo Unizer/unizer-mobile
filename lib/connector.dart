@@ -19,7 +19,7 @@ export 'package:Unizer/app/screens/scrn_home.dart';
 export 'package:Unizer/app/screens/scrn_loading.dart';
 export 'package:Unizer/app/screens/scrn_login.dart';
 export 'package:Unizer/app/screens/scrn_organisations.dart';
-export 'package:Unizer/app/screens/scrn_register.dart';
+export 'package:Unizer/app/screens/scrn_register-user.dart';
 export 'package:Unizer/app/screens/scrn_reset-pw.dart';
 export 'package:Unizer/app/screens/scrn_unizers.dart';
 export 'package:Unizer/app/styles/box_icons.dart';
