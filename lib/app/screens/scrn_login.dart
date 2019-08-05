@@ -159,13 +159,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: kLinkText,
                       ),
                     ),
-                    SizedBox(
-                      width: 4.0,
-                    ),
                     Icon(
-                      LineIcons.angle_down,
+                      BoxIcons.bx_chevron_down,
                       color: UniColors.linkText,
-                      size: 15.0,
+                      size: 20.0,
                     ),
                   ],
                 ),
@@ -292,8 +289,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                         .tr('lbl_insert-password'),
                                     suffixIcon: IconButton(
                                         icon: Icon(_hidePassword
-                                            ? LineIcons.eye_slash
-                                            : LineIcons.eye),
+                                            ? BoxIcons.bx_hide
+                                            : BoxIcons.bx_show),
                                         color: UniColors.hintText,
                                         iconSize: kTextFormFieldIconSize,
                                         onPressed: () {

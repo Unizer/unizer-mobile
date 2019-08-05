@@ -252,8 +252,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     .tr('lbl_password'),
                                 suffixIcon: IconButton(
                                     icon: Icon(_hidePassword
-                                        ? LineIcons.eye_slash
-                                        : LineIcons.eye),
+                                        ? BoxIcons.bx_hide
+                                        : BoxIcons.bx_show),
                                     color: UniColors.hintText,
                                     iconSize: kTextFormFieldIconSize,
                                     onPressed: () {

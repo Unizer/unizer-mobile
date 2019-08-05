@@ -1,7 +1,7 @@
 name: Unizer
 description: Unizer Mobile
 
-version: 4.0.0+7
+version: 4.0.0+8
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -27,7 +27,6 @@ dependencies:
   fluttertoast: ^3.1.0
   flutter_html: ^0.10.4
   provider: ^3.0.0+1
-  line_icons:
 
 dev_dependencies:
   flutter_test:
@@ -52,3 +51,7 @@ flutter:
       fonts:
         - asset: fonts/Roboto-Medium.ttf
         - asset: fonts/Roboto-Regular.ttf
+
+    - family: Boxicons
+      fonts:
+        - asset: fonts/boxicons.ttf

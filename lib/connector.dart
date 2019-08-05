@@ -41,4 +41,4 @@ export 'package:modal_progress_hud/modal_progress_hud.dart';
 export 'package:shared_preferences/shared_preferences.dart';
 export 'package:provider/provider.dart';
 export 'package:Unizer/services/appbuilder.dart';
-export 'package:line_icons/line_icons.dart';
+export 'package:Unizer/app/styles/box_icons.dart';

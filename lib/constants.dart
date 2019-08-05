@@ -4,7 +4,7 @@ const String kAppName = 'Unizer';
 const String kCurrentYear = '2019';
 
 // This version must be updated in tandem with the pubspec version.
-const String kAppVersion = '4.0.0+7';
+const String kAppVersion = '4.0.0+8';
 
 /*-- Text --*/
 const String kGlobalFontFamily = 'Roboto';
