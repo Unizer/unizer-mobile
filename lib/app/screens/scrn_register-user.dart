@@ -7,8 +7,8 @@ class RegisterUserScreen extends StatefulWidget {
   _RegisterUserScreenState createState() => _RegisterUserScreenState();
 }
 
-class RegisterFormFields {
-  RegisterFormFields(
+class RegisterUserFormFields {
+  RegisterUserFormFields(
       {this.firstName, this.lastName, this.email, this.password});
   String firstName;
   String lastName;
@@ -25,7 +25,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
   var _auth = FirebaseAuth.instance;
   final _firestore =
       Firestore.instance; //intialise Firestore Cloud authentication object
-  var _formFields = RegisterFormFields();
+  var _formFields = RegisterUserFormFields();
   bool _showSpinner = false;
   String _errorCode = '';
   bool _hidePassword = true;
