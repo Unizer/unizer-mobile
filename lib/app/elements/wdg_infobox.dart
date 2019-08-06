@@ -2,7 +2,7 @@ import 'package:Unizer/connector.dart';
 
 //Defaults
 //TODO: Determine card height based upon content
-const double kInfoCardMaxHeight = 110.0;
+const double kInfoCardMaxHeight = 150.0;
 const double kInfoCardMinHeight = 25.0;
 const double kInfoCardMaxSpace = 10.0;
 const double kInfoCardMinSpace = 0.0;

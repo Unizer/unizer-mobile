@@ -56,8 +56,7 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                     height: kCardMargins,
                   ),
                   Text(
-                    AppLocalizations.of(context)
-                        .tr('lbl_insert-organisation-name'),
+                    AppLocalizations.of(context).tr('lbl_insert-fields-below'),
                     style: kH4,
                   ),
                   SizedBox(
@@ -69,11 +68,13 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.all(kCardMargins),
-                    child: TextField(
-                      decoration: kTextFieldDecoration.copyWith(
-                          labelText: AppLocalizations.of(context)
-                              .tr('lbl_organisation-name'),
-                          errorStyle: kErrorValidationText),
+                    child: Form(
+                      child: TextFormField(
+                        decoration: kTextFieldDecoration.copyWith(
+                            labelText: AppLocalizations.of(context)
+                                .tr('lbl_organisation-name'),
+                            errorStyle: kErrorValidationText),
+                      ),
                     ),
                   ),
                   Padding(
