@@ -82,7 +82,7 @@ class _UniInfoBoxState extends State<UniInfoBox> {
           boxShadow: <BoxShadow>[
             kBoxScreenShadow,
           ],
-          color: Colors.white,
+          color: UniColors.white,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(kDefaultBorderRadius),
             bottomLeft: Radius.circular(kDefaultBorderRadius),

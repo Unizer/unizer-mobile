@@ -50,7 +50,7 @@
   "msg_user-login-succes-as": "Je bent ingelogt als {}.",
   "msg_welcome-username": "Welkom {}!",
   "msg_up-to-date": "Je bent helemaal up-to-date.",
-  "msg_reset-password": "Vul je emailadres in en klik op de <b>Herstel wachtwoord</b> button.",
+  "msg_reset-password": "Vul je emailadres in en klik op de Herstel wachtwoord button.",
   "msg_reset-password-email-upcoming" : "Je ontvangt spoedig een email met de link om je wachtwoord te resetten.",
   "msg_unizer-home-info" : "Unizers zijn alle mensen binnen jouw netwerk.",
   "msg_user-login-email-not-verified": "Het emailadres is niet geverificeerd, controleer je inbox of druk op Opnieuw om opnieuw een verificatie-email te ontvangen.",

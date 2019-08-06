@@ -206,7 +206,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     top: 30.0,
                   ),
                   child: Wrap(
-                    crossAxisAlignment: WrapCrossAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.start,
                     alignment: WrapAlignment.center,
                     runSpacing: kCardVerticalSpace,
                     children: <Widget>[

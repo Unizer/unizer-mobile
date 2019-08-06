@@ -118,7 +118,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
             scrollDirection: Axis.vertical,
             children: <Widget>[
               Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.start,
                 alignment: WrapAlignment.center,
                 runSpacing: kCardVerticalSpace,
                 children: <Widget>[

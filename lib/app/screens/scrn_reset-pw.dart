@@ -103,10 +103,11 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                         scrollDirection: Axis.vertical,
                         physics: const NeverScrollableScrollPhysics(),
                         children: <Widget>[
-                          Html(
-                            data: AppLocalizations.of(context)
+                          Text(
+                            AppLocalizations.of(context)
                                 .tr('msg_reset-password'),
-                            defaultTextStyle: kH2,
+                            style: kH2,
+                            textAlign: TextAlign.center,
                           ),
                         ],
                       ),
