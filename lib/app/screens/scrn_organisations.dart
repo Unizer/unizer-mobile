@@ -44,13 +44,17 @@ class _OrganisationListScreenState extends State<OrganisationListScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        UniOutlineButton(
-                          icon: BoxIcons.bx_building_house,
-                          color: UniColors.buttonGreen,
-                          topMargin: 10.0,
-                          label: AppLocalizations.of(context)
-                              .tr('btn_register-organisation'),
-                          onPressed: () {},
+                        Padding(
+                          padding:
+                              EdgeInsets.only(top: kTextFieldVerticalSpace),
+                          child: UniOutlineButton(
+                            icon: BoxIcons.bx_building_house,
+                            color: UniColors.buttonGreen,
+                            topMargin: 10.0,
+                            label: AppLocalizations.of(context)
+                                .tr('btn_register-organisation'),
+                            onPressed: () {},
+                          ),
                         ),
                       ],
                     ),

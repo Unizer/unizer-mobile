@@ -44,13 +44,17 @@ class _UnizerScreenState extends State<UnizerScreen> {
                             textAlign: TextAlign.center,
                           ),
                         ),
-                        UniOutlineButton(
-                          icon: BoxIcons.bxs_smiley_happy,
-                          color: UniColors.buttonGreen,
-                          topMargin: 10.0,
-                          label: AppLocalizations.of(context)
-                              .tr('btn_invite-more-friends'),
-                          onPressed: () {},
+                        Padding(
+                          padding:
+                              EdgeInsets.only(top: kTextFieldVerticalSpace),
+                          child: UniOutlineButton(
+                            icon: BoxIcons.bxs_smiley_happy,
+                            color: UniColors.buttonGreen,
+                            topMargin: 10.0,
+                            label: AppLocalizations.of(context)
+                                .tr('btn_invite-more-friends'),
+                            onPressed: () {},
+                          ),
                         ),
                       ],
                     ),
