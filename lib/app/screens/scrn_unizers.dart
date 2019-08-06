@@ -21,8 +21,10 @@ class _UnizerScreenState extends State<UnizerScreen> {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+            Wrap(
+              crossAxisAlignment: WrapCrossAlignment.start,
+              alignment: WrapAlignment.center,
+              runSpacing: kCardVerticalSpace,
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(

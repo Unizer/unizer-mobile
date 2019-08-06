@@ -117,8 +117,10 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
           child: ListView(
             scrollDirection: Axis.vertical,
             children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                alignment: WrapAlignment.center,
+                runSpacing: kCardVerticalSpace,
                 children: <Widget>[
                   Padding(
                     padding: EdgeInsets.only(
