@@ -19,7 +19,7 @@ class CardWidget extends StatelessWidget {
           boxShadow: <BoxShadow>[
             kBoxScreenShadow,
           ],
-          color: Colors.white,
+          color: UniColors.white,
           borderRadius: BorderRadius.all(
             Radius.circular(kDefaultBorderRadius),
           ),

@@ -6,29 +6,51 @@ class RoundedButton extends StatelessWidget {
       @required this.label,
       this.onPressed,
       this.topMargin,
-      this.outline});
+      this.elevation,
+      this.height,
+      this.icon});
   final Color color;
   final String label;
   final Function onPressed;
   final double topMargin;
-  final bool outline;
+  final double elevation;
+  final double height;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
+    bool showIcon = false;
+    if (icon != null) showIcon = true;
+
     return Padding(
       padding: EdgeInsets.only(top: topMargin ?? kButtonTopMargin),
       child: Material(
-        elevation: 3.0,
+        elevation: elevation ?? 3.0,
         color: color, //Colors.lightBlueAccent,
         borderRadius: BorderRadius.circular(kButtonBorderRadius),
         child: MaterialButton(
           onPressed:
               onPressed, //Navigator.pushNamed(context, LoginScreen.screenID);
           minWidth: 100.0,
-          height: 42.0,
-          child: Text(
-            label,
-            style: kButtonText,
+          height: height ?? kButtonHeight,
+          child: Wrap(
+            direction: Axis.horizontal,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              Text(
+                label,
+                style: kButtonText,
+              ),
+              Visibility(
+                visible: showIcon,
+                child: Icon(
+                  icon,
+                  size: kMenuIconSize + 2,
+                  color: UniColors.white,
+                ),
+              ),
+            ],
           ),
         ),
       ),

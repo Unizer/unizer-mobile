@@ -22,6 +22,7 @@ class UniColors {
   /*-- Borders --*/
   static const Color underlineBorder = Color(0XFFA4B6DF);
   static const Color dividerLine = Color(0XFFE5E1EE);
+  static const Color progressLine = Color(0XFF98464E);
 
   /*-- Text --*/
   static const Color hintText = Color.fromRGBO(158, 163, 168, 0.8);

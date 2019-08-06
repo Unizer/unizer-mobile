@@ -53,6 +53,14 @@ const TextStyle kH3 = TextStyle(
   height: 1.1,
 );
 
+const TextStyle kH4 = TextStyle(
+  fontSize: kH4TextSize,
+  fontFamily: kGlobalFontFamily,
+  fontWeight: FontWeight.w600,
+  color: UniColors.black,
+  height: 1.1,
+);
+
 const TextStyle kH5 = TextStyle(
   fontSize: kH5TextSize,
   fontFamily: kGlobalFontFamily,

@@ -26,6 +26,7 @@ export 'package:Unizer/app/screens/scrn_unizers.dart';
 export 'package:Unizer/app/styles/box_icons.dart';
 export 'package:Unizer/app/styles/style_input-text-field.dart';
 export 'package:Unizer/app/styles/style_text-styles.dart';
+export 'package:Unizer/app/elements/ui_progressline.dart';
 export 'package:Unizer/constants.dart';
 export 'package:Unizer/data/fireb_data.dart';
 export 'package:Unizer/data/localprefs.dart';

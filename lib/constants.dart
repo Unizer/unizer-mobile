@@ -13,6 +13,7 @@ const double kHintTextSize = 14.0;
 const double kH1TextSize = 22.0;
 const double kH2TextSize = 17.0;
 const double kH3TextSize = 14.0;
+const double kH4TextSize = 17.0;
 const double kH5TextSize = 12.0;
 const double kMenuItemTextSize = 20.0;
 const double kLinkTextSize = 14.0;
@@ -28,6 +29,7 @@ const double kButtonBorderRadius = 15.0;
 const double kButtonTextSize = 20.0;
 const double kButtonTopMargin = 25.0;
 const double kMenuIconSize = 25.0;
+const double kButtonHeight = 42.0;
 
 /*-- Spaces --*/
 const double kTextFieldVerticalSpace = 5.0;
@@ -58,6 +60,7 @@ const Map<String, String> kLanguageLabels = {
   'en': 'English',
 };
 
+/*-- Countries --*/
 const Map<String, String> kCountries = {
   'AF': 'Afghanistan',
   'AX': 'Åland Islands',
