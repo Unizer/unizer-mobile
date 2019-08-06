@@ -42,6 +42,8 @@ class Unizer extends StatelessWidget {
             AboutScreen.screenID: (BuildContext context) => AboutScreen(),
             OrganisationListScreen.screenID: (BuildContext context) =>
                 OrganisationListScreen(),
+            RegisterOrgScreen.screenID: (BuildContext context) =>
+                RegisterOrgScreen(),
           },
         ),
       ),

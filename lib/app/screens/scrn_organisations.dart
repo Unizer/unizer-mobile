@@ -53,7 +53,10 @@ class _OrganisationListScreenState extends State<OrganisationListScreen> {
                             topMargin: 10.0,
                             label: AppLocalizations.of(context)
                                 .tr('btn_register-organisation'),
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, RegisterOrgScreen.screenID);
+                            },
                           ),
                         ),
                       ],

@@ -1,7 +1,5 @@
 import 'package:Unizer/connector.dart';
 
-//TODO: Load selected language
-
 class LoginScreen extends StatefulWidget {
   static const String screenID = 'login';
 

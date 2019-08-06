@@ -48,7 +48,7 @@ class _UnizerScreenState extends State<UnizerScreen> {
                           padding:
                               EdgeInsets.only(top: kTextFieldVerticalSpace),
                           child: UniOutlineButton(
-                            icon: BoxIcons.bxs_smiley_happy,
+                            icon: BoxIcons.bx_bulb,
                             color: UniColors.buttonGreen,
                             topMargin: 10.0,
                             label: AppLocalizations.of(context)
