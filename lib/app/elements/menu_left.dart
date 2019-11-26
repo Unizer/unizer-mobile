@@ -3,11 +3,8 @@ import 'package:Unizer/connector.dart';
 class LeftMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var _user = Provider.of<FirebaseUser>(context);
+    //TODO: set user displayname
     String _userDisplayName = '';
-    if (_user != null && _user.displayName != null) {
-      _userDisplayName = _user.displayName;
-    }
 
     return Drawer(
       elevation: 8.0,

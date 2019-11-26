@@ -13,15 +13,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    user = Provider.of<FirebaseUser>(context);
+    //TODO: set user displayname
     String _userDisplayName = '';
-    if (user != null) {
-      if (user.displayName == null) {
-        _userDisplayName = '';
-      } else {
-        _userDisplayName = user.displayName;
-      }
-    }
 
     return Scaffold(
       appBar: MainTitleBar(
