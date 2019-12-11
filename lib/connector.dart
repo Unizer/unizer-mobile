@@ -30,7 +30,6 @@ export 'package:Unizer/app/elements/ui_progressline.dart';
 export 'package:Unizer/constants.dart';
 export 'package:Unizer/data/fireb_data.dart';
 export 'package:Unizer/data/localprefs.dart';
-export 'package:Unizer/services/appbuilder.dart';
 export 'package:Unizer/services/localization.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:easy_localization/easy_localization.dart';

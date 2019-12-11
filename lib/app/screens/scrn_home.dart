@@ -8,14 +8,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final auth = FirebaseAuth.instance;
-  FirebaseUser user;
+  String userDisplayName = '';
+
+  getUserDisplayname() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userDisplayName = prefs.get('userDisplayname');
+    });
+  }
+
+  @override
+  void initState() {
+    //Set username field
+    getUserDisplayname();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    //TODO: set user displayname
-    String _userDisplayName = '';
-
     return Scaffold(
       appBar: MainTitleBar(
         title: AppLocalizations.of(context).tr('lbl_home'),
@@ -41,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         Text(
                           AppLocalizations.of(context).tr(
                               'msg_welcome-username',
-                              args: [_userDisplayName]),
+                              args: [userDisplayName]),
                           style: kH1,
                           textAlign: TextAlign.center,
                         ),

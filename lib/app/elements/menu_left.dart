@@ -1,11 +1,28 @@
 import 'package:Unizer/connector.dart';
 
-class LeftMenu extends StatelessWidget {
+class LeftMenu extends StatefulWidget {
+  @override
+  _LeftMenuState createState() => _LeftMenuState();
+}
+
+class _LeftMenuState extends State<LeftMenu> {
+  String userDisplayName = '';
+
+  getUserDisplayname() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userDisplayName = prefs.get('userDisplayname').toString();
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getUserDisplayname();
+  }
+
   @override
   Widget build(BuildContext context) {
-    //TODO: set user displayname
-    String _userDisplayName = '';
-
     return Drawer(
       elevation: 8.0,
       child: Container(
@@ -51,7 +68,7 @@ class LeftMenu extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
                             Text(
-                              _userDisplayName,
+                              userDisplayName,
                               softWrap: true,
                               style: kH1,
                             ),
