@@ -1,4 +1,5 @@
 import 'package:Unizer/connector.dart';
+import 'package:Unizer/app/elements/wdg_infobox.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
@@ -40,33 +41,26 @@ class _HomeScreenState extends State<HomeScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: kCardMargins,
-                    right: kCardMargins,
+                UniInfoBox(
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        AppLocalizations.of(context).tr('msg_welcome-username',
+                            args: [userDisplayName]),
+                        style: kH1,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: kCardVerticalSpace,
+                      ),
+                      Text(
+                        AppLocalizations.of(context).tr('msg_up-to-date'),
+                        style: kH2,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                  child: UniInfoBox(
-                    widgetContent: ListView(
-                      children: <Widget>[
-                        Text(
-                          AppLocalizations.of(context).tr(
-                              'msg_welcome-username',
-                              args: [userDisplayName]),
-                          style: kH1,
-                          textAlign: TextAlign.center,
-                        ),
-                        SizedBox(
-                          height: kCardVerticalSpace,
-                        ),
-                        Text(
-                          AppLocalizations.of(context).tr('msg_up-to-date'),
-                          style: kH2,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                    screenID: HomeScreen.screenID,
-                  ),
+                  screenID: HomeScreen.screenID,
                 ),
               ],
             ),

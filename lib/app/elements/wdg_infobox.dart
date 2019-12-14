@@ -1,135 +1,174 @@
 import 'package:Unizer/connector.dart';
 
-//Defaults
-//TODO: Determine card height based upon content
-const double kInfoCardMaxHeight = 150.0;
-const double kInfoCardMinHeight = 25.0;
-const double kInfoCardMaxSpace = 10.0;
-const double kInfoCardMinSpace = 0.0;
-const double kInfoCardMaxMargins = 12.0;
-const double kInfoCardMinMargins = 2.0;
-const int kDurationMilliseconds = 400;
-
 class UniInfoBox extends StatefulWidget {
-  UniInfoBox(
-      {Key key, this.widgetContent, @required this.screenID, this.cardHeight})
-      : super(key: key);
-
-  final Widget widgetContent;
+  final Widget child;
   final String screenID;
-  final double cardHeight;
+  UniInfoBox({this.child, this.screenID});
 
   @override
   _UniInfoBoxState createState() => _UniInfoBoxState();
 }
 
-class _UniInfoBoxState extends State<UniInfoBox> {
-  bool _infoCardExpanded = true;
-  double _infoCardHeight = kInfoCardMaxHeight;
-  bool _visibleStatus = true;
-  double _infoCardSpace = kInfoCardMaxSpace;
-  double _infoCardMargins = kInfoCardMaxMargins;
-  int _durationMilliseconds = kDurationMilliseconds;
-  double _defaultCardHeight = kInfoCardMaxHeight;
+class _UniInfoBoxState extends State<UniInfoBox>
+    with SingleTickerProviderStateMixin {
+  AnimationController expandController;
+  Animation<double> animation;
 
-  Future getBoxExpandedStatus() async {
-    final bool _expanded =
-        await LocalPrefs.getInfoBoxSpecs(screenID: widget.screenID);
-    _infoCardExpanded = _expanded;
-    _expanded
-        ? _durationMilliseconds = kDurationMilliseconds
-        : _durationMilliseconds = 0; //Don't animate when status is collapsed
-    resizeCard();
-  }
+  bool _expanded = true;
 
-  void resizeCard() {
-    _defaultCardHeight = widget.cardHeight ?? kInfoCardMaxHeight;
-    _infoCardExpanded
-        ? _infoCardHeight = _defaultCardHeight
-        : _infoCardHeight = kInfoCardMinHeight;
-    _infoCardExpanded
-        ? _infoCardSpace = kInfoCardMaxSpace
-        : _infoCardSpace = kInfoCardMinSpace;
-    _infoCardExpanded
-        ? _infoCardMargins = kInfoCardMaxMargins
-        : _infoCardMargins = kInfoCardMinMargins;
-    _infoCardExpanded ? _visibleStatus = true : _visibleStatus = false;
-  }
-
-  void toggleCard() {
+  void toggleExpandedState() {
     setState(() {
-      _infoCardExpanded = !_infoCardExpanded;
+      _expanded = !_expanded;
+      if (_expanded) {
+        expandController.forward();
+      } else {
+        expandController.reverse();
+      }
     });
-    _durationMilliseconds = kDurationMilliseconds;
-    resizeCard();
     LocalPrefs.writeInfoBoxSpecs(
-        screenID: widget.screenID, expanded: _infoCardExpanded);
+        screenID: widget.screenID, expanded: _expanded);
   }
 
   @override
   void initState() {
-    getBoxExpandedStatus();
+    _runExpandCheck();
+    prepareAnimations();
     super.initState();
+  }
+
+  ///Setting up the animation
+  void prepareAnimations() {
+    expandController = AnimationController(
+      vsync: this,
+      duration: Duration(milliseconds: 500),
+    );
+    animation = CurvedAnimation(
+      parent: expandController,
+      curve: Curves.fastOutSlowIn,
+    );
+  }
+
+  void _runExpandCheck() async {
+    _expanded = await LocalPrefs.getInfoBoxSpecs(screenID: widget.screenID);
+    setState(() {
+      if (_expanded) {
+        expandController.forward();
+      } else {
+        expandController.reverse();
+      }
+    });
+  }
+
+  @override
+  void didUpdateWidget(UniInfoBox oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    _runExpandCheck();
+  }
+
+  @override
+  void dispose() {
+    expandController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: toggleCard,
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: _durationMilliseconds),
-        decoration: BoxDecoration(
-          boxShadow: <BoxShadow>[
-            kBoxScreenShadow,
-          ],
-          color: UniColors.white,
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(kDefaultBorderRadius),
-            bottomLeft: Radius.circular(kDefaultBorderRadius),
+    if (_expanded == true || _expanded == null) {
+      return Padding(
+        padding: EdgeInsets.only(left: kCardMargins, right: kCardMargins),
+        child: SizeTransition(
+            axisAlignment: 1.0,
+            sizeFactor: animation,
+            child: Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                boxShadow: <BoxShadow>[
+                  kBoxScreenShadow,
+                ],
+                color: UniColors.white,
+                borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(kDefaultBorderRadius),
+                  bottomLeft: Radius.circular(kDefaultBorderRadius),
+                ),
+              ),
+              padding: EdgeInsets.only(top: 18.0, left: 18.0, right: 18.0),
+              child: Column(
+                children: <Widget>[
+                  widget.child,
+                  MaterialButton(
+                    height: 15.0,
+                    minWidth: 300.0,
+                    onPressed: toggleExpandedState,
+                    child: Column(
+                      children: <Widget>[
+                        Divider(
+                          height: 2.0,
+                          thickness: 2.0,
+                          color: UniColors.dividerLine,
+                          indent: 60.0,
+                          endIndent: 60.0,
+                        ),
+                        SizedBox(
+                          height: 4.0,
+                        ),
+                        Divider(
+                          height: 2.0,
+                          thickness: 2.0,
+                          color: UniColors.dividerLine,
+                          indent: 100.0,
+                          endIndent: 100.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )),
+      );
+    } else {
+      return Padding(
+        padding: EdgeInsets.only(left: 18.0, right: 18.0),
+        child: Container(
+          padding: EdgeInsets.only(top: 10.0),
+          decoration: BoxDecoration(
+            boxShadow: <BoxShadow>[
+              kBoxScreenShadow,
+            ],
+            color: UniColors.white,
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(kDefaultBorderRadius),
+              bottomLeft: Radius.circular(kDefaultBorderRadius),
+            ),
           ),
-        ),
-        curve: Curves.decelerate,
-        constraints: BoxConstraints.expand(
-          height: _infoCardHeight,
-        ),
-        padding: EdgeInsets.all(_infoCardMargins),
-        child: Flex(
-          direction: Axis.vertical,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Flexible(
-              child: Visibility(
-                maintainState: true,
-                visible: _visibleStatus,
-                child: widget.widgetContent,
-              ),
-            ),
-            Visibility(
-              visible: _visibleStatus,
-              child: SizedBox(
-                height: _infoCardSpace,
-              ),
-            ),
-            Column(
+          height: 25.0,
+          child: MaterialButton(
+            height: 15.0,
+            minWidth: 300.0,
+            onPressed: toggleExpandedState,
+            child: Column(
               children: <Widget>[
-                Container(
+                Divider(
                   height: 2.0,
+                  thickness: 2.0,
                   color: UniColors.dividerLine,
-                  width: 100.0,
+                  indent: 60.0,
+                  endIndent: 60.0,
                 ),
                 SizedBox(
-                  height: 2.0,
+                  height: 4.0,
                 ),
-                Container(
+                Divider(
                   height: 2.0,
+                  thickness: 2.0,
                   color: UniColors.dividerLine,
-                  width: 60.0,
+                  indent: 100.0,
+                  endIndent: 100.0,
                 ),
               ],
             ),
-          ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 }

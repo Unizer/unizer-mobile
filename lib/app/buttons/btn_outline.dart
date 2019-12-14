@@ -33,6 +33,7 @@ class UniOutlineButton extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 Visibility(
                   visible: showIcon,

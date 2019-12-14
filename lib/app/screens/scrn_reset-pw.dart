@@ -88,31 +88,20 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
           child: ListView(
             scrollDirection: Axis.vertical,
             children: <Widget>[
-              Wrap(
-                crossAxisAlignment: WrapCrossAlignment.center,
-                alignment: WrapAlignment.center,
-                runSpacing: kCardVerticalSpace,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: kCardMargins,
-                      right: kCardMargins,
+                  UniInfoBox(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          AppLocalizations.of(context).tr('msg_reset-password'),
+                          style: kH2,
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
                     ),
-                    child: UniInfoBox(
-                      widgetContent: ListView(
-                        scrollDirection: Axis.vertical,
-                        physics: const NeverScrollableScrollPhysics(),
-                        children: <Widget>[
-                          Text(
-                            AppLocalizations.of(context)
-                                .tr('msg_reset-password'),
-                            style: kH2,
-                            textAlign: TextAlign.center,
-                          ),
-                        ],
-                      ),
-                      screenID: ResetPWScreen.screenID,
-                    ),
+                    screenID: ResetPWScreen.screenID,
                   ),
                   CardWidget(
                     child: Form(

@@ -117,23 +117,15 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
           child: ListView(
             scrollDirection: Axis.vertical,
             children: <Widget>[
-              Wrap(
-                crossAxisAlignment: WrapCrossAlignment.start,
-                alignment: WrapAlignment.center,
-                runSpacing: kCardVerticalSpace,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: kCardMargins,
-                      right: kCardMargins,
-                    ),
-                    child: UniInfoBox(
-                      widgetContent: Text(
-                        AppLocalizations.of(context).tr('msg_register-info'),
-                        style: kH2,
-                        textAlign: TextAlign.center,
-                      ),
-                      screenID: RegisterUserScreen.screenID,
+                  UniInfoBox(
+                    screenID: RegisterUserScreen.screenID,
+                    child: Text(
+                      AppLocalizations.of(context).tr('msg_register-info'),
+                      style: kH2,
+                      textAlign: TextAlign.center,
                     ),
                   ),
                   CardWidget(

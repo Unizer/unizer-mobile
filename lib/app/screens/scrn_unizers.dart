@@ -21,44 +21,33 @@ class _UnizerScreenState extends State<UnizerScreen> {
         child: ListView(
           scrollDirection: Axis.vertical,
           children: <Widget>[
-            Wrap(
-              crossAxisAlignment: WrapCrossAlignment.start,
-              alignment: WrapAlignment.center,
-              runSpacing: kCardVerticalSpace,
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: kCardMargins,
-                    right: kCardMargins,
-                  ),
-                  child: UniInfoBox(
-                    cardHeight: 170.0,
-                    widgetContent: ListView(
-                      scrollDirection: Axis.vertical,
-                      children: <Widget>[
-                        Container(
-                          child: Text(
-                            AppLocalizations.of(context)
-                                .tr('msg_unizer-home-info'),
-                            style: kH2,
-                            textAlign: TextAlign.center,
-                          ),
+                UniInfoBox(
+                  screenID: UnizerScreen.screenID,
+                  child: Column(
+                    children: <Widget>[
+                      Container(
+                        child: Text(
+                          AppLocalizations.of(context)
+                              .tr('msg_unizer-home-info'),
+                          style: kH2,
+                          textAlign: TextAlign.center,
                         ),
-                        Padding(
-                          padding:
-                              EdgeInsets.only(top: kTextFieldVerticalSpace),
-                          child: UniOutlineButton(
-                            icon: BoxIcons.bx_bulb,
-                            color: UniColors.buttonGreen,
-                            topMargin: 10.0,
-                            label: AppLocalizations.of(context)
-                                .tr('btn_invite-more-friends'),
-                            onPressed: () {},
-                          ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(top: kTextFieldVerticalSpace),
+                        child: UniOutlineButton(
+                          icon: BoxIcons.bx_bulb,
+                          color: UniColors.buttonGreen,
+                          topMargin: 10.0,
+                          label: AppLocalizations.of(context)
+                              .tr('btn_invite-more-friends'),
+                          onPressed: () {},
                         ),
-                      ],
-                    ),
-                    screenID: UnizerScreen.screenID,
+                      ),
+                    ],
                   ),
                 ),
                 UnizerCardWidget(
