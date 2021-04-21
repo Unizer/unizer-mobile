@@ -1,5 +1,6 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:unizer/connector.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override

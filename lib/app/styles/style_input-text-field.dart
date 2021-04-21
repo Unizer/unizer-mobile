@@ -1,10 +1,11 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class InputTextField extends StatefulWidget {
   InputTextField(
-      {@required TextEditingController userFieldController,
-      String selectedValue,
-      @required String hintText});
+      {required TextEditingController userFieldController,
+      String? selectedValue,
+      required String hintText});
 
   @override
   _InputTextFieldState createState() => _InputTextFieldState();

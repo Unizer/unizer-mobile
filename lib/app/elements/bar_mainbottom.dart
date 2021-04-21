@@ -1,8 +1,9 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class MainBottomBar extends StatefulWidget {
-  const MainBottomBar({Key key, this.screenId}) : super(key: key);
-  final String screenId;
+  const MainBottomBar({Key? key, this.screenId}) : super(key: key);
+  final String? screenId;
 
   @override
   _MainBottomBarState createState() => _MainBottomBarState();
@@ -39,27 +40,27 @@ class _MainBottomBarState extends State<MainBottomBar> {
         BottomNavigationBarItem(
           activeIcon: Icon(BoxIcons.bxs_home),
           icon: Icon(BoxIcons.bx_home),
-          title: Text(AppLocalizations.of(context).tr('lbl_home')),
+          label: tr('lbl_home'),
         ),
         BottomNavigationBarItem(
           activeIcon: Icon(BoxIcons.bxs_calendar),
           icon: Icon(BoxIcons.bx_calendar),
-          title: Text(AppLocalizations.of(context).tr('lbl_calendar')),
+          label: tr('lbl_calendar'),
         ),
         BottomNavigationBarItem(
           activeIcon: Icon(BoxIcons.bxs_flag_alt),
           icon: Icon(BoxIcons.bx_flag),
-          title: Text(AppLocalizations.of(context).tr('lbl_events')),
+          label: tr('lbl_events'),
         ),
         BottomNavigationBarItem(
           activeIcon: Icon(BoxIcons.bxs_megaphone),
           icon: Icon(BoxIcons.bxs_megaphone),
-          title: Text(AppLocalizations.of(context).tr('lbl_shouts')),
+          label: tr('lbl_shouts'),
         ),
         BottomNavigationBarItem(
           activeIcon: Icon(BoxIcons.bxs_message_dots),
           icon: Icon(BoxIcons.bx_message),
-          title: Text(AppLocalizations.of(context).tr('lbl_chat')),
+          label: tr('lbl_chat'),
         ),
       ],
       currentIndex: _selectedBottomBarIndex,

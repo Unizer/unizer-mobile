@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class RegisterUserScreen extends StatefulWidget {
   static const String screenID = 'register_user';
@@ -10,10 +11,10 @@ class RegisterUserScreen extends StatefulWidget {
 class RegisterUserFormFields {
   RegisterUserFormFields(
       {this.firstName, this.lastName, this.email, this.password});
-  String firstName;
-  String lastName;
-  String email;
-  String password;
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? password;
 }
 
 class _RegisterUserScreenState extends State<RegisterUserScreen> {
@@ -23,8 +24,8 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
   final _passwordFocus = FocusNode();
   final _formKey = GlobalKey<FormState>();
   var _auth = FirebaseAuth.instance;
-  final _firestore =
-      Firestore.instance; //intialise Firestore Cloud authentication object
+  final _firestore = FirebaseFirestore
+      .instance; //intialise Firestore Cloud authentication object
   var _formFields = RegisterUserFormFields();
   bool _showSpinner = false;
   String _errorCode = '';
@@ -41,48 +42,44 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
   }
 
   Future<bool> _submitRegistration() async {
-    _formKey.currentState.save(); //Saves all textfield content
-    final _isValid =
-        _formKey.currentState.validate(); //Check if any field has no validation
+    _formKey.currentState!.save(); //Saves all textfield content
+    final _isValid = _formKey.currentState!
+        .validate(); //Check if any field has no validation
     if (!_isValid) {
       return false;
     }
     try {
       final _newUser = await _auth.createUserWithEmailAndPassword(
-          email: _formFields.email, password: _formFields.password);
-      if (_newUser != null) {
-        await _newUser.sendEmailVerification();
-        String _uid = _newUser.uid; //get user uid
-        print('New user created with uid: $_uid');
+          email: _formFields.email!, password: _formFields.password!);
+      await _newUser.user!.sendEmailVerification();
+      String _uid = _newUser.user!.uid; //get user uid
+      print('New user created with uid: $_uid');
 
-        //Set displayname
-        UserUpdateInfo _info = UserUpdateInfo();
-        _info.displayName = _formFields.firstName + ' ' + _formFields.lastName;
-        _newUser.updateProfile(_info);
+      //Set displayname
+      _newUser.user!.updateProfile(
+          displayName: _formFields.firstName! + ' ' + _formFields.lastName!);
 
-        //Create Unizer record
-        _firestore.collection('unizers').add({
-          'user_uid': _uid,
-          'created': DateTime.now(),
-          'email': _formFields.email,
-          'firstname': _formFields.firstName,
-          'lastname': _formFields.lastName,
-          'displayname': _formFields.firstName + ' ' + _formFields.lastName,
-        });
-        UniDialog.showToast(
-          message: AppLocalizations.of(context)
-              .tr('msg_user-registered-succes', args: [_formFields.firstName]),
-        );
+      //Create Unizer record
+      _firestore.collection('unizers').add({
+        'user_uid': _uid,
+        'created': DateTime.now(),
+        'email': _formFields.email,
+        'firstname': _formFields.firstName,
+        'lastname': _formFields.lastName,
+        'displayname': _formFields.firstName! + ' ' + _formFields.lastName!,
+      });
+      UniDialog.showToast(
+        message:
+            tr('msg_user-registered-succes', args: [_formFields.firstName!]),
+      );
 
-        LocalPrefs.writeUserAccount(
-            email: _formFields.email, displayName: _newUser.displayName);
+      LocalPrefs.writeUserAccount(
+          email: _formFields.email!, displayName: _newUser.user!.displayName!);
 
-        //Show loginscreen after 5 secs
-        Future.delayed(Duration(seconds: 5), () {
-          Navigator.popUntil(
-              context, ModalRoute.withName(LoginScreen.screenID));
-        });
-      }
+      //Show loginscreen after 5 secs
+      Future.delayed(Duration(seconds: 5), () {
+        Navigator.popUntil(context, ModalRoute.withName(LoginScreen.screenID));
+      });
     } on PlatformException catch (e) {
       _errorCode = e.code;
       if (_errorCode.isNotEmpty) {
@@ -104,7 +101,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
           color: UniColors.black,
         ),
         title: Text(
-          AppLocalizations.of(context).tr('lbl_register'),
+          tr('lbl_register'),
           style: kTopMenubarTitle,
         ),
         backgroundColor: UniColors.appBarBackground,
@@ -123,7 +120,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                   UniInfoBox(
                     screenID: RegisterUserScreen.screenID,
                     child: Text(
-                      AppLocalizations.of(context).tr('msg_register-info'),
+                      tr('msg_register-info'),
                       style: kH2,
                       textAlign: TextAlign.center,
                     ),
@@ -135,8 +132,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           Text(
-                            AppLocalizations.of(context)
-                                .tr('lbl_keep-connected'),
+                            tr('lbl_keep-connected'),
                             style: kH1,
                             textAlign: TextAlign.left,
                           ),
@@ -145,23 +141,18 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                           ),
                           //Firstname
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_first-name'),
+                                labelText: tr('lbl_first-name'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.next,
                             focusNode: _firstNameFocus,
                             autofocus: true,
-                            autovalidate: false,
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_first-name')
-                                      .toLowerCase()
-                                ]);
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field',
+                                    args: [tr('lbl_first-name').toLowerCase()]);
                               }
                               return null;
                             },
@@ -178,22 +169,17 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                           ),
                           //Lastname
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_last-name'),
+                                labelText: tr('lbl_last-name'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.next,
                             focusNode: _lastNameFocus,
-                            autovalidate: false,
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_last-name')
-                                      .toLowerCase()
-                                ]);
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field',
+                                    args: [tr('lbl_last-name').toLowerCase()]);
                               }
                               return null;
                             },
@@ -209,23 +195,18 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                           ),
                           //Email
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_email'),
+                                labelText: tr('lbl_email'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.emailAddress,
                             focusNode: _emailFocus,
-                            autovalidate: false,
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_email')
-                                      .toLowerCase()
-                                ]);
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field',
+                                    args: [tr('lbl_email').toLowerCase()]);
                               }
                               return null;
                             },
@@ -241,10 +222,10 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                             height: kTextFieldVerticalSpace,
                           ),
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_password'),
+                                labelText: tr('lbl_password'),
                                 suffixIcon: IconButton(
                                     icon: Icon(_hidePassword
                                         ? BoxIcons.bx_hide
@@ -260,15 +241,10 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                             textInputAction: TextInputAction.done,
                             focusNode: _passwordFocus,
                             obscureText: _hidePassword,
-                            autovalidate: false,
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_password')
-                                      .toLowerCase()
-                                ]);
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field',
+                                    args: [tr('lbl_password').toLowerCase()]);
                               }
                               return null;
                             },
@@ -278,8 +254,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                           ),
                           RoundedButton(
                             color: UniColors.buttonGreen,
-                            label:
-                                AppLocalizations.of(context).tr('lbl_confirm'),
+                            label: tr('lbl_confirm'),
                             onPressed: () async {
                               setState(() {
                                 _showSpinner = true;
@@ -299,7 +274,7 @@ class _RegisterUserScreenState extends State<RegisterUserScreen> {
                                 Navigator.pop(context);
                               },
                               child: Text(
-                                AppLocalizations.of(context).tr('lbl_cancel'),
+                                tr('lbl_cancel'),
                                 style: kLinkText,
                               ),
                             ),

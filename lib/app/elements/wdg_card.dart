@@ -1,8 +1,9 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class CardWidget extends StatelessWidget {
   CardWidget({this.child});
-  final Widget child;
+  final Widget? child;
 
   @override
   Widget build(BuildContext context) {

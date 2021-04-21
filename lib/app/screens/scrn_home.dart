@@ -1,5 +1,6 @@
-import 'package:Unizer/connector.dart';
-import 'package:Unizer/app/elements/wdg_infobox.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/app/elements/wdg_infobox.dart';
+import 'package:unizer/connector.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String screenID = 'home';
@@ -9,12 +10,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String userDisplayName = '';
+  String? userDisplayName = '';
 
   getUserDisplayname() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      userDisplayName = prefs.get('userDisplayname');
+      userDisplayName = prefs.get('userDisplayname') as String?;
     });
   }
 
@@ -29,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainTitleBar(
-        title: AppLocalizations.of(context).tr('lbl_home'),
+        title: tr('lbl_home'),
       ),
       drawer: LeftMenu(),
       body: Container(
@@ -45,8 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: <Widget>[
                       Text(
-                        AppLocalizations.of(context).tr('msg_welcome-username',
-                            args: [userDisplayName]),
+                        tr('msg_welcome-username', args: [userDisplayName!]),
                         style: kH1,
                         textAlign: TextAlign.center,
                       ),
@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: kCardVerticalSpace,
                       ),
                       Text(
-                        AppLocalizations.of(context).tr('msg_up-to-date'),
+                        tr('msg_up-to-date'),
                         style: kH2,
                         textAlign: TextAlign.center,
                       ),

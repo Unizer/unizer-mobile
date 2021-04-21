@@ -1,17 +1,18 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class UniOutlineButton extends StatelessWidget {
   const UniOutlineButton(
-      {@required this.color,
-      @required this.label,
+      {required this.color,
+      required this.label,
       this.onPressed,
       this.topMargin,
       this.icon});
   final Color color;
   final String label;
-  final Function onPressed;
-  final double topMargin;
-  final IconData icon;
+  final Function? onPressed;
+  final double? topMargin;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class UniOutlineButton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(top: topMargin ?? kButtonTopMargin),
       child: GestureDetector(
-        onTap: onPressed,
+        onTap: onPressed as void Function()?,
         child: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(

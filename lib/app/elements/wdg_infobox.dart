@@ -1,9 +1,10 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class UniInfoBox extends StatefulWidget {
   final Widget child;
-  final String screenID;
-  UniInfoBox({this.child, this.screenID});
+  final String? screenID;
+  UniInfoBox({required this.child, this.screenID});
 
   @override
   _UniInfoBoxState createState() => _UniInfoBoxState();
@@ -11,8 +12,8 @@ class UniInfoBox extends StatefulWidget {
 
 class _UniInfoBoxState extends State<UniInfoBox>
     with SingleTickerProviderStateMixin {
-  AnimationController expandController;
-  Animation<double> animation;
+  late AnimationController expandController;
+  late Animation<double> animation;
 
   bool _expanded = true;
 
@@ -73,7 +74,7 @@ class _UniInfoBoxState extends State<UniInfoBox>
 
   @override
   Widget build(BuildContext context) {
-    if (_expanded == true || _expanded == null) {
+    if (_expanded == true) {
       return Padding(
         padding: EdgeInsets.only(left: kCardMargins, right: kCardMargins),
         child: SizeTransition(

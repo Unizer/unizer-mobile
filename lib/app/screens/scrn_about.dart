@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class AboutScreen extends StatelessWidget {
   static const String screenID = 'about';
@@ -7,7 +8,7 @@ class AboutScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainTitleBar(
-        title: AppLocalizations.of(context).tr('lbl_about'),
+        title: tr('lbl_about'),
       ),
       body: Container(
         decoration: kBoxScreenDecoration,
@@ -19,8 +20,7 @@ class AboutScreen extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    AppLocalizations.of(context)
-                        .tr('lbl_appversion', args: [kAppVersion]),
+                    tr('lbl_appversion', args: [kAppVersion]),
                     style: kH3,
                   ),
                   SizedBox(
@@ -29,13 +29,13 @@ class AboutScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      AppLocalizations.of(context).tr('lbl_history'),
+                      tr('lbl_history'),
                       style: kH3,
                       textAlign: TextAlign.left,
                     ),
                   ),
                   Text(
-                    AppLocalizations.of(context).tr('txt_history'),
+                    tr('txt_history'),
                     style: kBodyText,
                   ),
                   SizedBox(
@@ -44,13 +44,13 @@ class AboutScreen extends StatelessWidget {
                   Align(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      AppLocalizations.of(context).tr('lbl_mission'),
+                      tr('lbl_mission'),
                       style: kH3,
                       textAlign: TextAlign.left,
                     ),
                   ),
                   Text(
-                    AppLocalizations.of(context).tr('txt_mission'),
+                    tr('txt_mission'),
                     style: kBodyText,
                   ),
                 ],

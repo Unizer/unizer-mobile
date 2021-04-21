@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class CancelButton extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class CancelButton extends StatelessWidget {
           Navigator.pop(context);
         },
         child: Text(
-          AppLocalizations.of(context).tr('btn_cancel'),
+          tr('btn_cancel'),
           textAlign: TextAlign.center,
         ),
       ),
