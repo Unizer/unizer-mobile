@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 const InputDecoration kTextFieldDecoration = InputDecoration(
   contentPadding: EdgeInsets.only(

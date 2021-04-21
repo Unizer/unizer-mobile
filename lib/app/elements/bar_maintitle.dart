@@ -1,7 +1,8 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class MainTitleBar extends StatelessWidget with PreferredSizeWidget {
-  final String title;
+  final String? title;
   MainTitleBar({this.title});
 
   @override
@@ -22,7 +23,7 @@ class MainTitleBar extends StatelessWidget with PreferredSizeWidget {
         ),
       ],
       title: Text(
-        title,
+        title!,
         style: kTopMenubarTitle,
       ),
       backgroundColor: UniColors.appBarBackground,

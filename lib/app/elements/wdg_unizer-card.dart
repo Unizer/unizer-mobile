@@ -1,12 +1,13 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class UnizerCardWidget extends StatelessWidget {
-  const UnizerCardWidget({Key key, this.image, this.name, this.date})
+  const UnizerCardWidget({Key? key, this.image, this.name, this.date})
       : super(key: key);
 
-  final String image;
-  final String name;
-  final String date;
+  final String? image;
+  final String? name;
+  final String? date;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,7 @@ class UnizerCardWidget extends StatelessWidget {
             children: <Widget>[
               ClipOval(
                 child: Image.asset(
-                  image,
+                  image!,
                   width: 70.0,
                   height: 70.0,
                 ),
@@ -32,7 +33,7 @@ class UnizerCardWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      name,
+                      name!,
                       style: kH1.copyWith(color: UniColors.blue),
                     ),
                     Row(
@@ -53,7 +54,7 @@ class UnizerCardWidget extends StatelessWidget {
                           width: kTextFieldVerticalSpace,
                         ),
                         Text(
-                          date,
+                          date!,
                           style: kH5,
                         ),
                       ],

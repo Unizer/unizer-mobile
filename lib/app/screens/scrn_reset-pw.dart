@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class ResetPWScreen extends StatefulWidget {
   static const String screenID = 'reset-password';
@@ -9,7 +10,7 @@ class ResetPWScreen extends StatefulWidget {
 
 class ResetFormFields {
   ResetFormFields({this.email});
-  String email;
+  String? email;
 }
 
 class _ResetPWScreenState extends State<ResetPWScreen> {
@@ -34,7 +35,7 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
 
   Future getEmail() async {
     final String savedEmail = await LocalPrefs().getUserEmail();
-    if (savedEmail != null && savedEmail != 'null') {
+    if (savedEmail != 'null') {
       print('Email found in preferences: $savedEmail');
       setState(() {
         _textEditingController.text = savedEmail;
@@ -43,28 +44,25 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
   }
 
   Future<void> _resetPassword() async {
-    final _isValid =
-        _formKey.currentState.validate(); //Check if any field has no validation
-    if (!_isValid) {
-      return false;
+    final _isValid = _formKey.currentState!
+        .validate(); //Check if any field has no validation
+    if (_isValid) {
+      String _email = _textEditingController.text;
+
+      print('Reset password initiated with $_email');
+      //Todo: Check if email exists
+
+      //Send reset email
+      var _auth = FirebaseAuth.instance;
+      await _auth.sendPasswordResetEmail(email: _email);
+
+      //Show dialog and navigate back to loginscreen
+      UniDialog.showToast(
+        message: tr('msg_reset-password-email-upcoming'),
+      );
+
+      Navigator.pop(context);
     }
-
-    String _email = _textEditingController.text;
-
-    print('Reset password initiated with $_email');
-    //Todo: Check if email exists
-
-    //Send reset email
-    var _auth = FirebaseAuth.instance;
-    await _auth.sendPasswordResetEmail(email: _email);
-
-    //Show dialog and navigate back to loginscreen
-    UniDialog.showToast(
-      message:
-          AppLocalizations.of(context).tr('msg_reset-password-email-upcoming'),
-    );
-
-    Navigator.pop(context);
   }
 
   @override
@@ -75,7 +73,7 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
           color: UniColors.black,
         ),
         title: Text(
-          AppLocalizations.of(context).tr('lbl_reset-password'),
+          tr('lbl_reset-password'),
           style: kTopMenubarTitle,
         ),
         backgroundColor: UniColors.appBarBackground,
@@ -95,7 +93,7 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                     child: Column(
                       children: <Widget>[
                         Text(
-                          AppLocalizations.of(context).tr('msg_reset-password'),
+                          tr('msg_reset-password'),
                           style: kH2,
                           textAlign: TextAlign.center,
                         ),
@@ -111,24 +109,19 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                         children: <Widget>[
                           //Email
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             style: kBodyText,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_email'),
+                                labelText: tr('lbl_email'),
                                 errorStyle: kErrorValidationText),
                             textInputAction: TextInputAction.go,
                             keyboardType: TextInputType.emailAddress,
                             autofocus: true,
-                            autovalidate: false,
                             controller: _textEditingController,
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_email')
-                                      .toLowerCase()
-                                ]);
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field',
+                                    args: [tr('lbl_email').toLowerCase()]);
                               }
                               return null;
                             },
@@ -145,8 +138,7 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
 
                           RoundedButton(
                             color: UniColors.buttonGreen,
-                            label: AppLocalizations.of(context)
-                                .tr('btn_reset-password'),
+                            label: tr('btn_reset-password'),
                             onPressed: () async {
                               setState(() {
                                 _showSpinner = true;
@@ -166,7 +158,7 @@ class _ResetPWScreenState extends State<ResetPWScreen> {
                                 Navigator.pop(context);
                               },
                               child: Text(
-                                AppLocalizations.of(context).tr('lbl_cancel'),
+                                tr('lbl_cancel'),
                                 style: kLinkText,
                               ),
                             ),

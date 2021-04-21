@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class UnizerScreen extends StatefulWidget {
   static const String screenID = 'unizers';
@@ -12,7 +13,7 @@ class _UnizerScreenState extends State<UnizerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainTitleBar(
-        title: AppLocalizations.of(context).tr('lbl_unizers'),
+        title: tr('lbl_unizers'),
       ),
       drawer: LeftMenu(),
       body: Container(
@@ -30,8 +31,7 @@ class _UnizerScreenState extends State<UnizerScreen> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          AppLocalizations.of(context)
-                              .tr('msg_unizer-home-info'),
+                          tr('msg_unizer-home-info'),
                           style: kH2,
                           textAlign: TextAlign.center,
                         ),
@@ -42,8 +42,7 @@ class _UnizerScreenState extends State<UnizerScreen> {
                           icon: BoxIcons.bx_bulb,
                           color: UniColors.buttonGreen,
                           topMargin: 10.0,
-                          label: AppLocalizations.of(context)
-                              .tr('btn_invite-more-friends'),
+                          label: tr('btn_invite-more-friends'),
                           onPressed: () {},
                         ),
                       ),

@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class OrganisationListScreen extends StatefulWidget {
   static const String screenID = 'organisations_list';
@@ -12,7 +13,7 @@ class _OrganisationListScreenState extends State<OrganisationListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MainTitleBar(
-        title: AppLocalizations.of(context).tr('lbl_organisations'),
+        title: tr('lbl_organisations'),
       ),
       drawer: LeftMenu(),
       body: Container(
@@ -29,8 +30,7 @@ class _OrganisationListScreenState extends State<OrganisationListScreen> {
                     children: <Widget>[
                       Container(
                         child: Text(
-                          AppLocalizations.of(context)
-                              .tr('msg_organisations-list-info'),
+                          tr('msg_organisations-list-info'),
                           style: kH2,
                           textAlign: TextAlign.center,
                         ),
@@ -39,8 +39,7 @@ class _OrganisationListScreenState extends State<OrganisationListScreen> {
                         icon: BoxIcons.bx_building_house,
                         color: UniColors.buttonGreen,
                         topMargin: 10.0,
-                        label: AppLocalizations.of(context)
-                            .tr('btn_register-organisation'),
+                        label: tr('btn_register-organisation'),
                         onPressed: () {
                           Navigator.pushNamed(
                               context, RegisterOrgScreen.screenID);

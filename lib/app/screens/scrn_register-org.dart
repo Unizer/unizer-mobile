@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class RegisterOrgScreen extends StatefulWidget {
   static const String screenID = 'register_org';
@@ -16,13 +17,13 @@ class RegisterOrgFormFields {
       this.country,
       this.category,
       this.description});
-  String name;
-  String street;
-  String zip;
-  String city;
-  String country;
-  String category;
-  String description;
+  String? name;
+  String? street;
+  String? zip;
+  String? city;
+  String? country;
+  String? category;
+  String? description;
 }
 
 class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
@@ -30,9 +31,6 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
   final _streetFocus = FocusNode();
   final _zipFocus = FocusNode();
   final _cityFocus = FocusNode();
-  final _countryFocus = FocusNode();
-  final _categoryFocus = FocusNode();
-  final _descriptionFocus = FocusNode();
 
   var _formFields = RegisterOrgFormFields();
   int _stepIndex = 0;
@@ -54,7 +52,7 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
           color: UniColors.black,
         ),
         title: Text(
-          AppLocalizations.of(context).tr('lbl_register-organization'),
+          tr('lbl_register-organization'),
           style: kTopMenubarTitle,
         ),
         backgroundColor: UniColors.appBarBackground,
@@ -94,8 +92,7 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                       height: kCardMargins,
                     ),
                     Text(
-                      AppLocalizations.of(context)
-                          .tr('msg_insert-fields-below'),
+                      tr('msg_insert-fields-below'),
                       style: kH4,
                       textAlign: TextAlign.center,
                     ),
@@ -111,21 +108,17 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                       child: Column(
                         children: <Widget>[
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             textInputAction: TextInputAction.next,
                             focusNode: _nameFocus,
                             autofocus: true,
-                            autovalidate: false,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_organisation-name'),
+                                labelText: tr('lbl_organisation-name'),
                                 errorStyle: kErrorValidationText),
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_organisation-name')
-                                      .toLowerCase()
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field', args: [
+                                  tr('lbl_organisation-name').toLowerCase()
                                 ]);
                               }
                               return null;
@@ -141,20 +134,16 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                             },
                           ),
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             textInputAction: TextInputAction.next,
                             focusNode: _streetFocus,
-                            autovalidate: false,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_street-and-number'),
+                                labelText: tr('lbl_street-and-number'),
                                 errorStyle: kErrorValidationText),
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_street-and-number')
-                                      .toLowerCase()
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field', args: [
+                                  tr('lbl_street-and-number').toLowerCase()
                                 ]);
                               }
                               return null;
@@ -170,21 +159,16 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                             },
                           ),
                           TextFormField(
+                            autovalidateMode: AutovalidateMode.disabled,
                             textInputAction: TextInputAction.next,
                             focusNode: _zipFocus,
-                            autovalidate: false,
                             decoration: kTextFieldDecoration.copyWith(
-                                labelText: AppLocalizations.of(context)
-                                    .tr('lbl_zipcode'),
+                                labelText: tr('lbl_zipcode'),
                                 errorStyle: kErrorValidationText),
                             validator: (value) {
-                              if (value.isEmpty) {
-                                return AppLocalizations.of(context)
-                                    .tr('msg_required-field', args: [
-                                  AppLocalizations.of(context)
-                                      .tr('lbl_zipcode')
-                                      .toLowerCase()
-                                ]);
+                              if (value!.isEmpty) {
+                                return tr('msg_required-field',
+                                    args: [tr('lbl_zipcode').toLowerCase()]);
                               }
                               return null;
                             },
@@ -217,7 +201,7 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                                 Navigator.pop(context);
                               },
                               child: Text(
-                                AppLocalizations.of(context).tr('lbl_cancel'),
+                                tr('lbl_cancel'),
                                 textWidthBasis: TextWidthBasis.parent,
                                 style: kLinkText,
                               ),
@@ -225,8 +209,7 @@ class _RegisterOrgScreenState extends State<RegisterOrgScreen> {
                           ),
                           RoundedButton(
                             color: UniColors.buttonGreen,
-                            label:
-                                AppLocalizations.of(context).tr('lbl_register'),
+                            label: tr('lbl_register'),
                             elevation: 1.0,
                           ),
                         ],

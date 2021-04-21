@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:Unizer/constants.dart';
-import 'package:Unizer/app/colors/unizer_colors.dart';
-import 'package:Unizer/app/styles/style_text-styles.dart';
+import 'package:unizer/app/colors/unizer_colors.dart';
+import 'package:unizer/app/styles/style_text-styles.dart';
+import 'package:unizer/constants.dart';
 
 //TODO: Create a custom Toast conform proto
 class UniDialog {
-  static Future<bool> showToast({String message}) {
+  static Future<bool?> showToast({required String message}) {
     return Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_LONG,
-      timeInSecForIos: kDialogDuration,
+      timeInSecForIosWeb: kDialogDuration,
       gravity: ToastGravity.TOP,
       backgroundColor: Colors.black87,
       fontSize: 20.0,
@@ -18,8 +18,8 @@ class UniDialog {
   }
 
   static showSnackBar(
-      {BuildContext context, String message, SnackBarAction action}) {
-    var showSnackBar = Scaffold.of(context).showSnackBar(SnackBar(
+      {required BuildContext context, required String message, SnackBarAction? action}) {
+    var showSnackBar = ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       action: action,
       elevation: 8.0,
       backgroundColor: UniColors.blue,

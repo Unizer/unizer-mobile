@@ -1,12 +1,13 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class MenuListItem extends StatelessWidget {
-  MenuListItem({Key key, this.label, this.icon, this.onPress})
+  MenuListItem({Key? key, this.label, this.icon, this.onPress})
       : super(key: key);
 
-  final String label;
-  final IconData icon;
-  final Function onPress;
+  final String? label;
+  final IconData? icon;
+  final Function? onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class MenuListItem extends StatelessWidget {
         right: 20.0,
       ),
       child: GestureDetector(
-        onTap: onPress,
+        onTap: onPress as void Function()?,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -24,7 +25,7 @@ class MenuListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  label,
+                  label!,
                   style: kMenuText,
                 ),
                 Icon(

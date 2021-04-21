@@ -1,4 +1,5 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class LeftMenu extends StatefulWidget {
   @override
@@ -76,8 +77,7 @@ class _LeftMenuState extends State<LeftMenu> {
                               height: kLinkTextVerticalSpace,
                             ),
                             Text(
-                              AppLocalizations.of(context)
-                                  .tr('lbl_visit-edit-profile'),
+                              tr('lbl_visit-edit-profile'),
                               softWrap: true,
                               style: kLinkText,
                               textAlign: TextAlign.left,
@@ -92,7 +92,7 @@ class _LeftMenuState extends State<LeftMenu> {
                   ),
                   MenuListItem(
                     key: UniqueKey(),
-                    label: AppLocalizations.of(context).tr('lbl_unizers'),
+                    label: tr('lbl_unizers'),
                     icon: BoxIcons.bx_user,
                     onPress: () {
                       Navigator.pushNamed(context, UnizerScreen.screenID);
@@ -100,12 +100,12 @@ class _LeftMenuState extends State<LeftMenu> {
                   ),
                   MenuListItem(
                     key: UniqueKey(),
-                    label: AppLocalizations.of(context).tr('lbl_teams'),
+                    label: tr('lbl_teams'),
                     icon: BoxIcons.bx_group,
                   ),
                   MenuListItem(
                     key: UniqueKey(),
-                    label: AppLocalizations.of(context).tr('lbl_organisations'),
+                    label: tr('lbl_organisations'),
                     icon: BoxIcons.bx_building_house,
                     onPress: () {
                       Navigator.pushNamed(
@@ -117,14 +117,14 @@ class _LeftMenuState extends State<LeftMenu> {
               Column(
                 children: <Widget>[
                   MenuListItem(
-                    label: AppLocalizations.of(context).tr('lbl_logout'),
+                    label: tr('lbl_logout'),
                     icon: BoxIcons.bx_log_out,
                     onPress: () {
                       Navigator.popAndPushNamed(context, LoginScreen.screenID);
                     },
                   ),
                   MenuListItem(
-                    label: AppLocalizations.of(context).tr('lbl_about'),
+                    label: tr('lbl_about'),
                     icon: BoxIcons.bx_info_circle,
                     onPress: () {
                       Navigator.pushNamed(context, AboutScreen.screenID);

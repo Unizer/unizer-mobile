@@ -1,9 +1,10 @@
-import 'package:Unizer/connector.dart';
+import 'package:flutter/material.dart';
+import 'package:unizer/connector.dart';
 
 class RoundedButton extends StatelessWidget {
   const RoundedButton(
-      {@required this.color,
-      @required this.label,
+      {required this.color,
+      required this.label,
       this.onPressed,
       this.topMargin,
       this.elevation,
@@ -11,11 +12,11 @@ class RoundedButton extends StatelessWidget {
       this.icon});
   final Color color;
   final String label;
-  final Function onPressed;
-  final double topMargin;
-  final double elevation;
-  final double height;
-  final IconData icon;
+  final Function? onPressed;
+  final double? topMargin;
+  final double? elevation;
+  final double? height;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class RoundedButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(kButtonBorderRadius),
         child: MaterialButton(
           onPressed:
-              onPressed, //Navigator.pushNamed(context, LoginScreen.screenID);
+              onPressed as void Function()?, //Navigator.pushNamed(context, LoginScreen.screenID);
           minWidth: 100.0,
           height: height ?? kButtonHeight,
           child: Wrap(
