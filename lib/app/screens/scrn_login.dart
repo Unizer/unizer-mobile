@@ -40,16 +40,17 @@ class _LoginScreenState extends State<LoginScreen> {
       return false;
     }
     try {
-      final _authUser = await _auth.signInWithEmailAndPassword(
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: _formFields.email!, password: _formFields.password!);
-      if (!_authUser.user!.emailVerified) {
+
+      if (!userCredential.user!.emailVerified) {
         UniDialog.showSnackBar(
           context: context,
           message: tr('msg_user-login-email-not-verified'),
           action: SnackBarAction(
             label: tr('lbl_resend'),
-            onPressed: () {
-              _authUser.user!.sendEmailVerification();
+            onPressed: () async {
+              await userCredential.user!.sendEmailVerification();
             },
             textColor: UniColors.white,
           ),
@@ -58,8 +59,9 @@ class _LoginScreenState extends State<LoginScreen> {
       }
 
       await LocalPrefs.writeUserAccount(
-          email: _formFields.email!, displayName: _authUser.user!.displayName!);
-    } on PlatformException catch (e) {
+          email: _formFields.email!,
+          displayName: userCredential.user!.displayName!);
+    } on FirebaseAuthException catch (e) {
       String _errorCode = e.code;
       if (_errorCode.isNotEmpty) {
         UniDialog.showSnackBar(
