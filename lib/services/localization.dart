@@ -31,7 +31,7 @@ class Localizer {
     String _errorCode = error;
     String _message = tr('fireb_err_error-unknown');
     if (_errorCode.isNotEmpty) {
-      String _i18nKey = 'fireb_err_' +
+      String _i18nKey = 'fireb_err_error-' +
           _errorCode.toLowerCase().replaceAll('_', '-'); //Parse i18n key
       _message = tr(_i18nKey);
     }
